@@ -12,10 +12,10 @@ Want to contribute? You are welcome!
 
 ####Pull Requests
 
-Fork the repo and create your branch from dev.
-If you've changed codes, update the documentation.
-Make sure your code lints.
-Change README.md if necessary
+* Fork the repo and create your branch from dev.
+* If you've changed codes, update the documentation.
+* Make sure your code lints.
+* Change README.md if necessary
 
 ####License
 
