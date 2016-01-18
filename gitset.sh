@@ -59,6 +59,7 @@ while getopts ":s:e:gh" opt; do
 done
 
 echo "------- Starting Gitset --------"
+git config --global color.ui true
 git config --global user.name $GIT_USER_NAME
 git config --global user.email $GIT_USER_EMAIL
 if [[ $GEN_SSH_KEY ]]; then
