@@ -5,6 +5,7 @@ A collection of scripts and commands that I use over and over again
 ####Related projects
 
 Inspired by the [dotfiles](https://github.com/rylnd/dotfiles)
+                [dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ####Contributing
 
