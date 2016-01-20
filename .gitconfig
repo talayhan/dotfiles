@@ -3,6 +3,8 @@
 	email = samet.talayhan@gmail.com
 [color]
 	ui = true
+[core]
+  editor = vim
 [alias]
 	# shortcuts for simple commands
 	co = checkout
