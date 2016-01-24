@@ -3,10 +3,14 @@
 	email = samet.talayhan@gmail.com
 [color]
 	ui = true
+[core]
+  editor = vim
 [alias]
 	# shortcuts for simple commands
 	co = checkout
 	br = branch
+
+  talayhancommit = -c user.name='talayhan' -c user.email='samet.talayhan@gmail.com' commit
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
