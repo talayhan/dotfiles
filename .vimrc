@@ -1,11 +1,54 @@
 set nocompatible
 filetype off
 
-syntax on
-filetype plugin indent on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+set shiftwidth=4    " Indents will have a width of 4
+set softtabstop=4   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces
 
 " Bundles
-source ~/.vim/bundles.vim
+" source ~/.vim/bundles.vim
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'sjl/gundo.vim'
+Plugin 'taglist.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'nanotech/jellybeans.vim'
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+call vundle#end()
+filetype plugin indent on
 
 " Generic
 set encoding=utf-8
@@ -34,12 +77,11 @@ set linespace=3
 set scrolloff=3
 set cursorline
 
-set backspace=2
-set laststatus=2
-
 set relativenumber
 set number
 
+set clipboard=unnamedplus
+map <C-n> :NERDTreeToggle<CR>
 " Per Project Vimrc
 set exrc
 
@@ -55,6 +97,7 @@ nmap <Tab> :CtrlPBuffer<CR>
 map <C-h> :CtrlPLine<CR>
 imap <S-Tab> <Esc><<i
 nmap - :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Subsettings
 let NERDTreeShowBookmarks=1
@@ -63,6 +106,11 @@ let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,scss,less,eruby EmmetInstall
 autocmd FileType html,css,scss,less,eruby imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+let g:BASH_AuthorName   = 'Talayhan Samet'     
+let g:BASH_AuthorRef    = '@talayhans'                         
+let g:BASH_Email        = 'samet.talayhan@gmail.com'            
+let g:BASH_Company      = 'talayhan.xyz'    
 
 let g:airline_powerline_fonts=0
 let g:airline_left_sep=''
@@ -80,13 +128,6 @@ let g:netrw_liststyle=3
 command Bash ConqueTermSplit bash --init-file ~/.bash_profile
 map <silent> <S-Down> :Bash<CR>
 map <silent> <C-D-Space> :Dash<CR>
-
-" Theme
-colorscheme molokai
-let g:airline_theme="badwolf"
-let g:molokai_original=1
-let g:rehash256=1
-hi Normal ctermbg=None
 
 " Ignore
 set wildignore+=*~,*.sw?
@@ -135,4 +176,4 @@ if has('gui_running')
 endif
 
 source ~/.vim/functions.vim
-
+filetype plugin on
