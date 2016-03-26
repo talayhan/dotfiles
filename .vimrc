@@ -1,179 +1,325 @@
-set nocompatible
-filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
-set tabstop=4       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
-set shiftwidth=4    " Indents will have a width of 4
-set softtabstop=4   " Sets the number of columns for a TAB
-set expandtab       " Expand TABs to spaces
-
-" Bundles
-" source ~/.vim/bundles.vim
-
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'sjl/gundo.vim'
-Plugin 'taglist.vim'
-Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Shougo/vimfiler.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'honza/vim-snippets.git'
+Plugin 'scrooloose/nerdcommenter.git'
+"Plugin 'bling/vim-bufferline.git'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'SirVer/ultisnips.git'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'pangloss/vim-javascript.git'
+Plugin 'godlygeek/tabular'
+Plugin 'morhetz/gruvbox'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+Plugin 'tmhedberg/matchit'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-scripts/a.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-dispatch'
+Plugin 'wellle/tmux-complete.vim'
+"Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ntpeters/vim-better-whitespace'
 
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+set nocompatible
 
-call vundle#end()
-filetype plugin indent on
+if &t_Co > 2 || has("gui_running")
+	syntax on
+endif
 
-" Generic
-set encoding=utf-8
-set fileencodings=utf-8
+"256 color terminal
+set t_Co=256
 
-set autoindent
-set smartindent
-set cindent
-set background=dark
-set expandtab
+"longer history
+set history=10000
+
+"better commandline
+set wildmenu
+
+"proper tab completion behavior in command line
+set wildmode=longest:full,full
+
+"mouse support
+set mouse=a
+
+"case sensitive search when there's a capital letter
+set ignorecase smartcase
+
+"tab/space stuff, insert 4 spaces with tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set wildignore=*.pyc
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set shiftround
-set history=1000
-set undolevels=1000
-set noswapfile
-set nobackup
-set linespace=3
-set scrolloff=3
-set cursorline
+set expandtab
 
+"highlight tabs as >--, and trailing whitespace with -
+set listchars=tab:>-,trail:-
+set list
+
+"buffers remember their states
+set hidden
+
+"search as it's being typed
+set incsearch
+
+"highlight search matches
+set hlsearch
+
+"s/././g by default
+set gdefault
+
+"do not wrap searches at the end of the files
+set nowrapscan
+
+"relative line numbers
 set relativenumber
 set number
 
-set clipboard=unnamedplus
-map <C-n> :NERDTreeToggle<CR>
-" Per Project Vimrc
-set exrc
+set autoindent
+"set smartindent
 
-" Enable mouse events
-if has("mouse")
-  set mouse=a
+set title
+set ls=2
+
+"start scrolling at 3rd row
+set scrolloff=3
+
+"default encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
+"show matching brackets as they're inserted
+set showmatch
+
+"preserve undo states, backup and undo files are kept in a single dir
+set undofile
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+"make vim more responsive
+set lazyredraw
+set ttyfast
+
+"reduce ESC delay
+set timeout           " for mappings
+set timeoutlen=1000   " default value
+set ttimeout          " for key codes
+set ttimeoutlen=10    " unnoticeable small value
+
+"ignore whitespace in diffs (messes up Gdiff)
+set diffopt+=iwhite
+
+filetype plugin indent on
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+
+"config cscope
+set nosplitright
+set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
+set cst
+
+if has("cscope")
+    " add any database in current directory
+    if filereadable(".kscope/cscope.out")
+        cs add .kscope/cscope.out
+    endif
 endif
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
 
-" Bindings
-nmap <Tab> :CtrlPBuffer<CR>
-map <C-h> :CtrlPLine<CR>
-imap <S-Tab> <Esc><<i
-nmap - :NERDTreeToggle<CR>
+"custom mappings
+let mapleader=","
+
+"swap 0 and ^ behavior
+noremap ^ 0
+noremap 0 ^
+
+"copy/paste clipboard
+map <leader>y "+y
+map <leader>p "+p
+
+"disable highlight
+nnoremap <leader><space> :noh<cr>
+"remove trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+"cscope mappings
+nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>d :cs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+
+nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>D :vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>V :vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>t :!rm -r .kscope; /usr/bin/vimscope<cr>:cs reset<cr>
+
+"disable f1
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+"switch between last buffer with space
+nnoremap <space> <C-^>
+
+"c-hjkl to move between splits
+nnoremap <c-h> <C-w>h
+nnoremap <c-j> <C-w>j
+nnoremap <c-k> <C-w>k
+nnoremap <c-l> <C-w>l
+
+"shortcut for closing other splits
+noremap <leader>o <C-w>o
+
+"better command mode behavior for c-n and c-p
+cnoremap <c-n>  <down>
+cnoremap <c-p>  <up>
+
+"move visually correct when line is wrapped
+noremap j gj
+noremap k gk
+
+"center after certain movements
+noremap * *zz
+noremap # #zz
+noremap n nzz
+noremap N Nzz
+noremap ]] ]]zz
+noremap [[ [[zz
+noremap {{ {{zz
+noremap }} }}zz
+
+"jk to go to normal mode
+"inoremap jk <esc>
+
+"disable new line comments with o
+autocmd FileType * setlocal formatoptions-=o
+
+"colorscheme set
+set background=dark
+colorscheme gruvbox
+
+"highlight current line number with a different color
+highlight Highlighted ctermfg=231 ctermbg=24 cterm=NONE
+highlight! link CursorLineNr Highlighted
+
+" Maximize quickfix windows' width
+function! MaxQuickfixWin()
+    if &buftype ==# "quickfix"
+        execute "normal! \<c-w>J"
+    endif
+endfunction
+augroup MaxQuickfixWinGrp
+    autocmd!
+    autocmd BufWinEnter * call MaxQuickfixWin()
+augroup END
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+"auto close info buffer thing after completion
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"plugin related configs start here
+
+nnoremap <F6> :NERDTreeToggle<CR>
+nnoremap <F7> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-" Subsettings
-let NERDTreeShowBookmarks=1
-let g:sneak#streak=1
-let g:user_emmet_mode='a'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,less,eruby EmmetInstall
-autocmd FileType html,css,scss,less,eruby imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+"Ctrl-P tag fuzzy search
+nnoremap <leader>l :CtrlPBufTagAll<cr>
+"Ctrl-P buffername fuzzy search
+nnoremap <leader>b :CtrlPBuffer<cr>
 
-let g:BASH_AuthorName   = 'Talayhan Samet'     
-let g:BASH_AuthorRef    = '@talayhans'                         
-let g:BASH_Email        = 'samet.talayhan@gmail.com'            
-let g:BASH_Company      = 'talayhan.xyz'    
+"emacs like shortcuts for yankstack
+set <m-p>=p   " rotate yanks forward
+set <m-P>=P   " rotate yanks forward
 
-let g:airline_powerline_fonts=0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:tmuxline_powerline_separators=0
+"custom trigger for snippets
+let g:UltiSnipsExpandTrigger="<c-a>"
 
-let g:airline#extensions#syntastic#enabled=1
-let g:airline#extensions#virtualenv#enabled=1
-let g:airline_detect_paste=1
-let g:airline_detect_modified=1
+"syntastic checkers
+let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_checkers = ['pyflakes']
+"let g:syntastic_python_checkers = ['pyflakes']
+"let g:syntastic_python_checkers = ['pep8']
 
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:5,results:15'
-let g:netrw_liststyle=3
+"let g:syntastic_jslint_checkers=['jslint']
+let g:syntastic_jslint_checkers=['jshint']
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
 
-command Bash ConqueTermSplit bash --init-file ~/.bash_profile
-map <silent> <S-Down> :Bash<CR>
-map <silent> <C-D-Space> :Dash<CR>
+"easytags stuff
+set tags=~/.vimtags
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+"""""
 
-" Ignore
-set wildignore+=*~,*.sw?
-set wildignore+=*.tar.*,*.tgz
-set wildignore+=.DS_Store
-set wildignore+=node_modules/*,*.min.js               " Javascript
-set wildignore+=*.pyc,dist/*,build/*,*.egg-info,*.egg " Python
+"vim-airline stuff
+"uncomment for regular fonts
+let g:airline_powerline_fonts = 1
 
-" Autofiletype
-autocmd BufNewFile,BufReadPost *.less set ft=less
-autocmd BufNewFile,BufReadPost *.coffee set ft=coffee
-autocmd BufNewFile,BufReadPost *.scss set ft=scss
+"show file name without the path
+let g:airline_section_c = '%t'
 
-" Omni Completion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"disable whitespace check
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
 
-" Code Control
-hi OverLength term=underline cterm=underline gui=undercurl guisp=Orange 
-match OverLength /\%81v.\+/
+"show only column number and percentage
+let g:airline_section_z = '%3p%% %3v'
+let g:airline_theme = 'light'
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
+"""""
 
-" 3 esc buffer close, wow easy.
-map <silent> <esc><esc><esc> :bd<CR>
-imap <silent> <esc><esc><esc> <esc>:bd<CR>
-
-" clear search
-map <silent> <space><space> :let @/=''<CR>
-
-inoremap <expr> <C-D-Space> "\<C-X>\<C-O>"
-
-" keep blocks selected when indenting
-vnoremap < <gv
-vnoremap > >gv
-
-if has('gui_running')
-  set guioptions-=rL
-  set guifont=Monaco:h13
-  set clipboard=unnamed
-  if has('gui_macvim')
-    set macmeta
-    set fuopt=maxvert,maxhorz
-  endif
-endif
-
-source ~/.vim/functions.vim
-filetype plugin on
+"racer config
+let g:racer_cmd = "racer"
