@@ -7,8 +7,11 @@ export ZSH=/home/talayhhan/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="dieter"
+#ZSH_THEME="tonotdo"
+ZSH_THEME="sorin"
 #ZSH_THEME="kolo"
-ZSH_THEME="sunrise"
+#ZSH_THEME="wezm"
+#ZSH_THEME="sunrise"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,7 +58,7 @@ ENABLE_CORRECTION="true"
 plugins=(git git-flow gitfast github)
 # User configuration
 
-  export PATH="/home/talayhhan/.rbenv/plugins/ruby-build/bin:/home/talayhhan/.rbenv/shims:/home/talayhhan/.rbenv/bin:/home/talayhhan/.rbenv/plugins/ruby-build/bin:/home/talayhhan/.rbenv/shims:/home/talayhhan/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/talayhhan/.fzf/bin"
+export PATH="/home/talayhhan/.rbenv/plugins/ruby-build/bin:/home/talayhhan/.rbenv/shims:/home/talayhhan/.rbenv/bin:/home/talayhhan/.rbenv/plugins/ruby-build/bin:/home/talayhhan/.rbenv/shims:/home/talayhhan/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/talayhhan/.fzf/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -84,3 +87,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias f="thunar . &"
