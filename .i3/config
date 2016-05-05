@@ -196,7 +196,9 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 #client.focused_inactive #5e2750 #5e2750 #aea79f #5e2750
 #client.unfocused #5e2750 #5e2750 #aea79f #5e2750
 #client.urgent #77216f #77216f #ffffff #efb73e
-#exec feh --bg-scale ~/wall.png
-#exec feh --bg-fill ~/w.jpg
-#exec compton -b
+exec feh --bg-scale ~/wall.png
+exec feh --bg-fill ~/w.jpg
+exec compton -b
 exec nm-applet
+
+bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
