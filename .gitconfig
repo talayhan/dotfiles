@@ -9,6 +9,7 @@
 	# shortcuts for simple commands
 	co = checkout
 	br = branch
+	st = status
 
   talayhancommit = -c user.name='talayhan' -c user.email='samet.talayhan@gmail.com' commit
 
