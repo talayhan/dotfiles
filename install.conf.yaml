@@ -72,6 +72,10 @@
         force: true 
         create: true
         path: tmux/tpm
+    ~/zathura/zathurarc: 
+        force: true 
+        create: true
+        path: zathura/zathurarc
 
 - shell:
     - [~/.fzf/install --key-bindings --completion --no-update-rc, Installing fzf]
