@@ -9,6 +9,9 @@
     ~/.bashrc:
         force: true 
         path: bashrc
+    ~/.bash_aliases:
+        force: true 
+        path: bash_aliases
     ~/.compton.conf:
         force: true 
         path: compton.conf 
