@@ -33,6 +33,9 @@
     ~/.Xresources:
         force: true 
         path: Xresources
+    ~/.Xinitrc:
+        force: true 
+        path: Xinitrc
     ~/.zshrc:
         force: true 
         path: zshrc
