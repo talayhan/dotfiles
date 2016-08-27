@@ -42,6 +42,9 @@
     ~/.zshrc:
         force: true 
         path: zshrc
+    ~/.vimrc:
+        force: true 
+        path: vimrc
     # Urxvt clipboard plugin
     ~/.urxvt/ext/clipboard: 
         create: true
