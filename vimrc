@@ -288,7 +288,17 @@ set <m-P>=P   " rotate yanks forward
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall"
 
+" Easymotion configs All motions will then be triggered with <Leader> 
+" <Leader>s, <Leader>gE.
 let g:EasyMotion_leader_key="t"
+map <Leader> <Plug>(easymotion-prefix)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+"
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
 "custom trigger for snippets
 "let g:UltiSnipsExpandTrigger="<c-a>"
 " Trigger configuration. Do not use <tab> if you use
