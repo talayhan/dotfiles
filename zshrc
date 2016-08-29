@@ -7,7 +7,7 @@ export ZSH=/home/talayhhan/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="tonotdo"
-ZSH_THEME="af-magic"
+ZSH_THEME="amuse"
 #ZSH_THEME="sorin"
 #ZSH_THEME="kolo"
 #ZSH_THEME="minimal"

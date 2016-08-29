@@ -94,8 +94,8 @@ set smarttab
 set expandtab
 
 "highlight tabs as >--, and trailing whitespace with -
-set listchars=tab:>-,trail:-
 set list
+set listchars=tab:>-,trail:-
 
 "buffers remember their states
 set hidden
