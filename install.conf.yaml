@@ -71,6 +71,9 @@
     ~/.config/redshift.conf:   
         force: true 
         path: redshift.conf
+    ~/.config/mc/mc.keymap:   
+        force: true 
+        path: mc.keymap
     ~/.fzf:
         force: true
         path: fzf
