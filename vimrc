@@ -87,11 +87,21 @@ set mouse=a
 set ignorecase smartcase
 
 "tab/space stuff, insert 4 spaces with tab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=0
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=0
 set smarttab
-set expandtab
+"set expandtab
+
+" tabstop:          Width of tab character
+" " softtabstop:      Fine tunes the amount of white space to be added
+" " shiftwidth        Determines the amount of whitespace to add in normal
+" mode
+" " expandtab:        When on uses space instead of tabs
+"" set tabstop     =4
+"" set softtabstop =8
+"" set shiftwidth  =4
+"" set expandtab
 
 "highlight tabs as >--, and trailing whitespace with -
 set list
