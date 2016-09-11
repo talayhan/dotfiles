@@ -63,9 +63,7 @@ export PATH="/home/talayhhan/.rbenv/plugins/ruby-build/bin:/home/talayhhan/.rben
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
+source ~/.bash_aliases
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -88,10 +86,5 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias f="thunar . &"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.profile
