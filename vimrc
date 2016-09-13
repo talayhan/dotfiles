@@ -16,7 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'honza/vim-snippets.git'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'scrooloose/nerdcommenter.git'
 "Plugin 'bling/vim-bufferline.git'
 "Visulize undo tree
@@ -338,6 +338,9 @@ let g:airline_section_c = '%t'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 "let g:airline#extensions#tabline#enabled = 1
+
+"enable markdown preview for grip rendering 
+let vim_markdown_preview_github=1
 
 "show only column number and percentage
 let g:airline_section_z = '%3p%% %3v'
