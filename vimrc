@@ -86,6 +86,9 @@ set mouse=a
 "case sensitive search when there's a capital letter
 set ignorecase smartcase
 
+"fix set backspace, vim8.0 causing backspace problem
+set backspace=indent,eol,start
+
 "tab/space stuff, insert 4 spaces with tab
 "set tabstop=4
 "set shiftwidth=4
