@@ -1,8 +1,6 @@
 # Autostart apps
 unclutter &
-
-# Configure the keyboard layout
-setxkbmap us
+redshift &
 
 # Source my personel .profile file
 . ~/.profile
