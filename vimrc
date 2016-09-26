@@ -135,6 +135,9 @@ set autoindent
 set title
 set ls=2
 
+" use buffer the system clipboard by default.
+set clipboard=unnamedplus
+
 "start scrolling at 3rd row
 set scrolloff=3
 
