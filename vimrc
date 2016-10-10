@@ -24,6 +24,7 @@ Plugin 'sjl/gundo.vim'
 "Syntax checking
 Plugin 'scrooloose/syntastic.git'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 " Motion on speed
 Plugin 'easymotion/vim-easymotion'
 Plugin 'SirVer/ultisnips.git'
@@ -316,10 +317,10 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 "custom trigger for snippets
-"let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsExpandTrigger="<c-a>"
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
