@@ -18,6 +18,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'vim-scripts/MultipleSearch'
+Plugin 'will133/vim-dirdiff'
 "Plugin 'bling/vim-bufferline.git'
 "Visulize undo tree
 Plugin 'sjl/gundo.vim'
@@ -57,6 +59,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'bash-support.vim'
 " Web Plugins
 Plugin 'mattn/emmet-vim'
+Plugin 'mhinz/vim-grepper'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -348,6 +351,7 @@ let g:airline#extensions#hunks#enabled = 0
 
 "enable markdown preview for grip rendering 
 let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
 
 "show only column number and percentage
 let g:airline_section_z = '%3p%% %3v'
