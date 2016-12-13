@@ -1,0 +1,21 @@
+[submodule "dotbot"]
+        path = dotbot
+        url = https://github.com/anishathalye/dotbot
+        fetchRecurseSubmodules = true
+[submodule "oh-my-zsh"]
+        path = home/sh.d/oh-my-zsh
+        url = https://github.com/robbyrussell/oh-my-zsh.git
+        fetchRecurseSubmodules = true
+[submodule "tmux/tpm"]
+        path = home/sh.d/tmux/tpm
+        url = https://github.com/tmux-plugins/tpm
+        ignore = dirty
+        fetchRecurseSubmodules = false
+[submodule "fzf"]
+        path = home/sh.d/fzf
+        url = https://github.com/junegunn/fzf.git
+        fetchRecurseSubmodules = true
+[submodule "vundle"]
+        path = vim/bundle/vundle
+        url = https://github.com/VundleVim/Vundle.vim.git
+

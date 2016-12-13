@@ -18,7 +18,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'scrooloose/nerdcommenter.git'
+" Highlight multiple search at same time
 Plugin 'vim-scripts/MultipleSearch'
+" multiple selections
+Plugin 'terryma/vim-multiple-cursors'
+" Diff two directories
 Plugin 'will133/vim-dirdiff'
 "Plugin 'bling/vim-bufferline.git'
 "Visulize undo tree
