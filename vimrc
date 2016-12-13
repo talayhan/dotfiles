@@ -25,8 +25,9 @@ Plugin 'will133/vim-dirdiff'
 Plugin 'sjl/gundo.vim'
 "Syntax checking
 Plugin 'scrooloose/syntastic.git'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+Plugin 'wesQ3/vim-windowswap'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'rdnetto/YCM-Generator'
 " Motion on speed
 Plugin 'easymotion/vim-easymotion'
 Plugin 'SirVer/ultisnips.git'
@@ -212,7 +213,7 @@ nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>D :vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>V :vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
-nnoremap <leader>t :!rm -r .kscope; /usr/bin/vimscope<cr>:cs reset<cr>
+nnoremap <leader>t :!rm -r .kscope; /usr/bin/vimscope ../<cr>:cs reset<cr>
 
 "disable f1
 inoremap <F1> <ESC>
@@ -336,6 +337,11 @@ let g:syntastic_python_checkers = ['pylint']
 "let g:syntastic_python_checkers = ['pyflakes']
 "let g:syntastic_python_checkers = ['pep8'asytags_suppress_ctags_warning = 1
 """""
+"easytags configuration
+let g:easytags_async=1
+let g:easytags_auto_highlight=0
+let g:easytags_on_cursorhold = 0 " disabled because it causes a recursive tag generation
+let g:easytags_dynamic_files = 2"
 
 "vim-airline stuff
 "uncomment for regular fonts
