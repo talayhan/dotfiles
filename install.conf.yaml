@@ -7,72 +7,72 @@
 - link:
     # Dotfiles in ~
     ~/.bashrc:
-        force: true 
+        force: true
         path: bashrc
     ~/.bash_aliases:
-        force: true 
+        force: true
         path: bash_aliases
     ~/.compton.conf:
-        force: true 
-        path: compton.conf 
+        force: true
+        path: compton.conf
     ~/.gitconfig:
-        force: true 
-        path: gitconfig 
+        force: true
+        path: gitconfig
     ~/.gitignore:
-        force: true 
-        path: gitignore 
+        force: true
+        path: gitignore
     ~/.pam_environment:
-        force: true 
-        path: pam_environment 
+        force: true
+        path: pam_environment
     ~/.pythonrc:
-        force: true 
+        force: true
         path: pythonrc
     ~/.tmux.conf:
-        force: true 
+        force: true
         path: tmux.conf
     ~/.vimperatorrc:
-        force: true 
+        force: true
         path: vimperatorrc
     ~/.Xresources:
-        force: true 
+        force: true
         path: Xresources
     ~/.Xinitrc:
-        force: true 
+        force: true
         path: Xinitrc
     ~/.zshrc:
-        force: true 
+        force: true
         path: zshrc
     ~/.vimrc:
-        force: true 
+        force: true
         path: vimrc
     # Urxvt clipboard plugin
-    ~/.urxvt/ext/clipboard: 
+    ~/.urxvt/ext/clipboard:
         create: true
         path: urxvt/clipboard
     # Python tab completion
-    ~/.ptpython/config.py: 
+    ~/.ptpython/config.py:
         path: ptpython/config.py
         create: true
     # Font folder
     ~/.fonts: fonts
     #Gtk/Qt theme
     ~/.gtkrc-2.0:
-        force: true 
+        force: true
         path: gtkrc-2.0
-    ~/.config/gtk-3.0/settings.ini: 
-        force: true 
+    ~/.config/gtk-3.0/settings.ini:
+        force: true
         create: true
         path: config/gtk-3.0/settings.ini
     ~/.themes: themes
     ~/.icons: icons
-    ~/.config/Trolltech.conf:   
-        force: true 
+    ~/.config/Trolltech.conf:
+        force: true
         path: qt/Trolltech.conf
-    ~/.config/redshift.conf:   
-        force: true 
+    ~/.config/redshift.conf:
+        force: true
         path: redshift.conf
-    ~/.config/mc/mc.keymap:   
-        force: true 
+    ~/.config/mc/mc.keymap:
+        force: true
         path: mc.keymap
     ~/.fzf:
         force: true
@@ -80,12 +80,12 @@
     ~/.oh-my-zsh:
         force: true
         path: oh-my-zsh
-    ~/.tmux/plugins/tpm: 
-        force: true 
+    ~/.tmux/plugins/tpm:
+        force: true
         create: true
         path: tmux/tpm
-    ~/zathura/zathurarc: 
-        force: true 
+    ~/.config/zathura/zathurarc:
+        force: true
         create: true
         path: zathura/zathurarc
 
