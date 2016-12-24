@@ -65,6 +65,8 @@ Plugin 'bash-support.vim'
 " Web Plugins
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-grepper'
+Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -325,10 +327,9 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 "custom trigger for snippets
-let g:UltiSnipsExpandTrigger="<c-a>"
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
