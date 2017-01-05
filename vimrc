@@ -67,6 +67,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-grepper'
 Plugin 'fatih/vim-go'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'itchyny/vim-cursorword'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
