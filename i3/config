@@ -161,19 +161,13 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #status_command    python3 ~/.i3/i3status.py
     status_command i3status -c ~/.i3/i3status.conf
     position          top
     workspace_buttons yes
 colors {
-    #separator #333333
     background #000009
     statusline #aea79f
     # Type             border  background font
-    #focused_workspace  #008fff #007fff #ffffff
-    #active_workspace   #333333 #5f676a #ffffff
-    #inactive_workspace #333333 #222222 #888888
-    #urgent_workspace   #aa0000 #990000 #ffffff
     focused_workspace #dd4814 #dd4814 #ffffff
     active_workspace #902a07 #902a07 #aea79f
     inactive_workspace #902a07 #902a07 #aea79f
@@ -184,9 +178,6 @@ colors {
 hide_edge_borders both 
 new_window normal 5
 new_float normal 5
-#bar {
-        #status_command i3status
-#}
 #xrandr --output HDMI-0 --auto --left-of DVI-1
 exec xrandr --output VGA-0 --primary --right-of DVI-0
 
@@ -206,4 +197,4 @@ exec feh --bg-scale ~/w.jpg
 exec compton -b
 exec nm-applet
 
-bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
+#bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'

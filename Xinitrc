@@ -2,5 +2,3 @@
 unclutter &
 redshift &
 
-# Source my personel .profile file
-. ~/.profile
