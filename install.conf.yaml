@@ -4,42 +4,42 @@
     - [git submodule update --init --depth 1, Installing submodules]
 
 - link:
-    # Dotfiles in ~
     ~/.bash_aliases:
         force: true
-        path: bash_aliases
+        path: user_specific/bash_aliases
     ~/.gitconfig:
         force: true
-        path: gitconfig
+        path: git/gitconfig
     ~/.gitignore:
         force: true
-        path: gitignore
+        path: git/gitignore
     ~/.pam_environment:
         force: true
-        path: pam_environment
+        path: config/pam_environment
     ~/.tmux.conf:
         force: true
-        path: tmux.conf
+        path: config/tmux.conf
     ~/.Xinitrc:
         force: true
-        path: Xinitrc
-    ~/.zshrc:
+        path: config/Xinitrc
+    ~/.Xresources:
         force: true
-        path: zshrc
+        path: config/Xresources
     ~/.vimrc:
         force: true
-        path: vimrc
+        path: config/vimrc
     ~/.config/redshift.conf:
         force: true
-        path: redshift.conf
+        path: config/redshift.conf
+    ~/.compton.conf:
+        force: true
+        path: config/compton.conf
     ~/.config/zathura/zathurarc:
         force: true
         create: true
-        path: zathura/zathurarc
+        path: config/zathura/zathurarc
+    ~/.fonts: fonts
     ~/.i3/config:
         force: true
         create: true
         path: i3/config
-
-- shell:
-    - [~/.fzf/install --key-bindings --completion --no-update-rc, Installing fzf]
