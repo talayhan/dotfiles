@@ -385,3 +385,6 @@ let g:airline_mode_map = {
 
 "racer config
 let g:racer_cmd = "racer"
+let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
+let g:MultipleSearchMaxColors = 8
+let g:MultipleSearchTextColorSequence = "white,black,white,white,white,black,black,white"
