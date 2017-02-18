@@ -316,7 +316,7 @@ set <m-P>=P   " rotate yanks forward
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall"
 
-" Easymotion configs All motions will then be triggered with <Leader> 
+" Easymotion configs All motions will then be triggered with <Leader>
 " <Leader>s, <Leader>gE.
 let g:EasyMotion_leader_key="t"
 map <Leader> <Plug>(easymotion-prefix)
@@ -361,7 +361,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 "let g:airline#extensions#tabline#enabled = 1
 
-"enable markdown preview for grip rendering 
+"enable markdown preview for grip rendering
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 
@@ -385,6 +385,9 @@ let g:airline_mode_map = {
 
 "racer config
 let g:racer_cmd = "racer"
+"multiplesearch config
 let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
 let g:MultipleSearchMaxColors = 8
 let g:MultipleSearchTextColorSequence = "white,black,white,white,white,black,black,white"
+"neocomplete
+let g:neocomplete#enable_at_startup = 1

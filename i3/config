@@ -197,4 +197,4 @@ exec feh --bg-fill ~/wall.png
 exec compton -b
 exec nm-applet
 
-#bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
+bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'

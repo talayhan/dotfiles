@@ -7,7 +7,7 @@ Xft.hintstyle:  hintslight
 !----------Xterm
 ! Font
 XTerm*faceName: Ubuntu Mono derivative Powerline
-XTerm*faceSize: 14
+XTerm*faceSize: 16
 
 !UTF support
 XTerm*utf8: 1
