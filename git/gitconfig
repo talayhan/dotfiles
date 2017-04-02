@@ -1,29 +1,36 @@
 [user]
 	name = talayhan
 	email = samet.talayhan@gmail.com
+
 [color]
 	ui = true
+
 [core]
-  editor = vim
+	editor = vim
+
 [alias]
 	# shortcuts for simple commands
 	co = checkout
 	br = branch
 	st = status
 
-  talayhancommit = -c user.name='talayhan' -c user.email='samet.talayhan@gmail.com' commit
-
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	# View abbreviated SHA, description, and history graph
+	l = log --pretty=oneline --graph --abbrev-commit
 
 	# pretty print commits
 	lp = log --all --graph --decorate --oneline --simplify-by-decoration
+
+	# extra show stats
+	logs = log --patch-with-stat
 
 	# View the current working tree status using the short format
 	s = status -s
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# extra show stats
+	diffs = diff --patch-with-stat
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
@@ -75,17 +82,19 @@
 
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
-[apply]
 
+	talayhancommit = -c user.name='talayhan' -c user.email='samet.talayhan@gmail.com' commit
+
+[apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
-[color "branch"]
 
+[color "branch"]
 	current = yellow reverse
 	local = yellow
 	remote = green
-[color "diff"]
 
+[color "diff"]
 	meta = yellow bold
 	frag = magenta bold # line info
 	old = red # deletions
