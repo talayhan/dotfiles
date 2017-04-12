@@ -1,7 +1,7 @@
 talayhan/dotfiles 
 ================
 
-A collection of scripts and configurations that I use over and over again.
+A collection of scripts and configurations that I use every day.
 
 WYSIWYG
 --------------------------
