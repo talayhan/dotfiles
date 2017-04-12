@@ -21,7 +21,7 @@
 	lp = log --all --graph --decorate --oneline --simplify-by-decoration
 
 	# extra show stats
-	logs = log --patch-with-stat
+	logs = log --stat
 
 	# View the current working tree status using the short format
 	s = status -s
