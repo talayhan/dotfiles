@@ -7,6 +7,9 @@
     ~/.bash_aliases:
         force: true
         path: user_specific/bash_aliases
+    ~/.exports:
+        force: true
+        path: user_specific/exports
     ~/.gitconfig:
         force: true
         path: git/gitconfig
