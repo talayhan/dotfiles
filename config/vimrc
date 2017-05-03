@@ -388,6 +388,6 @@ let g:racer_cmd = "racer"
 "multiplesearch config
 let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
 let g:MultipleSearchMaxColors = 8
-let g:MultipleSearchTextColorSequence = "white,black,white,white,white,black,black,white"
+let g:MultipleSearchTextColorSequence = "white,white,white,white,black,white,black,white"
 "neocomplete
 let g:neocomplete#enable_at_startup = 1
