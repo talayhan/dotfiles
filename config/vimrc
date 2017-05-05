@@ -391,3 +391,4 @@ let g:MultipleSearchMaxColors = 8
 let g:MultipleSearchTextColorSequence = "white,white,white,white,black,white,black,white"
 "neocomplete
 let g:neocomplete#enable_at_startup = 1
+let g:gitgutter_max_signs = 2000
