@@ -3,7 +3,7 @@
 #Program Name                 | Little description if necessary               |
 #URL                          | stalayhan.github.io                           |
 #---------------------------- | --------------------------------
-#Total number of program      | 2                                             |
+#Total number of program      | 3                                             |
 
 
 #Httpie                       | HTTP Client                                   |
@@ -13,3 +13,7 @@ pip install --upgrade httpie
 #Cmus                         | Command line music player                     |
 #URL                          | https://github.com/cmus/cmus                  |
 sudo apt-get install cmus
+
+#Grip                         | Preview markdown files                        |
+#URL                          | https://github.com/joeyespo/grip              |
+pip install --upgrade grip
