@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Program Name                 | Little description if necessary               |
+#URL                          | stalayhan.github.io                           |
+#---------------------------- | --------------------------------
+#Total number of program      | 2                                             |
+
+
+#Httpie                       | HTTP Client                                   |
+#URL                          | https://github.com/jakubroztocil/httpie#linux |
+pip install --upgrade httpie
+
+#Cmus                         | Command line music player                     |
+#URL                          | https://github.com/cmus/cmus                  |
+sudo apt-get install cmus
