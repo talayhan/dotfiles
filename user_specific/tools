@@ -1,19 +1,25 @@
 #!/bin/bash
 
-#Program Name                 | Little description if necessary               |
-#URL                          | stalayhan.github.io                           |
-#---------------------------- | --------------------------------
-#Total number of program      | 3                                             |
+#Program Name                              | Little description if necessary               |
+#URL                                       | stalayhan.github.io                           |
+#----------------------------              | --------------------------------
+#Total number of program                   | 4                                             |
 
 
-#Httpie                       | HTTP Client                                   |
-#URL                          | https://github.com/jakubroztocil/httpie#linux |
+#Httpie                                    | HTTP Client                                   |
+#URL                                       | https://github.com/jakubroztocil/httpie#linux |
 pip install --upgrade httpie
 
-#Cmus                         | Command line music player                     |
-#URL                          | https://github.com/cmus/cmus                  |
+#Cmus                                      | Command line music player                     |
+#URL                                       | https://github.com/cmus/cmus                  |
 sudo apt-get install cmus
 
-#Grip                         | Preview markdown files                        |
-#URL                          | https://github.com/joeyespo/grip              |
+#Grip                                      | Preview markdown files                        |
+#URL                                       | https://github.com/joeyespo/grip              |
 pip install --upgrade grip
+
+#fzf                                       | fuzzy finder                                  |
+#URL                                       | https://github.com/junegunn/fzf               |
+git clone --depth 1 \
+https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
