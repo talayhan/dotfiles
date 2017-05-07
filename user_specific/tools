@@ -23,3 +23,7 @@ pip install --upgrade grip
 git clone --depth 1 \
 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+#vifm                                      | vim like file manager                         |
+#URL                                       | https://github.com/vifm/vifm                  |
+sudo apt-get install vifm
