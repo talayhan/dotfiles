@@ -308,7 +308,7 @@ snippet hex2binuse
 		str_bin[i] = ret;
 	}
 
-snippet hex2binfunc
+snippet hex2binfun
 	static inline int __hex2bin (char c)
 	{
 		if (c >= '0' && c <= '9')
@@ -337,4 +337,10 @@ snippet hex2binfunc
 
 		return bin;
 	}
-
+#network byte order is always big endian
+snippet endian
+	if ( htonl(47) == 47 ) {	/* big endian */
+		${1}
+	} else {			/* little endian */
+		${2}
+	}
