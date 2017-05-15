@@ -5,21 +5,30 @@
 #----------------------------              | --------------------------------
 #Total number of program                   | 4                                             |
 
+if [ $(id -u) -ne 0 ]; then exec sudo $0; fi
 
 #Httpie                                    | HTTP Client                                   |
 #URL                                       | https://github.com/jakubroztocil/httpie#linux |
-pip install --upgrade httpie
+if [[ ! $(which http) ]]; then
+	sudo apt-get install httpie
+fi
 
 #Cmus                                      | Command line music player                     |
 #URL                                       | https://github.com/cmus/cmus                  |
-sudo apt-get install cmus
+if [[ ! $(which cmus) ]]; then
+	apt-get install cmus
+fi
 
 #Grip                                      | Preview markdown files                        |
 #URL                                       | https://github.com/joeyespo/grip              |
-pip install --upgrade grip
+if [[ ! $(which grip) ]]; then
+	pip install --upgrade grip
+fi
 
 #fzf                                       | fuzzy finder                                  |
 #URL                                       | https://github.com/junegunn/fzf               |
-git clone --depth 1 \
-https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+if [[ ! -e ~/.fzf ]]; then
+	git clone --depth 1 \
+	https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+fi
