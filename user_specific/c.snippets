@@ -161,17 +161,35 @@ snippet tde
 # printf
 snippet pr
 	printf("${1:%s}\n"${2});
+snippet dbf
+	debugf("${1:%s}"${2});
+snippet dbfe
+	debugf("enter");
 snippet prfl
-	printf("[%s-%d]${1:%s}\n", __func__, __LINE__${2});
+	printf("[%s-%d]${1}\n", __func__, __LINE__, ${2});
+snippet prkl
+	printk("[%s-%d]${1}\n", __func__, __LINE__, ${2});
+snippet prflno
+	printf("[%s-%d]\n", __func__, __LINE__);
+snippet prfll
+	printf("[%s-%d] called from (%s-%d)\n", __func__, __LINE__, func, line);
 # fprintf (again, this isn't as nice as TextMate's version, but it works)
 snippet fpr
 	fprintf(${1:stderr}, "${2:%s}\n"${3});
+snippet fprfl
+	fprintf(stderr, "[%s-%d]${1}\n", __func__, __LINE__);
 snippet prd
 	printf("${1:} = %d\n", $1);
 snippet prf
 	printf("${1:} = %f\n", $1);
 snippet prx
 	printf("${1:} = %${2}\n", $1);
+snippet cf
+	/** @brief
+	 *
+	 *  @param
+	 *  @return Void.
+	 */
 # getopt
 snippet getopt
 	int choice;
@@ -272,3 +290,91 @@ snippet cend
 # This is kind of convenient
 snippet .
 	[${1}]
+#helper functions
+#how to use hex2bin
+snippet hex2binuse
+	uint8_t str_bin[BIN_TOT_LEN];
+	int i, ret;
+
+	if (strlen(str) != (BIN_TOT_LEN * 2)) {
+		printk("invalid str length\n");
+		return -1;
+	}
+
+	for (i = 0; i < BIN_TOT_LEN; i++) {
+		ret = hex2bin(str + i * 2);
+		if (ret < 0) {
+			printk("error on parsing str\n");
+			return -1;
+		}
+		str_bin[i] = ret;
+	}
+
+snippet hex2binfun
+	static inline int __hex2bin (char c)
+	{
+		if (c >= '0' && c <= '9')
+			return c - '0';
+		if (c >= 'a' && c <= 'f')
+			return c - 'a' + 10;
+		if (c >= 'A' && c <= 'F')
+			return c - 'A' + 10;
+		return -1;
+	}
+
+	static inline int hex2bin (char *hexstr)
+	{
+		int ret, bin;
+
+		ret = __hex2bin(hexstr[0]);
+		if (ret < 0)
+			return -1;
+		bin = ret;
+		bin <<= 4;
+
+		ret = __hex2bin(hexstr[1]);
+		if (ret < 0)
+			return -1;
+		bin |= ret;
+
+		return bin;
+	}
+#network byte order is always big endian
+snippet endian
+	if ( htonl(47) == 47 ) {	/* big endian */
+		${1}
+	} else {			/* little endian */
+		${2}
+	}
+snippet ether_etoa
+	static char *
+	ether_etoa(const struct ether_addr *n)
+	{
+		static char etoa_buf[ETHER_ADDR_LEN * 3];
+		char *c = etoa_buf;
+		int i;
+
+		for (i = 0; i < ETHER_ADDR_LEN; i++) {
+			if (i)
+				*c++ = ':';
+			c += sprintf(c, "%02X", n->octet[i] & 0xff);
+		}
+		return etoa_buf;
+	}
+snippet ether_atoe
+	/* Converts string MAC address to structure */
+	static int
+	ether_atoe(const char *a, struct ether_addr *n)
+	{
+		char *c = NULL;
+		int i = 0;
+
+		memset(n, 0, ETHER_ADDR_LEN);
+		for (;;) {
+			n->octet[i++] = (uint8)strtoul(a, &c, 16);
+			if (!*c++ || i == ETHER_ADDR_LEN)
+				break;
+			a = c;
+		}
+		return !(i == ETHER_ADDR_LEN);
+	}
