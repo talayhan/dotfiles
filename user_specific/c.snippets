@@ -167,6 +167,8 @@ snippet dbfe
 	debugf("enter");
 snippet prfl
 	printf("[%s-%d]${1}\n", __func__, __LINE__, ${2});
+snippet prkl
+	printk("[%s-%d]${1}\n", __func__, __LINE__, ${2});
 snippet prflno
 	printf("[%s-%d]\n", __func__, __LINE__);
 snippet prfll
@@ -343,4 +345,36 @@ snippet endian
 		${1}
 	} else {			/* little endian */
 		${2}
+	}
+snippet ether_etoa
+	static char *
+	ether_etoa(const struct ether_addr *n)
+	{
+		static char etoa_buf[ETHER_ADDR_LEN * 3];
+		char *c = etoa_buf;
+		int i;
+
+		for (i = 0; i < ETHER_ADDR_LEN; i++) {
+			if (i)
+				*c++ = ':';
+			c += sprintf(c, "%02X", n->octet[i] & 0xff);
+		}
+		return etoa_buf;
+	}
+snippet ether_atoe
+	/* Converts string MAC address to structure */
+	static int
+	ether_atoe(const char *a, struct ether_addr *n)
+	{
+		char *c = NULL;
+		int i = 0;
+
+		memset(n, 0, ETHER_ADDR_LEN);
+		for (;;) {
+			n->octet[i++] = (uint8)strtoul(a, &c, 16);
+			if (!*c++ || i == ETHER_ADDR_LEN)
+				break;
+			a = c;
+		}
+		return !(i == ETHER_ADDR_LEN);
 	}
