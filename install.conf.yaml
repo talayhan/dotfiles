@@ -7,6 +7,9 @@
     ~/.bash_aliases:
         force: true
         path: user_specific/bash_aliases
+    ~/.bash_functions:
+        force: true
+        path: user_specific/bash_functions
     ~/.exports:
         force: true
         path: user_specific/exports
