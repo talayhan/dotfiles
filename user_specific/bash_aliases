@@ -9,3 +9,5 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias findt='find . -name $1'
 alias grept='grep -IRni $1'
 
+# list all open TCP/UDP port
+alias ports='netstat -tulanp'
