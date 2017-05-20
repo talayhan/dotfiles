@@ -2,12 +2,14 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias findt='find . -name $1'
 alias grept='grep -IRni $1'
+alias wget='wget -c'
 
 # list all open TCP/UDP port
 alias ports='netstat -tulanp'
@@ -27,3 +29,31 @@ alias header='curl -I'
 
 # find out if remote server supports gzip / mod_deflate or not
 alias headerc='curl -I --compress'
+
+# All of our servers specified interface is connected
+# to the internets via vlan / router etc
+alias dnstop='sudo dnstop -l 5'
+alias vnstat='sudo vnstat -i'
+alias iftop='sudo iftop -i'
+alias tcpdump='sudo tcpdump -i'
+alias ethtool='sudo ethtool'
+
+## pass options to free ##
+alias meminfo='free -m -l -t'
+
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+
+## older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ##
+
+## get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
