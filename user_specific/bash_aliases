@@ -11,6 +11,13 @@ alias findt='find . -name $1'
 alias grept='grep -IRni $1'
 alias wget='wget -c'
 
+# set some other defaults
+alias df='df -H'
+alias du='du -ch'
+
+# top is atop, just like vi is vim
+alias top='atop'
+
 # list all open TCP/UDP port
 alias ports='netstat -tulanp'
 
