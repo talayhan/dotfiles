@@ -450,3 +450,4 @@ let g:MultipleSearchTextColorSequence = "white,white,white,white,black,white,bla
 "neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:gitgutter_max_signs = 2000
+let g:clang_format#command = "clang-format-3.8"
