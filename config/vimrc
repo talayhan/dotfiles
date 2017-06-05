@@ -70,6 +70,7 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'rhysd/committia.vim'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'kovisoft/slimv'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -451,3 +452,5 @@ let g:MultipleSearchTextColorSequence = "white,white,white,white,black,white,bla
 let g:neocomplete#enable_at_startup = 1
 let g:gitgutter_max_signs = 2000
 let g:clang_format#command = "clang-format-3.8"
+"slimv
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
