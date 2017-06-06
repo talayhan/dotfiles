@@ -11,6 +11,7 @@ tools=(
 'iftop'
 'atop'
 'clang-format'
+'sbcl'
 )
 
 if [[ ! $(which grip) ]]; then
