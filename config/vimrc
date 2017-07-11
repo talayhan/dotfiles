@@ -71,6 +71,7 @@ Plugin 'itchyny/vim-cursorword'
 Plugin 'rhysd/committia.vim'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'kovisoft/slimv'
+Plugin 'chrisbra/vim-diff-enhanced'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -385,6 +386,12 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+" enchanced diff
+" started In Diff-Mode set diffexpr (plugin not loaded yet)
+if &diff
+    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+endif
 
 "custom trigger for snippets
 " Trigger configuration. Do not use <tab> if you use
