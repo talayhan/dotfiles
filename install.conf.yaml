@@ -34,6 +34,9 @@
     ~/.vimrc:
         force: true
         path: config/vimrc
+    ~/.zshrc:
+        force: true
+        path: config/zshrc
     ~/.config/redshift.conf:
         force: true
         path: config/redshift.conf
