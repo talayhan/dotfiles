@@ -9,69 +9,63 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"Git wrapper - Gstatus-Gcommit-Gblame-Gedit-Gread-Gwrite
+" Life saver
 Plugin 'tpope/vim-fugitive'
-"Fuzzy file - finder for vim
+Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'sjl/gundo.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+
+" Cosmetics
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'scrooloose/nerdcommenter.git'
-" Highlight multiple search at same time
-Plugin 'vim-scripts/MultipleSearch'
-" multiple selections
-Plugin 'terryma/vim-multiple-cursors'
-" Diff two directories
-Plugin 'will133/vim-dirdiff'
-"Plugin 'bling/vim-bufferline.git'
-"Visulize undo tree
-Plugin 'sjl/gundo.vim'
-"Syntax checking
-Plugin 'scrooloose/syntastic.git'
-Plugin 'wesQ3/vim-windowswap'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
-" Motion on speed
-Plugin 'easymotion/vim-easymotion'
-Plugin 'SirVer/ultisnips.git'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-Plugin 'pangloss/vim-javascript.git'
-"text filtering and alignment
-Plugin 'godlygeek/tabular'
 Plugin 'morhetz/gruvbox'
-Plugin 'rust-lang/rust.vim'
-"Rust code completion and navigation
-Plugin 'racer-rust/vim-racer'
-"Extended % matching for HTML,Latex
+
+" Text Utils
+Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-scripts/MultipleSearch'
+
+" General helper
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'will133/vim-dirdiff'
+
+" Syntax checking
+Plugin 'scrooloose/syntastic.git'
+Plugin 'SirVer/ultisnips.git'
+Plugin 'honza/vim-snippets'
+Plugin 'godlygeek/tabular'
 Plugin 'tmhedberg/matchit'
 Plugin 'Raimondi/delimitMate'
-"A few of quick commands to switch between source files and header files
-"quickly
-Plugin 'vim-scripts/a.vim'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
-Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-dispatch'
 Plugin 'wellle/tmux-complete.vim'
-"Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-surround'
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'bash-support.vim'
-" Web Plugins
+
+" Web
+Plugin 'pangloss/vim-javascript.git'
 Plugin 'mattn/emmet-vim'
-Plugin 'mhinz/vim-grepper'
+
+" Programming Language Specific
+Plugin 'rhysd/vim-clang-format'
+Plugin 'kovisoft/slimv'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 Plugin 'fatih/vim-go'
+Plugin 'bash-support.vim'
+
+" Utils
+Plugin 'mhinz/vim-grepper'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'rhysd/committia.vim'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'kovisoft/slimv'
 Plugin 'chrisbra/vim-diff-enhanced'
+
+" LRU
+Plugin 'xolox/vim-misc'
+Plugin 'vim-scripts/a.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -301,7 +295,6 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "plugin related configs start here
-
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
