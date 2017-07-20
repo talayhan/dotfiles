@@ -12,6 +12,7 @@ tools=(
 'atop'
 'clang-format'
 'sbcl'
+'silversearcher-ag'
 )
 
 if [[ ! $(which grip) ]]; then
