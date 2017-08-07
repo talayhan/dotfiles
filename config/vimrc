@@ -1,74 +1,64 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Life saver
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'sjl/gundo.vim'
-Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
 
 " Cosmetics
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 
 " Text Utils
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-scripts/MultipleSearch'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/MultipleSearch'
 
 " General helper
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'will133/vim-dirdiff'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'wesQ3/vim-windowswap'
+Plug 'will133/vim-dirdiff'
 
 " Syntax checking
-Plugin 'scrooloose/syntastic.git'
-Plugin 'SirVer/ultisnips.git'
-Plugin 'honza/vim-snippets'
-Plugin 'godlygeek/tabular'
-Plugin 'tmhedberg/matchit'
-Plugin 'Raimondi/delimitMate'
-Plugin 'wellle/tmux-complete.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'vim-syntastic/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'godlygeek/tabular'
+Plug 'tmhedberg/matchit'
+Plug 'Raimondi/delimitMate'
+Plug 'wellle/tmux-complete.vim'
+Plug 'tpope/vim-surround'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Web
-Plugin 'pangloss/vim-javascript.git'
-Plugin 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
 
 " Programming Language Specific
-Plugin 'rhysd/vim-clang-format'
-Plugin 'kovisoft/slimv'
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
-Plugin 'fatih/vim-go'
-Plugin 'bash-support.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'kovisoft/slimv'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+Plug 'fatih/vim-go'
 
 " Utils
-Plugin 'mhinz/vim-grepper'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'itchyny/vim-cursorword'
-Plugin 'rhysd/committia.vim'
-Plugin 'chrisbra/vim-diff-enhanced'
+Plug 'mhinz/vim-grepper'
+Plug 'Shougo/neocomplete.vim'
+Plug 'itchyny/vim-cursorword'
+Plug 'rhysd/committia.vim'
+Plug 'chrisbra/vim-diff-enhanced'
 
 " LRU
-Plugin 'xolox/vim-misc'
-Plugin 'vim-scripts/a.vim'
+Plug 'xolox/vim-misc'
+Plug 'vim-scripts/a.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 """""""""""""""""""""""""""""""
 set nocompatible
@@ -462,3 +452,5 @@ let g:gitgutter_max_signs = 2000
 let g:clang_format#command = "clang-format-3.8"
 "slimv
 let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+let g:ctrlp_map = ''
+nnoremap <c-p> :FZF<cr>
