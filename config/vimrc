@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 " Life saver
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
@@ -289,11 +288,6 @@ nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-"Ctrl-P tag fuzzy search
-nnoremap <leader>l :CtrlPBufTagAll<cr>
-"Ctrl-P buffername fuzzy search
-nnoremap <leader>b :CtrlPBuffer<cr>
-
 "emacs like shortcuts for yankstack
 set <m-p>=p   " rotate yanks forward
 set <m-P>=P   " rotate yanks forward
@@ -374,14 +368,6 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " started In Diff-Mode set diffexpr (plugin not loaded yet)
 if &diff
     let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
-endif
-
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 "custom trigger for snippets
