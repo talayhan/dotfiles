@@ -13,6 +13,7 @@ tools=(
 'clang-format'
 'sbcl'
 'silversearcher-ag'
+'rxvt-unicode-256color'
 )
 
 if [[ ! $(which grip) ]]; then
