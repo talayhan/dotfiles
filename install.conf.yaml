@@ -25,12 +25,12 @@
     ~/.tmux.conf:
         force: true
         path: config/tmux.conf
-    ~/.xinitrc:
+    ~/.Xinitrc:
         force: true
-        path: config/xinitrc
-    ~/.xresources:
+        path: config/Xinitrc
+    ~/.Xresources:
         force: true
-        path: config/xresources
+        path: config/Xresources
     ~/.vimrc:
         force: true
         path: config/vimrc
