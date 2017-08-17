@@ -33,6 +33,7 @@ URxvt.xftAntialias:true
 ! Transparency
 urxvt*transparent:true
 urxvt*shading:20
+URxvt.borderless:1
 !URxvt*tintColor: #131926
 !URxvt.fading:80
 

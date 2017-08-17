@@ -175,13 +175,15 @@ colors {
   }
 }
 
-hide_edge_borders both 
-new_window normal 5
-new_float normal 5
+hide_edge_borders both
+#new_window normal 0
+#new_float normal 0
+for_window [class=^.*] border normal 0
+for_window [class=^.*] border pixel 1
 #xrandr --output HDMI-0 --auto --left-of DVI-1
-exec xrandr --output VGA-0 --primary --right-of DVI-0
+exec xrandr --output VGA-0 --primary --left-of DVI-0
 
-# set volume control keybindigs 
+# set volume control keybindigs
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
