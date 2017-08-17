@@ -395,6 +395,7 @@ let g:easytags_dynamic_files = 2"
 "vim-airline stuff
 "uncomment for regular fonts
 let g:airline_powerline_fonts = 1
+let g:Powerline_symbols='unicode'
 
 "show file name without the path
 let g:airline_section_c = '%t'
@@ -427,7 +428,16 @@ let g:airline_mode_map = {
 """""
 
 "racer config
-let g:racer_cmd = "racer"
+let g:racer_cmd = "~/.cargo/bin/racer"
+"let g:racer_experimental_completer = 1
+let $RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+set omnifunc=syntaxcomplete#Complete
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 "multiplesearch config
 let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
 let g:MultipleSearchMaxColors = 8
