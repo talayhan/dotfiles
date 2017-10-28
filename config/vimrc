@@ -407,6 +407,7 @@ let g:airline#extensions#hunks#enabled = 0
 
 "enable markdown preview for grip rendering
 let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='firefox'
 let vim_markdown_preview_hotkey='<C-m>'
 
 "show only column number and percentage
