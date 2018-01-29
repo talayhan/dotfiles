@@ -2,6 +2,7 @@
 
 - shell:
     - [git submodule update --init --depth 1, Installing submodules]
+    - [sudo bash user_specific/tools.sh, Installing fundamental tools]
 
 - link:
     ~/.bash_aliases:
@@ -13,6 +14,9 @@
     ~/.exports:
         force: true
         path: user_specific/exports
+    ~/.local/bin/bashmark:
+        force: true
+        path: user_specific/bashmarks.sh
     ~/.gitconfig:
         force: true
         path: git/gitconfig
@@ -26,6 +30,8 @@
         force: true
         path: config/tmux.conf
     ~/.urxvt/ext: config/urxvt/ext
+        force: true
+        path: config/urxvt/ext
     ~/.Xinitrc:
         force: true
         path: config/Xinitrc
