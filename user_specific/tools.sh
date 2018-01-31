@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# check user power
+if [ $(id -u) -ne 0 ]; then exec sudo "$0"; fi
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-if [ $(id -u) -ne 0 ]; then exec sudo "$0"; fi
-
+# global variable definitions
 apttools=(
 'git-core'
 'zsh'
@@ -33,50 +35,59 @@ piptools=(
 'neovim'
 )
 
+# functions
+function debug_log() {
+	echo -e "${GREEN}${1}${NC}"
+}
+
+function error_log() {
+	echo -e "${RED}${1}${NC}"
+}
+
 for repo in "${repos[@]}" ; do
-	echo "${GREEN}[+] Add repository ${repo} ... ${NC}"
+	debug_log "[+] Add repository ${repo} ... "
 	add-apt-repository "$repo"
-	echo "${GREEN}[+] Done${NC}"
+	debug_log "[+] Done "
 done
 
 for tool in "${apttools[@]}" ; do
-	echo "${GREEN}[+] Installing ${tool} ... ${NC}"
+	debug_log "[+] Installing ${tool} ... "
 	if [[ ! $(which "$tool") ]]; then
 		apt-get install "$tool"
 	fi
-	echo "${GREEN}[+] Done${NC}"
+	debug_log "[+] Done "
 done
 
 for tool in "${piptools[@]}" ; do
-	echo "${GREEN}[+] Installing ${tool} ... ${NC}"
+	debug_log "[+] Installing ${tool} ... "
 	if [[ ! $(which "$tool") ]]; then
 		pip3 install --upgrade "$tool"
 	fi
-	echo "${GREEN}[+] Done${NC}"
+	debug_log "[+] Done "
 done
 
 if [[ ! -e ~/.fzf ]]; then
-	echo "${GREEN}[+] Installing fzf ... ${NC}"
+	debug_log "[+] Installing fzf ... "
 	git clone --depth 1 \
 	https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
-	echo "${GREEN}[+] Done ${NC}"
+	debug_log "[+] Done "
 fi
 
 if [[ ! -e ~/.oh-my-zsh ]]; then
-	echo "${GREEN}[+] Installing oh-my-zsh ... ${NC}"
+	debug_log "[+] Installing oh-my-zsh ... "
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	echo "${GREEN}[+] Done ${NC}"
+	debug_log "[+] Done "
 fi
 
 # install vim plugin manager
 if [[ -e ~/.vim && ! -e ~/.vim/plugged ]]; then
-	echo "${GREEN}[+] Installing vim plugin manager ... ${NC}"
+	debug_log "[+] Installing vim plugin manager ... "
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	echo "${GREEN}[+] Done ${NC}"
+	debug_log "[+] Done "
 else
-	echo "${RED}[-] You need to install Vim first!${NC}"
+	debug_error "[-] You need to install Vim first! "
 fi
 
 SOURCE_STR="
