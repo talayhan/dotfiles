@@ -41,6 +41,9 @@
     ~/.vimrc:
         force: true
         path: config/vimrc
+    ~/.config/nvim/init.vim:
+        force: true
+        path: config/vimrc
     ~/.zshrc:
         force: true
         path: config/zshrc

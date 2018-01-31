@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Life saver
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -51,6 +52,8 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'vim-utils/vim-man'
+Plug 'vim-scripts/zoomwin'
 
 " LRU
 Plug 'xolox/vim-misc'
@@ -279,6 +282,8 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
+nnoremap <silent> <C-w>z :ZoomWin<CR>
+
 "auto close info buffer thing after completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -287,10 +292,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <F7> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-
-"emacs like shortcuts for yankstack
-set <m-p>=p   " rotate yanks forward
-set <m-P>=P   " rotate yanks forward
 
 " Emmet configs just for html css files
 let g:user_emmet_install_global = 0
@@ -441,8 +442,8 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 "multiplesearch config
 let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
-let g:MultipleSearchMaxColors = 8
-let g:MultipleSearchTextColorSequence = "white,white,white,white,black,white,black,white"
+let g:MultipleSearchMaxColors = 32
+let g:MultipleSearchTextColorSequence = "white,black,white,white,black,black,black,white"
 "neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:gitgutter_max_signs = 2000
