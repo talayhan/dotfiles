@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 if [ $(id -u) -ne 0 ]; then exec sudo "$0"; fi
 
-tools=(
+apttools=(
 'git-core'
 'zsh'
 'curl'
@@ -19,11 +19,27 @@ tools=(
 'atop'
 'clang-format'
 'sbcl'
+'neovim'
 'silversearcher-ag'
 'rxvt-unicode-256color'
 )
 
-for tool in "${tools[@]}" ; do
+repos=(
+'ppa:neovim-ppa/stable'
+)
+
+piptools=(
+'grip'
+'neovim'
+)
+
+for repo in "${repos[@]}" ; do
+	echo "${GREEN}[+] Add repository ${tool} ... ${NC}"
+	add-apt-repository "$repo"
+	echo "${GREEN}[+] Done${NC}"
+done
+
+for tool in "${apttools[@]}" ; do
 	echo "${GREEN}[+] Installing ${tool} ... ${NC}"
 	if [[ ! $(which "$tool") ]]; then
 		apt-get install "$tool"
@@ -31,11 +47,13 @@ for tool in "${tools[@]}" ; do
 	echo "${GREEN}[+] Done${NC}"
 done
 
-if [[ ! $(which grip) ]]; then
-	echo "${GREEN}[+] Installing grip ... ${NC}"
-	pip install --upgrade grip
+for tool in "${piptools[@]}" ; do
+	echo "${GREEN}[+] Installing ${tool} ... ${NC}"
+	if [[ ! $(which "$tool") ]]; then
+		pip3 install --upgrade "$tool"
+	fi
 	echo "${GREEN}[+] Done${NC}"
-fi
+done
 
 if [[ ! -e ~/.fzf ]]; then
 	echo "${GREEN}[+] Installing fzf ... ${NC}"

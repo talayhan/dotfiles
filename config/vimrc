@@ -48,7 +48,11 @@ Plug 'fatih/vim-go'
 
 " Utils
 Plug 'mhinz/vim-grepper'
-Plug 'Shougo/neocomplete.vim'
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+	Plug 'Shougo/neocomplete.vim'
+endif
 Plug 'itchyny/vim-cursorword'
 Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -444,8 +448,13 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
 let g:MultipleSearchMaxColors = 32
 let g:MultipleSearchTextColorSequence = "white,black,white,white,black,black,black,white"
+
 "neocomplete
-let g:neocomplete#enable_at_startup = 1
+if has('nvim')
+	let g:deoplete#enable_at_startup = 1
+else
+	let g:neocomplete#enable_at_startup = 1
+endif
 let g:gitgutter_max_signs = 2000
 let g:clang_format#command = "clang-format-3.8"
 "slimv
