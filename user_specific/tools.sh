@@ -34,7 +34,7 @@ piptools=(
 )
 
 for repo in "${repos[@]}" ; do
-	echo "${GREEN}[+] Add repository ${tool} ... ${NC}"
+	echo "${GREEN}[+] Add repository ${repo} ... ${NC}"
 	add-apt-repository "$repo"
 	echo "${GREEN}[+] Done${NC}"
 done
