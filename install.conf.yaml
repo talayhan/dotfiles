@@ -29,7 +29,7 @@
     ~/.tmux.conf:
         force: true
         path: config/tmux.conf
-    ~/.urxvt/ext: config/urxvt/ext
+    ~/.urxvt/ext:
         force: true
         path: config/urxvt/ext
     ~/.Xinitrc:
