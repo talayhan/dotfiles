@@ -74,6 +74,14 @@ if [[ ! -e ~/.fzf ]]; then
 	debug_log "[+] Done "
 fi
 
+if ! [[ -x "$(command -v diff-so-fancy)" ]]; then
+	echo "[+] Installing diff-so-fancy ... "
+	wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
+	chmod +x diff-so-fancy
+	mv diff-so-fancy /usr/local/sbin
+	echo  "[+] Done "
+fi
+
 if [[ ! -e ~/.oh-my-zsh ]]; then
 	debug_log "[+] Installing oh-my-zsh ... "
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

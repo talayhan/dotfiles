@@ -7,12 +7,14 @@
 
 [core]
 	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
 	# shortcuts for simple commands
 	co = checkout
 	br = branch
 	st = status
+	sp = show --patch-with-stat
 
 	# View abbreviated SHA, description, and history graph
 	l = log --pretty=oneline --graph --abbrev-commit
@@ -23,6 +25,9 @@
 	# extra show stats
 	logs = log --stat
 
+	# extra show stats
+	logp = log --patch-with-stat
+
 	# View the current working tree status using the short format
 	s = status -s
 
@@ -31,6 +36,7 @@
 
 	# extra show stats
 	diffs = diff --patch-with-stat
+	diff = diff --word-diff
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
@@ -97,7 +103,14 @@
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	old = red bold # deletions
+	new = green bold # additions
+	commit = yellow bold
+	whitespace = red reverse
 [push]
 	default = matching
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
