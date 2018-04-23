@@ -20,6 +20,9 @@ URxvt.depth:32
 URxvt.background:#1C1C1C
 URxvt.foreground:white
 
+URxvt.transparent: true
+URxvt.shading: 25
+
 ! Font
 URxvt.font:xft:Ubuntu Mono derivative Powerline:pixelsize=14:antialias=true:hinting=true
 URxvt.boldFont:xft:Ubuntu Mono derivative Powerline:bold:pixelsize=14:antialias=true:hinting=true
