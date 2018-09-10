@@ -15,7 +15,4 @@
         path = home/sh.d/fzf
         url = https://github.com/junegunn/fzf.git
         fetchRecurseSubmodules = true
-[submodule "vundle"]
-        path = vim/bundle/vundle
-        url = https://github.com/VundleVim/Vundle.vim.git
 
