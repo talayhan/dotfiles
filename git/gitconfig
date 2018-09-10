@@ -7,14 +7,14 @@
 
 [core]
 	editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
 	# shortcuts for simple commands
 	co = checkout
 	br = branch
 	st = status
-	sp = show --patch-with-stat
+	showp = show --patch-with-stat
+	cpx = cherry-pick -x
 
 	# View abbreviated SHA, description, and history graph
 	l = log --pretty=oneline --graph --abbrev-commit
@@ -35,7 +35,7 @@
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
 	# extra show stats
-	diffs = diff --patch-with-stat
+	diffp = diff --patch-with-stat
 	diff = diff --word-diff
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state

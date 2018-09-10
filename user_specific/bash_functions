@@ -2,3 +2,10 @@ replace-space(){
 	find -name "* *" -type f | rename 's/ /_/g'
 }
 
+diffdiffer() {
+	find ${1} -name "*.c" | xargs git diff --numstat | awk '{split($0, a, " "); if (a[1] != a[2]) print a[3]}'
+}
+
+scrotclip() {
+	scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+}

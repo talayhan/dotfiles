@@ -64,3 +64,5 @@ alias cpuinfo='lscpu'
 
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+alias rr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"'
+

@@ -63,6 +63,7 @@ Plug 'vim-scripts/zoomwin'
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/a.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -213,7 +214,7 @@ nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>D :vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>V :vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
-nnoremap <leader>t :!rm -r .kscope; /usr/bin/vimscope ../<cr>:cs reset<cr>
+nnoremap <leader>N :GrepperRg -tc <C-R>=expand("<cword>")<CR><CR>
 
 "disable f1
 inoremap <F1> <ESC>
