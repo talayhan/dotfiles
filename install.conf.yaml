@@ -2,7 +2,6 @@
 
 - shell:
     - [git submodule update --init --depth 1, Installing submodules]
-    - [sudo bash user_specific/tools.sh, Installing fundamental tools]
 
 - link:
     ~/.bash_aliases:

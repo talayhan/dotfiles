@@ -24,6 +24,7 @@ apttools=(
 'neovim'
 'silversearcher-ag'
 'rxvt-unicode-256color'
+'exuberant-ctags'
 )
 
 repos=(
@@ -89,7 +90,7 @@ if [[ ! -e ~/.oh-my-zsh ]]; then
 fi
 
 # install vim plugin manager
-if [[ -e ~/.vim && ! -e ~/.vim/plugged ]]; then
+if [[ -e ~/.vim/autoload/plug.vim ]]; then
 	debug_log "[+] Installing vim plugin manager ... "
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
