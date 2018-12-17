@@ -25,6 +25,8 @@ apttools=(
 'silversearcher-ag'
 'rxvt-unicode-256color'
 'exuberant-ctags'
+'jq'				# JSON processor
+'tidy'				# pretty-print HTML files
 )
 
 repos=(

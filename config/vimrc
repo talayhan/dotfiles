@@ -434,6 +434,10 @@ let g:airline_mode_map = {
             \ }
 """""
 
+command! PrettyPrintJSON %!python3 -m json.tool
+command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
+command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
+
 "racer config
 let g:racer_cmd = "~/.cargo/bin/racer"
 "let g:racer_experimental_completer = 1
