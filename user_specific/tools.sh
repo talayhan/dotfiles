@@ -27,10 +27,12 @@ apttools=(
 'exuberant-ctags'
 'jq'				# JSON processor
 'tidy'				# pretty-print HTML files
+'rofi'
 )
 
 repos=(
 'ppa:neovim-ppa/stable'
+'ppa:jasonpleau/rofi'
 )
 
 piptools=(

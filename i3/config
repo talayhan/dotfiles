@@ -56,6 +56,10 @@ bindsym $mod+l focus right
 
 bindsym $mod+comma focus output left
 
+#smart_gaps on
+gaps inner 10
+gaps outer 5
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -182,9 +186,10 @@ hide_edge_borders both
 #new_window normal 0
 #new_float normal 0
 for_window [class=^.*] border normal 0
-for_window [class=^.*] border pixel 1
+for_window [class=^.*] border pixel 4
 #xrandr --output HDMI-0 --auto --left-of DVI-1
-exec xrandr --output VGA-0 --primary --left-of DVI-0
+exec xrandr --output HDMI-0 --primary --left-of DVI-0
+#exec xrandr --output DVI-0 --rotate left
 
 # set volume control keybindigs
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -197,8 +202,11 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 #client.focused_inactive #5e2750 #5e2750 #aea79f #5e2750
 #client.unfocused #5e2750 #5e2750 #aea79f #5e2750
 #client.urgent #77216f #77216f #ffffff #efb73e
-exec feh --bg-scale ~/Pictures/w2.jpg --bg-scale ~/Pictures/w3.jpg
+exec feh --bg-scale ~/Pictures/w2.jpg --bg-scale ~/Pictures/w4.jpg
 exec compton -b
 exec nm-applet
 
-bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
+# list open windows to switch to
+bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
+bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
+
