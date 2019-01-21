@@ -33,6 +33,7 @@
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	lo = !"git checkout -- .; git clean -df || clear"
 
 	# extra show stats
 	diffp = diff --patch-with-stat
@@ -49,6 +50,7 @@
 
 	# Commit all changes
 	ca = !git add -A && git commit -av
+	app = apply --reject --whitespace=fix
 
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
@@ -57,6 +59,8 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
+	cleans = clean -df
+	cos = checkout -- .
 
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD

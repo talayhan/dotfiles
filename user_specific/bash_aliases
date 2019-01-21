@@ -1,7 +1,9 @@
 # some more ls aliases
-alias l='ls -lF'
+alias l='ls -lF -S -h'
 alias la='ls -A'
 alias ll='ls -CF'
+alias listdir='ls -l -d */'
+alias listdirsize='du -sh -- *'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
