@@ -7,7 +7,7 @@ Xft.hintstyle:  hintslight
 !----------Xterm
 ! Font
 XTerm*faceName: Ubuntu Mono derivative Powerline
-XTerm*faceSize: 14
+XTerm*faceSize: 16
 
 !UTF support
 XTerm*utf8: 1
@@ -24,9 +24,9 @@ URxvt.transparent: true
 URxvt.shading: 25
 
 ! Font
-URxvt.font:xft:Ubuntu Mono derivative Powerline:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont:xft:Ubuntu Mono derivative Powerline:bold:pixelsize=14:antialias=true:hinting=true
-URxvt.italicFont:xft:Ubuntu Mono derivative Powerline:italic:pixelsize=14:antialias=true:hinting=true
+URxvt.font:xft:Ubuntu Mono derivative Powerline:pixelsize=18:antialias=true:hinting=true
+URxvt.boldFont:xft:Ubuntu Mono derivative Powerline:bold:pixelsize=18:antialias=true:hinting=true
+URxvt.italicFont:xft:Ubuntu Mono derivative Powerline:italic:pixelsize=18:antialias=true:hinting=true
 
 !Letter spaceing
 URxvt.letterSpace: -1
