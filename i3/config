@@ -170,7 +170,7 @@ bar {
     font pango:Ubuntu Mono derivative Powerline 15
 colors {
     background #000009
-    statusline #aea79f
+    statusline #E6E4E2
     # Type             border  background font
     focused_workspace #dd4814 #dd4814 #ffffff
     active_workspace #902a07 #902a07 #aea79f
