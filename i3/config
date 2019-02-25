@@ -75,7 +75,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-gaps inner 10
+gaps inner 5
 gaps outer 5
 
 # split in horizontal orientation
@@ -167,6 +167,7 @@ bar {
     status_command i3status -c ~/.i3/i3status.conf | ~/.i3/i3status_wrapper.py
     position          top
     workspace_buttons yes
+    font pango:Ubuntu Mono derivative Powerline 15
 colors {
     background #000009
     statusline #aea79f
@@ -201,6 +202,7 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 exec feh --bg-scale ~/Pictures/w2.jpg --bg-scale ~/Pictures/w4.jpg
 exec compton -b
 exec nm-applet
+exec redshift
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
