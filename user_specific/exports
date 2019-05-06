@@ -1,5 +1,5 @@
 # Make vim the default editor
-export EDITOR="vim"
+export EDITOR="nvim"
 export LANG=en_US.UTF-8
 
 # ssh
