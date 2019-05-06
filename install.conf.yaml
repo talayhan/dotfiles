@@ -3,69 +3,51 @@
 - shell:
     - [git submodule update --init --depth 1, Installing submodules]
 
+- defaults:
+    link:
+      create: true
+      force: true
+
 - link:
     ~/.bash_aliases:
-        force: true
         path: user_specific/bash_aliases
     ~/.bash_functions:
-        force: true
         path: user_specific/bash_functions
     ~/.exports:
-        force: true
         path: user_specific/exports
     ~/.local/bin/bashmarks:
-        force: true
         path: user_specific/bashmarks.sh
     ~/.gitconfig:
-        force: true
         path: git/gitconfig
     ~/.gitignore:
-        force: true
         path: git/gitignore
     ~/.pam_environment:
-        force: true
         path: config/pam_environment
     ~/.tmux.conf:
-        force: true
         path: config/tmux.conf
     ~/.urxvt/ext:
-        force: true
         path: config/urxvt/ext
     ~/.Xinitrc:
-        force: true
         path: config/Xinitrc
     ~/.Xresources:
-        force: true
         path: config/Xresources
     ~/.vimrc:
-        force: true
         path: config/vimrc
     ~/.config/nvim/init.vim:
-        force: true
         path: config/vimrc
     ~/.zshrc:
-        force: true
         path: config/zshrc
     ~/.config/redshift.conf:
-        force: true
         path: config/redshift.conf
     ~/.compton.conf:
-        force: true
         path: config/compton.conf
     ~/.config/zathura/zathurarc:
-        force: true
-        create: true
         path: config/zathura/zathurarc
     ~/.fonts: fonts
     ~/.icons: icons
     ~/.gtkrc-2.0:
-        force: true
         path: config/gtkrc-2.0
     ~/.config/gtk-3.0/settings.ini:
-        force: true
-        create: true
         path: config/gtk-3.0/settings.ini
     ~/.i3:
-        force: true
-        create: true
         path: i3
