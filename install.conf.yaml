@@ -33,6 +33,8 @@
         path: config/Xresources
     ~/.vimrc:
         path: config/vimrc
+    ~/.conkyrc:
+        path: config/conkyrc
     ~/.config/nvim/init.vim:
         path: config/vimrc
     ~/.zshrc:
