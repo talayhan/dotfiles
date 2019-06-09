@@ -19,7 +19,7 @@ conky.config = {
 
     -- placement
     alignment = 'top_left',
-    gap_x = 140,
+    gap_x = 20,
     gap_y = 25,
 
     -- default drawing
@@ -27,19 +27,19 @@ conky.config = {
     draw_outline = false,
     draw_borders = false,
     draw_graph_borders = true,
-    default_bar_width = 150, default_bar_height = 5,
-    default_graph_width = 150, default_graph_height = 12,
-    default_gauge_width = 20, default_gauge_height = 20,
+    default_bar_width = 550, default_bar_height = 25,
+    default_graph_width = 350, default_graph_height = 32,
+    default_gauge_width = 10, default_gauge_height = 20,
 
     -- colors
-    font = 'Liberation Mono:size=10',
+    font = 'Liberation Mono:size=16',
     default_color = 'EEEEEE',
     color1 = 'AABBFF',
     color2 = 'FF993D',
     color3 = 'AAAAAA',
 
     -- layouting
-    template0 = [[${font Liberation Sans:bold:size=11}${color2}\1 ${color3}${hr 2}${font}]],
+    template0 = [[${font Liberation Sans:bold:size=12}${color2}\1 ${color3}${hr 2}${font}]],
     template1 = [[${color1}\1]],
     template2 = [[${goto 100}${color}]],
     template3 = [[${goto 180}${color}${alignr}]],
