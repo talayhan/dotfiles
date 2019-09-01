@@ -75,9 +75,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-gaps inner 5
-gaps outer 5
-
 # split in horizontal orientation
 bindsym $mod+v split h
 

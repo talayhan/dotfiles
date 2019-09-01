@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# check user power
-if [ $(id -u) -ne 0 ]; then exec sudo "$0"; fi
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
@@ -19,6 +16,7 @@ apttools=(
 'vnstat'
 'iftop'
 'atop'
+'tree'
 'clang-format'
 'sbcl'
 'neovim'
@@ -28,11 +26,28 @@ apttools=(
 'jq'				# JSON processor
 'tidy'				# pretty-print HTML files
 'rofi'
+'python3-pip'
+'tmux'
+'i3'
+'redshift'
+'unclutter'
+'compton'
+'zathura'
+'feh'
+'scrot'
+'w3m'
+'xclip'
+'xsel'
+'net-tools'
+'nicstat'
+'mpv'
+'pavucontrol'
 )
 
 repos=(
 'ppa:neovim-ppa/stable'
 'ppa:jasonpleau/rofi'
+'ppa:mc3man/mpv-tests'
 )
 
 piptools=(
@@ -50,25 +65,30 @@ function error_log() {
 }
 
 for repo in "${repos[@]}" ; do
-	debug_log "[+] Add repository ${repo} ... "
-	add-apt-repository "$repo"
-	debug_log "[+] Done "
+	find_string=$(echo ${repo} | cut -d ':' -f 2 | cut -d '/' -f 1)
+	if [[ ! $(ls "/etc/apt/sources.list.d/" | grep ${find_string}) ]]; then
+		debug_log "[+] Add repository ${repo} ... "
+		sudo add-apt-repository "$repo"
+		debug_log "[+] Done "
+	fi
 done
 
+sudo apt update
+
 for tool in "${apttools[@]}" ; do
-	debug_log "[+] Installing ${tool} ... "
 	if [[ ! $(which "$tool") ]]; then
-		apt-get install "$tool"
+		debug_log "[+] Installing ${tool} ... "
+		sudo apt-get install "$tool"
+		debug_log "[+] Done "
 	fi
-	debug_log "[+] Done "
 done
 
 for tool in "${piptools[@]}" ; do
-	debug_log "[+] Installing ${tool} ... "
 	if [[ ! $(which "$tool") ]]; then
+		debug_log "[+] Installing ${tool} ... "
 		pip3 install --upgrade "$tool"
+		debug_log "[+] Done "
 	fi
-	debug_log "[+] Done "
 done
 
 if [[ ! -e ~/.fzf ]]; then
@@ -83,7 +103,7 @@ if ! [[ -x "$(command -v diff-so-fancy)" ]]; then
 	echo "[+] Installing diff-so-fancy ... "
 	wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 	chmod +x diff-so-fancy
-	mv diff-so-fancy /usr/local/sbin
+	sudo mv diff-so-fancy /usr/local/sbin
 	echo  "[+] Done "
 fi
 
@@ -93,15 +113,28 @@ if [[ ! -e ~/.oh-my-zsh ]]; then
 	debug_log "[+] Done "
 fi
 
+if [[ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
+	debug_log "[+] Installing zsh-autosuggestions ... "
+	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	debug_log "[+] Done "
+fi
+
 # install vim plugin manager
-if [[ -e ~/.vim/autoload/plug.vim ]]; then
+if [[ ! -e ~/.vim/autoload/plug.vim ]]; then
 	debug_log "[+] Installing vim plugin manager ... "
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	debug_log "[+] Done "
 else
-	debug_error "[-] You need to install Vim first! "
+	error_log "[-] You need to install Vim first! "
 fi
+
+# install rust
+#curl https://sh.rustup.rs -sSf | sh
+#cargo install fd-find
+#cargo install ripgrep
 
 SOURCE_STR="
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
@@ -110,6 +143,8 @@ SOURCE_STR="
 [ -f ~/.local/bin/bashmarks ] && source ~/.local/bin/bashmarks
 "
 
+#sudo update-alternatives --config x-terminal-emulator
+
 # add source files to end of rc file
-[ -f ~/.zshrc ] && echo "$SOURCE_STR" >> ~/.zshrc
+#[ -f ~/.zshrc ] && echo "$SOURCE_STR" >> ~/.zshrc
 

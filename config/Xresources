@@ -17,7 +17,8 @@ XTerm*termName:  xterm-256color
 
 !----------urxvt
 URxvt.depth:32
-URxvt.background:#1C1C1C
+!URxvt.background:#1C1C1C
+URxvt*background: rgba:0000/0000/0200/c800
 URxvt.foreground:white
 
 URxvt.transparent: true
