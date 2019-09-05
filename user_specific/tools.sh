@@ -23,10 +23,15 @@ apttools=(
 'silversearcher-ag'
 'rxvt-unicode-256color'
 'exuberant-ctags'
+'minicom'
+'tftpd-hpa'
+'tftp-hpa'
+'rdesktop'
 'jq'				# JSON processor
 'tidy'				# pretty-print HTML files
 'rofi'
 'python3-pip'
+'python3-venv'
 'tmux'
 'i3'
 'redshift'
@@ -125,7 +130,7 @@ if [[ ! -e ~/.vim/autoload/plug.vim ]]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	debug_log "[+] Done "
 else
 	error_log "[-] You need to install Vim first! "
@@ -142,7 +147,6 @@ SOURCE_STR="
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.local/bin/bashmarks ] && source ~/.local/bin/bashmarks
 "
-
 #sudo update-alternatives --config x-terminal-emulator
 
 # add source files to end of rc file
