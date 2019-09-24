@@ -61,6 +61,10 @@ Plug 'vim-scripts/zoomwin'
 " LRU
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/a.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -206,7 +210,8 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 "cscope mappings
-nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+"nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
 nnoremap <leader>d :cs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 
@@ -466,6 +471,27 @@ else
 endif
 let g:gitgutter_max_signs = 2000
 let g:clang_format#command = "clang-format"
+
+" path to directory where library can be found
+let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+let g:LanguageClient_autoStart=1
+let g:LanguageClient_useVirtualText = 0
+
+let g:LanguageClient_serverCommands = {
+            \ 'cpp': ['clangd-8'],
+            \ 'c': ['clangd-8'],
+            \ }
+let g:LanguageClient_settingsPath = '/home/talayhan/.config/nvim/settings.json'
+set completefunc=LanguageClient#complete
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
+"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <F9> :call LanguageClient_contextMenu()<CR>
+
 "slimv
 let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 let g:ctrlp_map = ''
