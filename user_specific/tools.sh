@@ -4,6 +4,15 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+## @TODO add below packages
+# - scan-build-9
+# - clang-9 clang-format-9 clang-tidy-9 clangd-9 clang-tools-9
+# - Install rust/cargo - curl https://sh.rustup.rs -sSf | sh
+#   - exas
+#   - fd-find
+#   - ripgrep
+
+
 # global variable definitions
 apttools=(
 'git-core'
@@ -41,12 +50,22 @@ apttools=(
 'feh'
 'scrot'
 'w3m'
+'taskwarrior'
 'xclip'
 'xsel'
 'net-tools'
 'nicstat'
 'mpv'
 'pavucontrol'
+'nmap'
+'build-essential'
+'cmake'
+'wireshark'
+'openssh-server'
+'patchelf'
+'shellcheck'
+'byzanz'			# Making a GIF screencast
+'rainbowstream'			# twitter cli
 )
 
 repos=(
@@ -58,6 +77,11 @@ repos=(
 piptools=(
 'grip'
 'neovim'
+'pynvim'
+'ptpython'
+'sniffer'
+'pyinotify'
+'vim-vint'
 )
 
 # functions
@@ -136,16 +160,9 @@ else
 	error_log "[-] You need to install Vim first! "
 fi
 
-# install rust
-#curl https://sh.rustup.rs -sSf | sh
-#cargo install fd-find
-#cargo install ripgrep
-
 SOURCE_STR="
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.local/bin/bashmarks ] && source ~/.local/bin/bashmarks
 "
 #sudo update-alternatives --config x-terminal-emulator
 

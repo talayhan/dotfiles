@@ -13,7 +13,7 @@ index f625575..16d870a 100755
  else
 diff --git a/scripts/snips.sh b/scripts/snips.sh
 new file mode 100755
-index 0000000..d338457
+index 0000000..6852a21
 --- /dev/null
 +++ b/scripts/snips.sh
 @@ -0,0 +1,17 @@
@@ -24,9 +24,9 @@ index 0000000..d338457
 +
 +TARGET_ORIGIN=$(cat ~/Documents/snips)
 +if [[ "$TMUX_FZF_OPTIONS"x == ""x ]]; then
-+    TARGET=$(printf "[cancel]\n%s" "$TARGET_ORIGIN" | "$CURRENT_DIR/.fzf-tmux" | grep -o '^[^[:blank:]]*')
++    TARGET=$(printf "%s" "$TARGET_ORIGIN" | "$CURRENT_DIR/.fzf-tmux")
 +else
-+    TARGET=$(printf "[cancel]\n%s" "$TARGET_ORIGIN" | "$CURRENT_DIR/.fzf-tmux" "$TMUX_FZF_OPTIONS" | grep -o '^[^[:blank:]]*')
++    TARGET=$(printf "%s" "$TARGET_ORIGIN" | "$CURRENT_DIR/.fzf-tmux" "$TMUX_FZF_OPTIONS")
 +fi
 +
 +if [[ "$TARGET" == "[cancel]" ]]; then
