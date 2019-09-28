@@ -53,3 +53,7 @@
         path: config/gtk-3.0/settings.ini
     ~/.i3:
         path: i3
+    ~/Pictures/w2.png:
+        path: pics/w2.png
+    ~/Pictures/w4.png:
+        path: pics/w4.png
