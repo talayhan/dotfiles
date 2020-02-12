@@ -9,51 +9,28 @@
       force: true
 
 - link:
-    ~/.bash_aliases:
-        path: user_specific/bash_aliases
-    ~/.bash_functions:
-        path: user_specific/bash_functions
-    ~/.exports:
-        path: user_specific/exports
-    ~/.local/bin/bashmarks:
-        path: user_specific/bashmarks.sh
-    ~/.gitconfig:
-        path: git/gitconfig
-    ~/.gitignore:
-        path: git/gitignore
-    ~/.pam_environment:
-        path: config/pam_environment
-    ~/.tmux.conf:
-        path: config/tmux.conf
-    ~/.urxvt/ext:
-        path: config/urxvt/ext
-    ~/.Xinitrc:
-        path: config/Xinitrc
-    ~/.Xresources:
-        path: config/Xresources
-    ~/.vimrc:
-        path: config/vimrc
-    ~/.conkyrc:
-        path: config/conkyrc
-    ~/.config/nvim/init.vim:
-        path: config/vimrc
-    ~/.zshrc:
-        path: config/zshrc
-    ~/.config/redshift.conf:
-        path: config/redshift.conf
-    ~/.compton.conf:
-        path: config/compton.conf
-    ~/.config/zathura/zathurarc:
-        path: config/zathura/zathurarc
+    ~/.bash_aliases: user_specific/bash_aliases
+    ~/.bash_functions: user_specific/bash_functions
+    ~/.exports: user_specific/exports
+    ~/.local/bin/bashmarks: user_specific/bashmarks.sh
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+    ~/.pam_environment: config/pam_environment
+    ~/.tmux.conf: config/tmux.conf
+    ~/.urxvt/ext: config/urxvt/ext
+    ~/.Xinitrc: config/Xinitrc
+    ~/.Xresources: config/Xresources
+    ~/.vimrc: config/vimrc
+    ~/.conkyrc: config/conkyrc
+    ~/.config/nvim/init.vim: config/vimrc
+    ~/.zshrc: config/zshrc
+    ~/.config/redshift.conf: config/redshift.conf
+    ~/.compton.conf: config/compton.conf
+    ~/.config/zathura/zathurarc: config/zathura/zathurarc
     ~/.fonts: fonts
     ~/.icons: icons
-    ~/.gtkrc-2.0:
-        path: config/gtkrc-2.0
-    ~/.config/gtk-3.0/settings.ini:
-        path: config/gtk-3.0/settings.ini
-    ~/.i3:
-        path: i3
-    ~/Pictures/w2.png:
-        path: pics/w2.png
-    ~/Pictures/w4.png:
-        path: pics/w4.png
+    ~/.gtkrc-2.0: config/gtkrc-2.0
+    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
+    ~/.i3: i3
+    ~/Pictures/w2.png: pics/w2.png
+    ~/Pictures/w4.png: pics/w4.png
