@@ -6,7 +6,7 @@
 	ui = true
 
 [core]
-	editor = vim
+	editor = nvim
 
 [alias]
 	# shortcuts for simple commands
