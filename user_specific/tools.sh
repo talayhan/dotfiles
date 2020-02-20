@@ -66,6 +66,8 @@ apttools=(
 'shellcheck'
 'byzanz'			# Making a GIF screencast
 'rainbowstream'			# twitter cli
+'automake'
+'pcmanfm'			# light file manager
 )
 
 repos=(
@@ -92,6 +94,8 @@ function debug_log() {
 function error_log() {
 	echo -e "${RED}${1}${NC}"
 }
+
+sudo apt update
 
 for repo in "${repos[@]}" ; do
 	find_string=$(echo ${repo} | cut -d ':' -f 2 | cut -d '/' -f 1)
@@ -128,13 +132,6 @@ if [[ ! -e ~/.fzf ]]; then
 	debug_log "[+] Done "
 fi
 
-if ! [[ -x "$(command -v diff-so-fancy)" ]]; then
-	echo "[+] Installing diff-so-fancy ... "
-	wget https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
-	chmod +x diff-so-fancy
-	sudo mv diff-so-fancy /usr/local/sbin
-	echo  "[+] Done "
-fi
 
 if [[ ! -e ~/.oh-my-zsh ]]; then
 	debug_log "[+] Installing oh-my-zsh ... "
@@ -149,16 +146,17 @@ if [[ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
 fi
 
 # install vim plugin manager
-if [[ ! -e ~/.vim/autoload/plug.vim ]]; then
+if [[ ! -e ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	debug_log "[+] Installing vim plugin manager ... "
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	debug_log "[+] Done "
 else
 	error_log "[-] You need to install Vim first! "
 fi
+
+# clone tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 SOURCE_STR="
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
