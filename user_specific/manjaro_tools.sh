@@ -45,7 +45,8 @@ pactools=(
 'pavucontrol'
 'nmap'
 'cmake'
-'wireshark'
+'wireshark-cli'
+'wireshark-qt'
 'patchelf'
 'shellcheck'
 'byzanz'			# Making a GIF screencast
@@ -53,6 +54,8 @@ pactools=(
 'pcmanfm'			# light file manager
 'ripgrep'
 'fd'
+'docker'
+'ccache'
 )
 
 piptools=(
