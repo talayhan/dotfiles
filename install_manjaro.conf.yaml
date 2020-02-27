@@ -1,0 +1,26 @@
+- clean: ['~']
+
+- shell:
+    - [git submodule update --init --depth 1, Installing submodules]
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- link:
+    ~/.bash_aliases: user_specific/bash_aliases
+    ~/.bash_functions: user_specific/bash_functions
+    ~/.exports: user_specific/exports
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+    ~/.pam_environment: config/pam_environment
+    ~/.tmux.conf: config/tmux.conf
+    ~/.urxvt/ext: config/urxvt/ext
+    ~/.vimrc: config/vimrc
+    ~/.config/nvim/init.vim: config/vimrc
+    ~/.zshrc: config/zshrc
+    ~/.config/redshift.conf: config/redshift.conf
+    ~/.config/zathura/zathurarc: config/zathura/zathurarc
+    ~/Pictures/w2.png: pics/w2.png
+    ~/Pictures/w4.png: pics/w4.png
