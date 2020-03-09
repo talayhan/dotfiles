@@ -57,6 +57,8 @@ pactools=(
 'docker'
 'ccache'
 'bind-tools'			# DNS tools
+'sdcv'
+'bat'
 )
 
 piptools=(
