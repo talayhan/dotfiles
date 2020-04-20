@@ -84,6 +84,8 @@ piptools=(
 'sniffer'
 'pyinotify'
 'vim-vint'
+'requests'
+'netifaces'
 )
 
 # functions

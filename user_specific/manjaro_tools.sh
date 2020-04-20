@@ -68,6 +68,8 @@ piptools=(
 'pyinotify'
 'vim-vint'
 'msgpack'
+'requests'
+'netifaces'
 )
 
 # functions
