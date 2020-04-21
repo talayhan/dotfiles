@@ -20,6 +20,12 @@
     ~/.vimrc: config/vimrc
     ~/.config/nvim/init.vim: config/vimrc
     ~/.zshrc: config/zshrc
+    ~/.taskrc: config/taskrc
+    ~/.fonts: fonts
+    ~/.Xinitrc: config/Xinitrc
+    ~/.Xresources: config/Xresources
+    ~/.gtkrc-2.0: config/gtkrc-2.0
+    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
     ~/.config/redshift.conf: config/redshift.conf
     ~/.config/zathura/zathurarc: config/zathura/zathurarc
     ~/Pictures/w2.png: pics/w2.png
