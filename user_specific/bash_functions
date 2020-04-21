@@ -1,11 +1,85 @@
-replace-space() {
+function replace-space() {
 	find -name "* *" -type f | rename 's/ /_/g'
+}
+
+function readelfneed() {
+	readelf -a ${1} | grep NEEDED
+}
+
+# $1 = Issue number and explanation
+function create_issue() {
+	FOLDER_NAME="${1}"
+	# ADD here README template
+	# ADD here wiki template
+
+	mkdir "${FOLDER_NAME}" && cd "${FOLDER_NAME}"
+	touch README.md
+	touch wiki.md
 }
 
 diffdiffer() {
 	find ${1} -name "*.c" | xargs git diff --numstat | awk '{split($0, a, " "); if (a[1] != a[2]) print a[3]}'
 }
 
-scrotclip() {
+function scrotclip() {
 	scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 }
+
+function rmfilesizeifbigger() {
+	find . -size +${1} -delete
+}
+
+function git-hash-differ() {
+	HASH1="${1}"
+	HASH2="${2}"
+
+	echo "[+] Git Hash Differ"
+	echo "[+] HASH-1: ${HASH1}"
+	echo "[+] HASH-2: ${HASH2}"
+
+	if [ $# -ne 2 ]; then
+		echo "[-] Needs 2 argument. No more no less!"
+		printf "\tUsage: %s <HASH-1> <HASH-2>" "${0}"
+		return
+	fi
+	echo "[+] Creating temp file with HASH-ID ..."
+	git showp "${HASH1}" > /tmp/"${HASH1}"
+	git showp "${HASH2}" > /tmp/"${HASH2}"
+
+	echo "[+] Diffing with vimdiff, thanks to him :P"
+	vimdiff /tmp/"${HASH1}" /tmp/"${HASH2}"
+}
+
+gitgc() {
+	while IFS= read -r -d '' dir; do
+		git --git-dir "$dir" rev-parse 2> /dev/null
+		if [ $? -eq 0 ]; then
+			echo -e "\nRun GC on $dir"
+			git --git-dir "$dir" gc
+		fi
+	done <   <(find -type d -print0)
+}
+
+function generate_c_project() {
+C_CODE="
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+	return 0;
+}
+"
+
+MAKE_CODE="
+all:
+	gcc main.c -o run
+clean:
+	rm -rf run
+"
+	# ADD here README template
+	# ADD here wiki template
+	echo "${C_CODE}" > main.c
+	echo "${MAKE_CODE}" > Makefile
+}
+
+[ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
