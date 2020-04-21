@@ -59,6 +59,7 @@ pactools=(
 'bind-tools'			# DNS tools
 'sdcv'
 'bat'
+'wavemon'			# detailed network monitoring tool
 )
 
 piptools=(

@@ -68,6 +68,7 @@ apttools=(
 'rainbowstream'			# twitter cli
 'automake'
 'pcmanfm'			# light file manager
+'wavemon'			# detailed network monitoring tool
 )
 
 repos=(
