@@ -3,7 +3,7 @@
 	email = samet.talayhan@gmail.com
 
 [color]
-	ui = true
+	ui = auto
 
 [core]
 	editor = nvim
@@ -118,3 +118,5 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[include]
+	path = ~/.gitconfig_custom
