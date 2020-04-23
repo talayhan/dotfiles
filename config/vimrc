@@ -11,9 +11,8 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 
 " Cosmetics
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
 
 " Text Utils
 Plug 'easymotion/vim-easymotion'
@@ -161,9 +160,7 @@ set showmatch
 "preserve undo states, backup and undo files are kept in a single dir
 set undofile
 set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.vim/backups
 
 "make vim more responsive
 set lazyredraw
@@ -409,41 +406,22 @@ let g:easytags_on_cursorhold = 0 " disabled because it causes a recursive tag ge
 let g:easytags_dynamic_files = 2"
 let g:easytags_suppress_ctags_warning = 1
 
-"vim-airline stuff
-"uncomment for regular fonts
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols='unicode'
-
-"show file name without the path
-let g:airline_section_c = '%t'
-
-"disable whitespace check
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-"let g:airline#extensions#tabline#enabled = 1
-
 "enable markdown preview for grip rendering
 let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='firefox'
 let vim_markdown_preview_hotkey='<C-m>'
 
-"show only column number and percentage
-let g:airline_section_z = '%3p%% %3v'
-let g:airline_theme = 'light'
-let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V',
-            \ '' : 'V',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
-"""""
+"lightline colorscheme
+let g:lightline = {
+	\ 'colorscheme': 'powerline',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead'
+	\ },
+	\ }
 
 command! PrettyPrintJSON %!python3 -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
