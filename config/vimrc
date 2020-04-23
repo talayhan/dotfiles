@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
 Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
+Plug 'itchyny/calendar.vim'
 
 " Cosmetics
 Plug 'morhetz/gruvbox'
@@ -422,6 +423,12 @@ let g:lightline = {
 	\   'gitbranch': 'FugitiveHead'
 	\ },
 	\ }
+
+"vim-calendar
+source ~/.cache/calendar.vim/credentials.vim
+" * it requires wget or curl.
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 
 command! PrettyPrintJSON %!python3 -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
