@@ -34,3 +34,6 @@
     ~/.i3: i3
     ~/Pictures/w2.png: pics/w2.png
     ~/Pictures/w4.png: pics/w4.png
+
+- shell:
+    - [make -C stardict, Installing sdcv dictionaries]
