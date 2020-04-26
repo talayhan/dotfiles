@@ -32,3 +32,10 @@ include /usr/share/doc/task/rc/dark-yellow-green.theme
 calendar.holidays=full
 color=on
 include /usr/share/doc/task/rc/holidays.tr-TR.rc
+# For the timetracking hook
+# https://github.com/kostajh/taskwarrior-time-tracking-hook
+max_active_tasks=3
+uda.totalactivetime.type=duration
+uda.totalactivetime.label=Total active time
+uda.totalactivetime.values=
+report.list.labels=id,start.age,entry.age,totalactivetime,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,urgency
