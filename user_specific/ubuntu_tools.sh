@@ -89,6 +89,7 @@ piptools=(
 'vim-vint'
 'requests'
 'netifaces'
+'python-language-server[all]'
 )
 
 # functions
@@ -124,7 +125,7 @@ done
 for tool in "${piptools[@]}" ; do
 	if [[ ! $(which "$tool") ]]; then
 		debug_log "[+] Installing ${tool} ... "
-		pip3 install --upgrade "$tool"
+		pip3 install --user --upgrade "$tool"
 		debug_log "[+] Done "
 	fi
 done

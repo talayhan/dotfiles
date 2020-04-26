@@ -73,6 +73,7 @@ piptools=(
 'msgpack'
 'requests'
 'netifaces'
+'python-language-server[all]'
 )
 
 # functions

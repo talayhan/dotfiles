@@ -463,13 +463,14 @@ let g:clang_format#command = "clang-format"
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-3.8/lib'
 let g:LanguageClient_autoStart=1
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText="All"
 
 let g:LanguageClient_serverCommands = {
             \ 'cpp': ['clangd-8'],
             \ 'c': ['clangd-8'],
+            \ 'python': ['~/.local/bin/pyls'],
             \ }
-let g:LanguageClient_settingsPath = '/home/talayhan/.config/nvim/settings.json'
+let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 set completefunc=LanguageClient#complete
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
