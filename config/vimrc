@@ -18,6 +18,7 @@ Plug 'itchyny/lightline.vim'
 " Text Utils
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/MultipleSearch'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " General helper
 Plug 'wesQ3/vim-windowswap'
@@ -407,10 +408,10 @@ let g:easytags_on_cursorhold = 0 " disabled because it causes a recursive tag ge
 let g:easytags_dynamic_files = 2"
 let g:easytags_suppress_ctags_warning = 1
 
-"enable markdown preview for grip rendering
-let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='firefox'
-let vim_markdown_preview_hotkey='<C-m>'
+"markdown preview
+let g:instant_markdown_browser = "firefox-developer-edition --new-window"
+let g:instant_markdown_autostart = 1
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
 
 "lightline colorscheme
 let g:lightline = {

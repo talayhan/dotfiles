@@ -69,6 +69,8 @@ apttools=(
 'automake'
 'pcmanfm'			# light file manager
 'wavemon'			# detailed network monitoring tool
+'node'
+'npm'
 )
 
 repos=(

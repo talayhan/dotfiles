@@ -60,6 +60,8 @@ pactools=(
 'sdcv'
 'bat'
 'wavemon'			# detailed network monitoring tool
+'node'
+'npm'
 )
 
 piptools=(
