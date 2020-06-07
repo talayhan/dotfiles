@@ -1,5 +1,5 @@
 # some more ls aliases
-alias l='ls -lF -S -h'
+alias l='ls -all -lF -S -h'
 alias la='ls -A'
 alias ll='ls -CF'
 alias listdir='ls -l -d */'
