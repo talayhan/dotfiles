@@ -258,12 +258,17 @@ noremap }} }}zz
 "" Abbreviations
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
+cnoreabbrev Wa! wa!
+cnoreabbrev wa1 wa!
 cnoreabbrev Q! q!
+cnoreabbrev Qa! qa!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
+cnoreabbrev Wqa wqa
+cnoreabbrev WQa wqa
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
