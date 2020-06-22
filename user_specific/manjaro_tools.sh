@@ -62,6 +62,7 @@ pactools=(
 'wavemon'			# detailed network monitoring tool
 'node'
 'npm'
+'arc-icon-theme'		# Arc icon theme official
 )
 
 piptools=(
