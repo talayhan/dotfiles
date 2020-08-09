@@ -82,4 +82,8 @@ clean:
 	echo "${MAKE_CODE}" > Makefile
 }
 
+function mcd() {
+	mkdir "${1}" && cd "${1}"
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
