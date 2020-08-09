@@ -1,15 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
+"Plug '~/github/viml-dev/task-plugin'
+
 " Life saver
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'			"GV - git commit browser - requires vim-fugitive
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
-Plug 'itchyny/calendar.vim'
+Plug 'itchyny/calendar.vim'		"Calendar -view=year -split=vertical -width=27
 
 " Cosmetics
 Plug 'morhetz/gruvbox'
@@ -29,11 +28,10 @@ Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'talayhan/vim-snippets'
 Plug 'godlygeek/tabular'
-Plug 'tmhedberg/matchit'
 Plug 'Raimondi/delimitMate'
 Plug 'wellle/tmux-complete.vim'
-Plug 'tpope/vim-surround'
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-surround'		"cst\", ysiw<em>, ds\"
+Plug 'ntpeters/vim-better-whitespace'	"\:Stripwhitespace
 
 " Web
 Plug 'pangloss/vim-javascript'
@@ -41,7 +39,7 @@ Plug 'mattn/emmet-vim'
 
 " Programming Language Specific
 Plug 'rhysd/vim-clang-format'
-Plug 'kovisoft/slimv'
+Plug 'kovisoft/slimv'			"Swank client for vim
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'fatih/vim-go'
@@ -50,6 +48,7 @@ Plug 'fatih/vim-go'
 Plug 'mhinz/vim-grepper'
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/deoplete-clangx'
 else
 	Plug 'Shougo/neocomplete.vim'
 endif
@@ -159,10 +158,10 @@ set fileencoding=utf-8
 "show matching brackets as they're inserted
 set showmatch
 
-"preserve undo states, backup and undo files are kept in a single dir
+"preserve undo states but no keep backup
 set undofile
-set backup
-set backupdir=~/.vim/backups
+set nobackup
+set nowritebackup
 
 "make vim more responsive
 set lazyredraw
@@ -207,10 +206,10 @@ map <leader>p "+p
 "disable highlight
 nnoremap <leader><space> :noh<cr>
 "remove trailing whitespace
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+"use :Stripwhitespace from vim-better-whitespace
 
 "cscope mappings
-"nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
 nnoremap <leader>d :cs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
@@ -260,18 +259,27 @@ noremap }} }}zz
 cnoreabbrev W! w!
 cnoreabbrev Wa! wa!
 cnoreabbrev wa1 wa!
+cnoreabbrev Wa1 wa!
+cnoreabbrev wA1 wa!
 cnoreabbrev Q! q!
 cnoreabbrev Qa! qa!
+cnoreabbrev qaa! qa!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
+cnoreabbrev Wa! wa!
 cnoreabbrev wQ wq
+cnoreabbrev wQ! wq!
 cnoreabbrev WQ wq
+cnoreabbrev WQ! wq!
 cnoreabbrev Wqa wqa
 cnoreabbrev WQa wqa
+cnoreabbrev WQa! wqa!
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+
+nnoremap <leader>p :exe "Search ".expand('<cWORD>')<CR>
 
 "jk to go to normal mode
 "inoremap jk <esc>
@@ -322,8 +330,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "plugin related configs start here
 nnoremap <F6> :NERDTreeToggle<CR>
-nnoremap <F7> :GundoToggle<CR>
-nmap <F8> :TagbarToggle<CR>
 
 " Emmet configs just for html css files
 let g:user_emmet_install_global = 0
@@ -419,13 +425,6 @@ let g:syntastic_python_checkers = ['pylint']
 "let g:syntastic_python_checkers = ['pyflakes']
 "let g:syntastic_python_checkers = ['pep8'asytags_suppress_ctags_warning = 1
 """""
-"easytags configuration
-let g:easytags_async=1
-let g:easytags_auto_highlight=0
-let g:easytags_on_cursorhold = 0 " disabled because it causes a recursive tag generation
-let g:easytags_dynamic_files = 2"
-let g:easytags_suppress_ctags_warning = 1
-
 "markdown preview
 let g:instant_markdown_browser = "firefox-developer-edition --new-window"
 let g:instant_markdown_autostart = 1
@@ -480,12 +479,12 @@ let g:clang_format#command = "clang-format"
 
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-3.8/lib'
-let g:LanguageClient_autoStart=1
+let g:LanguageClient_autoStart=0
 let g:LanguageClient_useVirtualText="All"
 
 let g:LanguageClient_serverCommands = {
-            \ 'cpp': ['clangd-8'],
-            \ 'c': ['clangd-8'],
+            \ 'cpp': ['clangd'],
+            \ 'c': ['clangd'],
             \ 'python': ['~/.local/bin/pyls'],
             \ }
 let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
