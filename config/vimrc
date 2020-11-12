@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'			"GV - git commit browser - requires vim-fugitive
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'itchyny/calendar.vim'		"Calendar -view=year -split=vertical -width=27
+"Plug 'itchyny/calendar.vim'		"Calendar -view=year -split=vertical -width=27
 
 " Cosmetics
 Plug 'morhetz/gruvbox'
@@ -42,7 +42,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'kovisoft/slimv'			"Swank client for vim
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 
 " Utils
 Plug 'mhinz/vim-grepper'
@@ -443,10 +443,10 @@ let g:lightline = {
 	\ }
 
 "vim-calendar
-source ~/.cache/calendar.vim/credentials.vim
+"source ~/.cache/calendar.vim/credentials.vim
 " * it requires wget or curl.
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
+"let g:calendar_google_calendar = 1
+"let g:calendar_google_task = 1
 
 command! PrettyPrintJSON %!python3 -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
