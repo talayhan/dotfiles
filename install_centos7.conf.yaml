@@ -1,0 +1,39 @@
+- clean: ['~']
+
+- shell:
+    - [git submodule update --init --depth 1, Installing submodules]
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- link:
+    ~/.bash_aliases: user_specific/bash_aliases
+    ~/.bash_functions: user_specific/bash_functions
+    ~/.exports: user_specific/exports
+    ~/.local/bin/bashmarks: user_specific/bashmarks.sh
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+    ~/.pam_environment: config/pam_environment
+    ~/.tmux.conf: config/tmux.conf
+    ~/.urxvt/ext: config/urxvt/ext
+    ~/.Xinitrc: config/Xinitrc
+    ~/.Xresources: config/Xresources
+    ~/.vimrc: config/vimrc
+    ~/.conkyrc: config/conkyrc
+    ~/.config/nvim/init.vim: config/vimrc
+    ~/.zshrc: config/zshrc
+    ~/.config/redshift.conf: config/redshift.conf
+    ~/.config/zathura/zathurarc: config/zathura/zathurarc
+    ~/.fonts: fonts
+    ~/.icons: icons
+    ~/.gtkrc-2.0: config/gtkrc-2.0
+    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
+    ~/.i3: i3
+    ~/.i3/config: i3/config_centos7
+    ~/Pictures/w2.png: pics/w2.png
+    ~/Pictures/w4.png: pics/w4.png
+
+- shell:
+    - [make -C stardict, Installing sdcv dictionaries]
