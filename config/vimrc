@@ -57,7 +57,6 @@ Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'vim-utils/vim-man'
 Plug 'vim-scripts/zoomwin'
-Plug 'blindFS/vim-taskwarrior'
 
 " LRU
 Plug 'xolox/vim-misc'
