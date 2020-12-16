@@ -82,6 +82,19 @@ clean:
 	echo "${MAKE_CODE}" > Makefile
 }
 
+function generate_cpp_project() {
+	echo "[+] Should run under the desired folder!"
+	cp -r ~/Projects/playground/sample_cpp/* .
+	mkdir build
+	echo "[+] done"
+}
+
+function cmakeall() {
+	echo "Should run under the build folder!"
+	cmake ../
+	make
+}
+
 function mcd() {
 	mkdir "${1}" && cd "${1}"
 }
