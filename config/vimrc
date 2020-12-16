@@ -8,7 +8,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'			"GV - git commit browser - requires vim-fugitive
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'itchyny/calendar.vim'		"Calendar -view=year -split=vertical -width=27
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
 
 " Cosmetics
 Plug 'morhetz/gruvbox'
@@ -256,6 +257,8 @@ noremap }} }}zz
 "" Abbreviations
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
+cnoreabbrev w1 w!
+cnoreabbrev w1 w!
 cnoreabbrev Wa! wa!
 cnoreabbrev wa1 wa!
 cnoreabbrev Wa1 wa!
@@ -292,7 +295,10 @@ endif
 autocmd FileType * setlocal formatoptions-=o
 
 "colorscheme set
+"set background=light
+"let g:gruvbox_contrast_light="hard"
 set background=dark
+let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 
 "highlight current line number with a different color
@@ -329,6 +335,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "plugin related configs start here
 nnoremap <F6> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Emmet configs just for html css files
 let g:user_emmet_install_global = 0
@@ -425,7 +432,7 @@ let g:syntastic_python_checkers = ['pylint']
 "let g:syntastic_python_checkers = ['pep8'asytags_suppress_ctags_warning = 1
 """""
 "markdown preview
-let g:instant_markdown_browser = "firefox-developer-edition --new-window"
+let g:instant_markdown_browser = "firefox --new-window"
 let g:instant_markdown_autostart = 1
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
 
@@ -477,7 +484,7 @@ let g:gitgutter_max_signs = 2000
 let g:clang_format#command = "clang-format"
 
 " path to directory where library can be found
-let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+let g:clang_library_path='/usr/lib/llvm-10/lib'
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_useVirtualText="All"
 
@@ -486,7 +493,7 @@ let g:LanguageClient_serverCommands = {
             \ 'c': ['clangd'],
             \ 'python': ['~/.local/bin/pyls'],
             \ }
-let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
+"let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
 set completefunc=LanguageClient#complete
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
@@ -496,6 +503,7 @@ nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
 "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> gc :call LanguageClient_contextMenu()<CR>
 nnoremap <F9> :call LanguageClient_contextMenu()<CR>
 
 "slimv
