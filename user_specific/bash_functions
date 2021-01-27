@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function replace-space() {
 	find -name "* *" -type f | rename 's/ /_/g'
 }
@@ -95,8 +97,20 @@ function cmakeall() {
 	make
 }
 
+function gpp17() {
+	g++ "${1}" -std=c++17 -o run
+}
+
+function gpp17run() {
+	g++ "${1}" -std=c++17 -o run && ./run
+}
+
 function mcd() {
 	mkdir "${1}" && cd "${1}"
+}
+
+function clang_tidy_brace_fix() {
+	clang-tidy "${1}" -fix -checks="readability-braces-around-statements"
 }
 
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions

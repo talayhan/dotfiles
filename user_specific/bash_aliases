@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # some more ls aliases
 alias l='ls -all -lF -S -h'
 alias la='ls -A'
@@ -69,5 +71,8 @@ alias rr='cd "$(git rev-parse --show-toplevel 2>/dev/null)"'
 #alias encrypt_pass='echo "${1}" | gpg --symmetric | base64'
 alias rgn='rg --no-ignore'
 #alias pdftk='pdftk ${1} output ${2} userpw ${3}'
+
+#Show my ip address
+alias myip="curl http://ipecho.net/plain; echo"
 
 [ -f ~/.bash_custom_aliases ] && source ~/.bash_custom_aliases

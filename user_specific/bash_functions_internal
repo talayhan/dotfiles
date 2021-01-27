@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function installed {
+	cmd=$(command -v "${1}")
+
+	[[ -n "${cmd}" ]] && [[ -f "${cmd}" ]]
+	return ${?}
+}
+
+function die {
+	>&2 echo "Fatal: ${@}"
+	exit 1
+}
