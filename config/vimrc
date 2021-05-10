@@ -12,13 +12,15 @@ Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 
 " Cosmetics
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Text Utils
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/MultipleSearch'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'lervag/vimtex'
 
 " General helper
 Plug 'wesQ3/vim-windowswap'
@@ -40,10 +42,9 @@ Plug 'mattn/emmet-vim'
 
 " Programming Language Specific
 Plug 'rhysd/vim-clang-format'
-Plug 'kovisoft/slimv'			"Swank client for vim
+"Plug 'kovisoft/slimv'			"Swank client for vim
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-"Plug 'fatih/vim-go'
 
 " Utils
 Plug 'mhinz/vim-grepper'
@@ -58,18 +59,38 @@ endif
 Plug 'itchyny/vim-cursorword'
 Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
-Plug 'vim-utils/vim-man'
 Plug 'vim-scripts/zoomwin'
 
 " LRU
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/a.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" On test stage
+"Plug 'vim-utils/vim-man'
+Plug 'junegunn/vim-peekaboo'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-endwise'
+Plug 'prabirshrestha/async.vim'
+Plug 'mattn/webapi-vim'
+Plug 'vim-jp/vital.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
+Plug 'hauleth/vim-backscratch'
+Plug 'gauteh/vim-cppman'
+
+" C++
+"Plug 'LucHermitte/lh-vim-lib'
+"Plug 'LucHermitte/lh-tags'
+"Plug 'LucHermitte/lh-dev'
+"Plug 'LucHermitte/lh-style'
+"Plug 'LucHermitte/lh-brackets'
+"Plug 'LucHermitte/vim-refactor'
 
 call plug#end()
 
@@ -154,8 +175,10 @@ set clipboard=unnamedplus
 set scrolloff=3
 
 "default encoding
-set encoding=utf-8
-set fileencoding=utf-8
+if has('vim')
+	set encoding=utf-8
+	set fileencoding=utf-8
+endif
 
 "show matching brackets as they're inserted
 set showmatch
@@ -261,10 +284,12 @@ noremap }} }}zz
 cnoreabbrev W! w!
 cnoreabbrev w1 w!
 cnoreabbrev w1 w!
+cnoreabbrev W1 w!
 cnoreabbrev Wa! wa!
 cnoreabbrev wa1 wa!
 cnoreabbrev Wa1 wa!
 cnoreabbrev wA1 wa!
+cnoreabbrev Wqa! wqa!
 cnoreabbrev Q! q!
 cnoreabbrev Qa! qa!
 cnoreabbrev qaa! qa!
@@ -299,10 +324,14 @@ autocmd FileType * setlocal formatoptions-=o
 
 "colorscheme set
 "set background=light
-"let g:gruvbox_contrast_light="hard"
+"let g:gruvbox_contrast_light="medium"
+"let g:gruvbox_contrast_dark="hard"
 set background=dark
-let g:gruvbox_contrast_dark="hard"
-colorscheme gruvbox
+let g:gruvbox_italics=1
+let g:gruvbox_italicize_strings=1
+let g:gruvbox_filetype_hi_groups = 1
+let g:gruvbox_plugin_hi_groups = 1
+colorscheme gruvbox-material
 
 "highlight current line number with a different color
 highlight Highlighted ctermfg=231 ctermbg=24 cterm=NONE
@@ -494,7 +523,7 @@ inoremap <silent><expr> <C-space> coc#refresh()
 nmap <leader>g <C-o>
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -503,17 +532,17 @@ nmap <silent> gr <Plug>(coc-references)
 "manage extensions.
 "nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
 
-let g:LanguageClient_autoStart=0
-let g:LanguageClient_useVirtualText="All"
+"let g:LanguageClient_autoStart=0
+"let g:LanguageClient_useVirtualText="All"
 
-let g:LanguageClient_serverCommands = {
-            \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'python': ['~/.local/bin/pyls'],
-            \ }
+"let g:LanguageClient_serverCommands = {
+            "\ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+            "\ 'python': ['~/.local/bin/pyls'],
+            "\ }
 "let g:LanguageClient_settingsPath = '~/.config/nvim/settings.json'
-set completefunc=LanguageClient#complete
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
+"set completefunc=LanguageClient#complete
+"set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 "nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
 "nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
@@ -525,7 +554,7 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 "nnoremap <F9> :call LanguageClient_contextMenu()<CR>
 
 "slimv
-let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+"let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 let g:ctrlp_map = ''
 nnoremap <c-p> :FZF<cr>
 "command! -bang Afinc call fzf#vim#files('/opt/x/include/', <bang>0)
