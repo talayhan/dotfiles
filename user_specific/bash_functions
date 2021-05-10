@@ -113,4 +113,8 @@ function clang_tidy_brace_fix() {
 	clang-tidy "${1}" -fix -checks="readability-braces-around-statements"
 }
 
+function rgncppcat() {
+	rgn -tcpp "${1}" | batcat
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
