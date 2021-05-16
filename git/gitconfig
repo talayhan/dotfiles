@@ -93,8 +93,6 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-	talayhancommit = -c user.name='talayhan' -c user.email='samet.talayhan@gmail.com' commit
-
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -118,5 +116,6 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [include]
 	path = ~/.gitconfig_custom
