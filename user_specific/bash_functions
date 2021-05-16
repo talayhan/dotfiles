@@ -117,4 +117,34 @@ function rgncppcat() {
 	rgn -tcpp "${1}" | batcat
 }
 
+function time2break() {
+	RED='\033[0;31m'
+	GREEN='\033[0;32m'
+	ORANGE='\033[0;33m'
+	YELLOW='\033[1;33m'
+	NC='\033[0m' # No Color
+
+	TIME_DIR="/home/talayhan/Documents/time2series"
+	CURRENT_DATE=$(date +"%d_%m_%Y")
+	FILE_NAME="$TIME_DIR/keep_break_count_$CURRENT_DATE.txt"
+
+	CURRENT_TIME=$(date)
+	echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
+	/home/talayhan/go/bin/countdown 5m && notify-send "TIME TO WORK\!"
+	CURRENT_TIME=$(date)
+	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
+}
+
+function time2work() {
+	TIME_DIR="/home/talayhan/Documents/time2series"
+	CURRENT_DATE=$(date +"%d_%m_%Y")
+	FILE_NAME="$TIME_DIR/keep_study_count_$CURRENT_DATE.txt"
+
+	CURRENT_TIME=$(date)
+	echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
+	/home/talayhan/go/bin/countdown 25m && notify-send "TIME TO BREAK\!"
+	CURRENT_TIME=$(date)
+	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
