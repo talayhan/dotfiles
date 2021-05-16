@@ -74,7 +74,7 @@ apttools=(
 )
 
 repos=(
-'ppa:neovim-ppa/stable'
+'ppa:neovim-ppa/unstable'
 'ppa:jasonpleau/rofi'
 'ppa:mc3man/mpv-tests'
 )
