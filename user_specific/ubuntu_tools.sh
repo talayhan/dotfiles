@@ -11,6 +11,7 @@ NC='\033[0m' # No Color
 #   - exas
 #   - fd-find
 #   - ripgrep
+# - Install some packages from snap
 
 
 # global variable definitions
@@ -161,8 +162,19 @@ else
 	error_log "[-] You need to install Vim first! "
 fi
 
+# install custom rofi based launchers
+if [[ ! -e ~/.config/rofi/launchers ]]; then
+	debug_log "[+] Installing custom rofi launchers ... "
+	git clone --depth=1 https://github.com/adi1090x/rofi.git
+	chmod +x rofi/setup.sh
+	./rofi/setup.sh
+	debug_log "[+] Done "
+fi
+
 # clone tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [[ ! -e ~/.tmux/plugins/tpm ]]; then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 SOURCE_STR="
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
