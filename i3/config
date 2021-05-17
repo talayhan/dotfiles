@@ -37,8 +37,8 @@ focus_follows_mouse no
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+F1 exec i3lock -c 000000
-bindsym $mod+F2 exec setxkbmap us
-bindsym $mod+F3 exec setxkbmap tr
+#bindsym $mod+F2 exec setxkbmap us
+#bindsym $mod+F3 exec setxkbmap tr
 bindsym $mod+F4 exec gksudo wpa_gui
 bindsym $mod+F5 exec xbacklight -dec 5
 bindsym $mod+F6 exec xbacklight -inc 5
@@ -191,9 +191,9 @@ for_window [class=^.*] border pixel 4
 exec xrandr --output $PRIMARY_SCREEN --primary --left-of $SECOND_SCREEN
 
 # set volume control keybindigs
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #some settings
 #exec_always setxkbmap -option ctrl:nocaps
@@ -208,6 +208,7 @@ exec redshift
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
-bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
-bindsym $mod+F12 exec flameshot gui
+bindsym F2 exec ~/.config/rofi/launchers/misc/launcher.sh
+bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
 
+bindsym $mod+F12 exec flameshot gui
