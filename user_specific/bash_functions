@@ -139,9 +139,10 @@ function time2work() {
 	TIME_DIR="/home/talayhan/Documents/time2series"
 	CURRENT_DATE=$(date +"%d_%m_%Y")
 	FILE_NAME="$TIME_DIR/keep_study_count_$CURRENT_DATE.txt"
+	TITLE="${1}"
 
 	CURRENT_TIME=$(date)
-	echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
+	echo "Start time  : $CURRENT_TIME for $TITLE" >> $FILE_NAME
 	/home/talayhan/go/bin/countdown 25m && notify-send "TIME TO BREAK\!"
 	CURRENT_TIME=$(date)
 	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
