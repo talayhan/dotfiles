@@ -72,6 +72,7 @@ apttools=(
 'wavemon'			# detailed network monitoring tool
 'node'
 'npm'
+'mpg123'
 )
 
 repos=(
