@@ -37,3 +37,4 @@
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
+    - [make -C music, Installing pomodoro notification mp3]
