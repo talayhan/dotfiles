@@ -103,7 +103,7 @@ set backspace=indent,eol,start
 
 "tab/space stuff, insert 4 spaces with tab
 "set tabstop=4
-"set shiftwidth=4
+set shiftwidth=4
 "set softtabstop=0
 set tabstop=4
 set smarttab
@@ -214,8 +214,8 @@ nnoremap <leader><space> :noh<cr>
 "use :Stripwhitespace from vim-better-whitespace
 
 "cscope mappings
-nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
-"nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
+"nnoremap <leader>r :cs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
 nnoremap <leader>d :cs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 
@@ -642,7 +642,7 @@ let g:pomodoro_do_log = 1
 " Path to the pomodoro log file (default: /tmp/pomodoro.log)
 let g:pomodoro_log_file = "/tmp/pomodoro.log"
 let g:pomodoro_notification_cmd = 'mpg123 -q ~/Music/pomodoro-notification.mp3 | zenity --info --text="Pomodoro finished"'
-let g:pomodoro_time_work = 1
+let g:pomodoro_time_work = 30
 set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
