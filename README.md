@@ -2,7 +2,8 @@ talayhan/dotfiles
 ================
 
 A collection of scripts and configurations that I use every day.
-![screenshot][pics/nvim-tmux-ss.png]
+
+![screenshot](pics/nvim-tmux-ss.png)
 
 Installation
 -------
