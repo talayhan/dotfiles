@@ -1,5 +1,4 @@
-talayhan/dotfiles 
-================
+# dotfiles [![](https://github.com/talayhan/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/talayhan/dotfiles/actions)
 
 A collection of scripts and configurations that I use every day.
 
