@@ -117,6 +117,10 @@ function rgncppcat() {
 	rgn -tcpp "${1}" | batcat
 }
 
+function dockerRmiNone1() {
+	docker images | grep none | head -n 1 | tr -s ' ' | cut -d ' ' -f3 | xargs docker rmi -f
+}
+
 function time2break() {
 	RED='\033[0;31m'
 	GREEN='\033[0;32m'
