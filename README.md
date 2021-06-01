@@ -1,4 +1,4 @@
-# dotfiles [![](https://github.com/talayhan/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/talayhan/dotfiles/actions)
+# dotfiles [![](https://github.com/talayhan/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/talayhan/dotfiles/actions) ![](https://img.shields.io/github/license/talayhan/dotfiles) ![](https://img.shields.io/github/stars/talayhan/dotfiles) ![](https://img.shields.io/github/issues/talayhan/dotfiles)
 
 A collection of scripts and configurations that I use every day.
 
