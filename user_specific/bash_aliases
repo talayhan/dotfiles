@@ -58,6 +58,10 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 
+## list zombie processes
+alias pszombie="ps afuwwx | less +u -p'^(\S+\s+){7}Z.*'"
+#alias pidzombie="ps aux | awk '{ print $8 " " $2 }' | grep -w Z | cut -d ' ' -f 2"
+
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
 
