@@ -79,4 +79,7 @@ alias rgn='rg --no-ignore'
 #Show my ip address
 alias myip="curl http://ipecho.net/plain; echo"
 
+#docker
+alias dockerpsf='docker ps --format "table {{.Image}}\t{{.Ports}}\t{{.Names}}"'
+
 [ -f ~/.bash_custom_aliases ] && source ~/.bash_custom_aliases
