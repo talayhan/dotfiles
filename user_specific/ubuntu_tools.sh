@@ -73,6 +73,9 @@ apttools=(
 'node'
 'npm'
 'mpg123'
+'broot'
+'bashtop'
+'dog'
 )
 
 repos=(
@@ -101,6 +104,15 @@ function debug_log() {
 
 function error_log() {
 	echo -e "${RED}${1}${NC}"
+}
+
+# https://packages.azlux.fr/
+# * broot
+# * bashtop
+# * dog
+function add_azlux_repo() {
+	echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+	wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 }
 
 sudo apt update
