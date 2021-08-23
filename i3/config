@@ -27,8 +27,8 @@ font pango:Ubuntu 10
 # font, it doesn’t scale on retina/hidpi displays.
 
 #smart_gaps on
-gaps inner 10
-gaps outer 10
+#gaps inner 10
+#gaps outer 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -208,7 +208,7 @@ exec redshift
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
-bindsym F2 exec ~/.config/rofi/launchers/misc/launcher.sh
+bindsym F2 exec ~/.config/rofi/launchers/ribbon/launcher.sh
 bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
 
 bindsym $mod+F12 exec flameshot gui
