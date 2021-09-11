@@ -15,6 +15,7 @@ Plug 'tpope/vim-dispatch'
 
 " Cosmetics
 Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
@@ -23,12 +24,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/MultipleSearch'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'lervag/vimtex'
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-abolish'
 
 " General helper
-Plug 'wesQ3/vim-windowswap'
+"Plug 'wesQ3/vim-windowswap'
 Plug 'will133/vim-dirdiff'
 
 " Syntax checking
+Plug 'sheerun/vim-polyglot'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'talayhan/vim-snippets'
@@ -40,6 +44,7 @@ Plug 'ntpeters/vim-better-whitespace'	"\:Stripwhitespace
 
 " Web
 Plug 'pangloss/vim-javascript'
+Plug 'maksimr/vim-jsbeautify'
 Plug 'mattn/emmet-vim'
 
 " Programming Language Specific
@@ -57,6 +62,14 @@ Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'vim-scripts/zoomwin'
 
+if has('nvim-0.6')
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
+else
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf.vim'
+endif
+
 " LRU
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/a.vim'
@@ -64,8 +77,6 @@ Plug 'vim-scripts/a.vim'
     "\ 'branch': 'next',
     "\ 'do': 'bash install.sh',
     "\ }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " On test stage
 "Plug 'vim-utils/vim-man'
@@ -101,11 +112,15 @@ set ignorecase smartcase
 "fix set backspace, vim8.0 causing backspace problem
 set backspace=indent,eol,start
 
+"convert new tabs to space
+"set tabstop=2 shiftwidth=2 expandtab
+"also existing ones
+":retab
+
 "tab/space stuff, insert 4 spaces with tab
-"set tabstop=4
-set shiftwidth=4
-"set softtabstop=0
-set tabstop=4
+set tabstop=8
+set shiftwidth=8
+set softtabstop=0
 set smarttab
 "set expandtab
 
@@ -303,15 +318,22 @@ endif
 autocmd FileType * setlocal formatoptions-=o
 
 "colorscheme set
-"set background=light
-"let g:gruvbox_contrast_light="medium"
-"let g:gruvbox_contrast_dark="hard"
 set background=dark
+"let g:gruvbox_contrast_light="medium"
+"let g:gruvbox_contrast_dark="medium"
+"set background=light
+if has('termguicolors')
+    set termguicolors
+endif
 let g:gruvbox_italics=1
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_filetype_hi_groups = 1
 let g:gruvbox_plugin_hi_groups = 1
-colorscheme gruvbox-material
+let g:gruvbox_material_background = 'soft'
+"colorscheme gruvbox-material
+
+let g:gruvbox_contrast_dark = 'medium'
+colorscheme gruvbox
 
 "highlight current line number with a different color
 highlight Highlighted ctermfg=231 ctermbg=24 cterm=NONE
@@ -346,6 +368,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "plugin related configs start here
+nnoremap <F3> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
@@ -363,6 +386,8 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+map <Leader>5 :setlocal spell spelllang=en_us<cr>
 
 "cucumbertables for tabularize
 "ref:https://gist.github.com/tpope/287147
@@ -408,7 +433,9 @@ function! g:committia_hooks.edit_open(info)
 endfunction
 
 let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
+            \ "IndentWidth" : 8,
+            \ "ColumnLimit" : 80,
+            \ "UseTab" : "Always",
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11"}
@@ -448,9 +475,10 @@ let g:instant_markdown_browser = "firefox --new-window"
 let g:instant_markdown_autostart = 1
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
 
+"\ 'colorscheme': 'powerline',
 "lightline colorscheme
 let g:lightline = {
-	\ 'colorscheme': 'powerline',
+	\ 'colorscheme': 'gruvbox_material',
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ],
 	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -559,6 +587,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 augroup mygroup
   autocmd!
@@ -646,4 +675,14 @@ let g:pomodoro_time_work = 30
 set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>
+nnoremap <C-g> :Ag<Cr>
+
+nmap glc <Plug>VimwikiToggleListItem<CR>
+
+autocmd FileType typescript,javascript set expandtab
+autocmd FileType typescript,javascript SCSpace
+
+ca tn tabnew
+ca th tabp
+ca tl tabn
