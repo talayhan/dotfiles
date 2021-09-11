@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
-" Local playground
-Plug '~/Projects/playground/hello-vim'
+" Playground
+Plug 'talayhan/s-vim'
 
 " Life saver
 Plug 'airblade/vim-gitgutter'
