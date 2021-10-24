@@ -63,6 +63,7 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'vim-scripts/zoomwin'
 
 if has('nvim-0.6')
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
 else
@@ -675,8 +676,13 @@ let g:pomodoro_time_work = 30
 set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
-nnoremap <c-p> :Files<cr>
-nnoremap <C-g> :Ag<Cr>
+if has('nvim-0.6')
+	nnoremap <c-p> :Telescope find_files<cr>
+	nnoremap <C-g> :Telescope live_grep<Cr>
+else
+	nnoremap <c-p> :Files<cr>
+	nnoremap <C-g> :Ag<Cr>
+endif
 
 nmap glc <Plug>VimwikiToggleListItem<CR>
 
