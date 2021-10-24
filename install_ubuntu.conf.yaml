@@ -21,7 +21,6 @@
     ~/.Xinitrc: config/Xinitrc
     ~/.Xresources: config/Xresources
     ~/.vimrc: config/vimrc
-    ~/.conkyrc: config/conkyrc
     ~/.config/nvim/init.vim: config/vimrc
     ~/.zshrc: config/zshrc
     ~/.config/redshift.conf: config/redshift.conf
