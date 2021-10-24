@@ -20,8 +20,8 @@ apttools=(
 'zsh'
 'curl'
 'httpie'
-'cmus'
-'vifm'
+#'cmus'
+'ranger'
 'dnstop'
 'vnstat'
 'iftop'
@@ -76,6 +76,9 @@ apttools=(
 'broot'
 'bashtop'
 'dog'
+'arandr'
+'ripgrep'
+'fd-find'
 )
 
 repos=(
