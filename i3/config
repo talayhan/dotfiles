@@ -167,7 +167,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status -c ~/.i3/i3status.conf | ~/Downloads/github/i3spotifystatus/pystatus.py
+    status_command i3status -c ~/.i3/i3status.conf
     position bottom
     separator_symbol ":|:"
     workspace_buttons yes
@@ -208,7 +208,7 @@ exec redshift
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
-bindsym F2 exec ~/.config/rofi/launchers/ribbon/launcher.sh
-bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
+bindsym $mod+F2 exec ~/.config/rofi/launchers/ribbon/launcher.sh
+bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
 
 bindsym $mod+F12 exec flameshot gui
