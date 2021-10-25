@@ -79,6 +79,7 @@ apttools=(
 'arandr'
 'ripgrep'
 'fd-find'
+'cloc'
 )
 
 repos=(
