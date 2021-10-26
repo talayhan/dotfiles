@@ -28,6 +28,7 @@ apttools=(
 'atop'
 'tree'
 'clang-format'
+'clangd'
 'sbcl'
 'neovim'
 'silversearcher-ag'
@@ -80,6 +81,7 @@ apttools=(
 'ripgrep'
 'fd-find'
 'cloc'
+'doxygen'
 )
 
 repos=(
@@ -99,6 +101,7 @@ piptools=(
 'requests'
 'netifaces'
 'python-language-server[all]'
+#'pycparser'
 )
 
 # functions
