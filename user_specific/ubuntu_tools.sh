@@ -82,6 +82,8 @@ apttools=(
 'fd-find'
 'cloc'
 'doxygen'
+'sdcv'
+'bat'
 )
 
 repos=(
