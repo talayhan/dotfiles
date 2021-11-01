@@ -2,3 +2,4 @@
 
 * CI Integration
 * Dockerfile
+* Snap Support
