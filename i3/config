@@ -201,7 +201,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 #client.focused_inactive #5e2750 #5e2750 #aea79f #5e2750
 #client.unfocused #5e2750 #5e2750 #aea79f #5e2750
 #client.urgent #77216f #77216f #ffffff #efb73e
-exec feh --bg-scale ~/Pictures/w2.jpg --bg-scale ~/Pictures/w4.png
+exec feh --bg-scale ~/Pictures/w2.jpg
 exec compton -b
 exec nm-applet
 exec redshift
