@@ -235,7 +235,7 @@ nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
 nnoremap <leader>d :cs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>v :cs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 
-nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
+"nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>D :vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>V :vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>N :GrepperRg -tc <C-R>=expand("<cword>")<CR><CR>
@@ -586,8 +586,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 augroup mygroup
@@ -600,13 +600,13 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -677,11 +677,12 @@ set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
 if has('nvim-0.6')
-	nnoremap <c-p> :Telescope find_files<cr>
-	nnoremap <C-g> :Telescope live_grep<Cr>
+    nnoremap <c-p> :Telescope find_files<cr>
+    nnoremap <C-g> :Telescope live_grep<Cr>
+    nnoremap <Leader>R :lua require'telescope.builtin'.grep_string{}<CR>
 else
-	nnoremap <c-p> :Files<cr>
-	nnoremap <C-g> :Ag<Cr>
+    nnoremap <c-p> :Files<cr>
+    nnoremap <C-g> :Ag<Cr>
 endif
 
 nmap glc <Plug>VimwikiToggleListItem<CR>
