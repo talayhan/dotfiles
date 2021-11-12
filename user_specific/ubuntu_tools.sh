@@ -86,6 +86,8 @@ apttools=(
 'bat'
 )
 
+#sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+
 repos=(
 'ppa:neovim-ppa/unstable'
 'ppa:jasonpleau/rofi'
