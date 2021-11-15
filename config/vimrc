@@ -171,10 +171,8 @@ set clipboard=unnamedplus
 set scrolloff=3
 
 "default encoding
-if has('vim')
-	set encoding=utf-8
-	set fileencoding=utf-8
-endif
+set encoding=utf-8
+set fileencoding=utf-8
 
 "show matching brackets as they're inserted
 set showmatch
