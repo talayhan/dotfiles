@@ -13,14 +13,12 @@ NC='\033[0m' # No Color
 #   - ripgrep
 # - Install some packages from snap
 
-
 # global variable definitions
 apttools=(
 'git-core'
 'zsh'
 'curl'
 'httpie'
-#'cmus'
 'ranger'
 'dnstop'
 'vnstat'
@@ -71,7 +69,7 @@ apttools=(
 'automake'
 'pcmanfm'			# light file manager
 'wavemon'			# detailed network monitoring tool
-'node'
+'nodejs'
 'npm'
 'mpg123'
 'broot'
@@ -126,6 +124,10 @@ function add_azlux_repo() {
 	wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 }
 
+function add_node14_repo() {
+	curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+}
+
 sudo apt update
 
 for repo in "${repos[@]}" ; do
@@ -136,6 +138,9 @@ for repo in "${repos[@]}" ; do
 		debug_log "[+] Done "
 	fi
 done
+
+# needed for Node.js 14 installation
+add_node14_repo
 
 sudo apt update
 
