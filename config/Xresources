@@ -45,9 +45,9 @@ URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
 ! URxvt*color15: #FFFFFF // white
 
 ! Font
-! URxvt.font:xft:Ubuntu Mono derivative Powerline:pixelsize=18:antialias=true:hinting=true
-! URxvt.boldFont:xft:Ubuntu Mono derivative Powerline:bold:pixelsize=18:antialias=true:hinting=true
-! URxvt.italicFont:xft:Ubuntu Mono derivative Powerline:italic:pixelsize=18:antialias=true:hinting=true
+URxvt.font:xft:Ubuntu Mono derivative Powerline:pixelsize=18:antialias=true:hinting=true
+URxvt.boldFont:xft:Ubuntu Mono derivative Powerline:bold:pixelsize=18:antialias=true:hinting=true
+URxvt.italicFont:xft:Ubuntu Mono derivative Powerline:italic:pixelsize=18:antialias=true:hinting=true
 
 !Letter spaceing
 URxvt.letterSpace: -1
