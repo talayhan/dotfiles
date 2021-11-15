@@ -26,13 +26,13 @@
     ~/.config/redshift.conf: config/redshift.conf
     ~/.compton.conf: config/compton.conf
     ~/.config/zathura/zathurarc: config/zathura/zathurarc
+    ~/.config/alacritty/alacritty.yml: config/alacritty.yml
     ~/.fonts: fonts
     ~/.icons: icons
     ~/.gtkrc-2.0: config/gtkrc-2.0
     ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
     ~/.i3: i3
-    ~/Pictures/w2.png: pics/w2.png
-    ~/Pictures/w4.png: pics/w4.png
+    ~/Pictures/w2.jpg: pics/w2.jpg
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
