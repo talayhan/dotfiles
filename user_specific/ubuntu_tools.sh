@@ -76,6 +76,7 @@ apttools=(
 'mpg123'
 'broot'
 'bashtop'
+'htop'
 'dog'
 'arandr'
 'ripgrep'
@@ -90,7 +91,6 @@ apttools=(
 
 repos=(
 'ppa:neovim-ppa/unstable'
-'ppa:jasonpleau/rofi'
 'ppa:mc3man/mpv-tests'
 )
 
@@ -176,6 +176,8 @@ if [[ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
 	debug_log "[+] Done "
 fi
 
+#git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 # install vim plugin manager
 if [[ ! -e ~/.local/share/nvim/site/autoload/plug.vim ]]; then
 	debug_log "[+] Installing vim plugin manager ... "
@@ -198,6 +200,12 @@ fi
 # clone tpm
 if [[ ! -e ~/.tmux/plugins/tpm ]]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+	# source tmux conf
+	tmux source ~/.tmux.conf
+
+	# install tmux plugins
+	~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 SOURCE_STR="
@@ -205,6 +213,14 @@ SOURCE_STR="
 [ -f ~/.bash_functions ] && source ~/.bash_functions
 "
 #sudo update-alternatives --config x-terminal-emulator
+
+#set python3 as default
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+nvim +'PlugInstall --sync' +qa
 
 # add source files to end of rc file
 #[ -f ~/.zshrc ] && echo "$SOURCE_STR" >> ~/.zshrc
