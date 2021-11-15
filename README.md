@@ -10,16 +10,16 @@ Installation
 1. Clone this repo
 ```
 git clone https://github.com/talayhan/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ```
 
 2. Install dependencies for the full-featured setup
 ```
-sudo ./user_specific/<ubuntu/centos/manajaro>_tools.sh
+./user_specific/<ubuntu/centos/manajaro>_tools.sh
 ```
 
 3. Run the setup
 ```
-cd ~/.dotfiles
 ./install -c install_<ubuntu/centos/manjaro>.conf.yaml
 ```
 
