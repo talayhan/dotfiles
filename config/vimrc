@@ -12,6 +12,8 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'xolox/vim-easytags'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 
 " Cosmetics
 Plug 'sainnhe/gruvbox-material'
