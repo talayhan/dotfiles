@@ -19,7 +19,6 @@ Plug 'sindrets/diffview.nvim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
 
 " Text Utils
 Plug 'easymotion/vim-easymotion'
@@ -83,7 +82,8 @@ Plug 'vim-scripts/a.vim'
 
 " On test stage
 "Plug 'vim-utils/vim-man'
-Plug 'tricktux/pomodoro.vim'
+"Plug 'tricktux/pomodoro.vim'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -372,6 +372,23 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 nnoremap <F3> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "=",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+let g:NERDTreeShowIgnoredStatus = 1
 
 " Emmet configs just for html css files
 let g:user_emmet_install_global = 0
@@ -668,12 +685,12 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "=========================================================
 " Log completed pomodoros, 0 = False, 1 = True (default: 0)
-let g:pomodoro_do_log = 1
+"let g:pomodoro_do_log = 1
 " Path to the pomodoro log file (default: /tmp/pomodoro.log)
-let g:pomodoro_log_file = "/tmp/pomodoro.log"
-let g:pomodoro_notification_cmd = 'mpg123 -q ~/Music/pomodoro-notification.mp3 | zenity --info --text="Pomodoro finished"'
-let g:pomodoro_time_work = 30
-set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
+"let g:pomodoro_log_file = "/tmp/pomodoro.log"
+"let g:pomodoro_notification_cmd = 'mpg123 -q ~/Music/pomodoro-notification.mp3 | zenity --info --text="Pomodoro finished"'
+"let g:pomodoro_time_work = 30
+"set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
 if has('nvim-0.6')
