@@ -217,7 +217,9 @@ SOURCE_STR="
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
 "
-#sudo update-alternatives --config x-terminal-emulator
+
+#make alacritty default terminal
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which alacritty) 50
 
 #set python3 as default
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
