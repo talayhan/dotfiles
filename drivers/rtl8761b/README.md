@@ -1,3 +1,9 @@
+## NOTE
+
+The patch has been merged to linux.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=7118987b2f7aff733573121607bc9640a4880296
+
 ## Reference: https://linuxreviews.org/Realtek_RTL8761B
 
 ## Linux Support
