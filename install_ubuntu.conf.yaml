@@ -33,6 +33,7 @@
     ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
     ~/.i3: i3
     ~/Pictures/w2.jpg: pics/w2.jpg
+    ~/.newsboat: config/newsboat
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]

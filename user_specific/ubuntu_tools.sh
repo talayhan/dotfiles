@@ -83,6 +83,8 @@ apttools=(
 'doxygen'
 'sdcv'
 'bat'
+'newsboat' 			# text mode rss reader
+'remind' 			# calendar and alarm program
 )
 
 #sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
