@@ -28,6 +28,10 @@ Plug 'lervag/vimtex'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-abolish'
 
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'tyru/open-browser.vim'
+
 " General helper
 "Plug 'wesQ3/vim-windowswap'
 Plug 'will133/vim-dirdiff'
@@ -167,7 +171,7 @@ set title
 set ls=2
 
 " use buffer the system clipboard by default.
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 "start scrolling at 3rd row
 set scrolloff=3
@@ -279,7 +283,6 @@ noremap }} }}zz
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
 cnoreabbrev w1 w!
-cnoreabbrev w1 w!
 cnoreabbrev W1 w!
 cnoreabbrev Wa! wa!
 cnoreabbrev wa1 wa!
@@ -305,7 +308,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-nnoremap <leader>p :exe "Search ".expand('<cWORD>')<CR>
+"nnoremap <leader>P :exe "Search ".expand('<cWORD>')<CR>
+nnoremap <leader>P :exe "Search ".expand('<cword>')<CR>
 
 "jk to go to normal mode
 "inoremap jk <esc>
@@ -319,21 +323,19 @@ endif
 autocmd FileType * setlocal formatoptions-=o
 
 "colorscheme set
-set background=dark
-"let g:gruvbox_contrast_light="medium"
-"let g:gruvbox_contrast_dark="medium"
-"set background=light
 if has('termguicolors')
     set termguicolors
 endif
+
+set background=dark
+"set background=light
 let g:gruvbox_italics=1
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_filetype_hi_groups = 1
 let g:gruvbox_plugin_hi_groups = 1
-let g:gruvbox_material_background = 'soft'
-"colorscheme gruvbox-material
 
-let g:gruvbox_contrast_dark = 'medium'
+"let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_light = 'hard'
 colorscheme gruvbox
 
 "highlight current line number with a different color
@@ -454,7 +456,7 @@ let g:clang_format#style_options = {
             \ "IndentWidth" : 8,
             \ "ColumnLimit" : 80,
             \ "UseTab" : "Always",
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11"}
 
@@ -490,7 +492,7 @@ let g:syntastic_python_checkers = ['pylint']
 """""
 "markdown preview
 let g:instant_markdown_browser = "firefox --new-window"
-let g:instant_markdown_autostart = 1
+let g:instant_markdown_autostart = 0
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
 
 "\ 'colorscheme': 'powerline',
@@ -511,9 +513,9 @@ command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 
 "multiplesearch config
-let g:MultipleSearchColorSequence = "blue,green,magenta,red,yellow,cyan,gray,brown"
+let g:MultipleSearchColorSequence = "LightBlue,green,DarkMagenta,DarkRed,LightYellow,cyan,gray,brown"
 let g:MultipleSearchMaxColors = 32
-let g:MultipleSearchTextColorSequence = "white,black,white,white,black,black,black,white"
+let g:MultipleSearchTextColorSequence = "black,black,white,white,black,black,black,white"
 
 "neocomplete
 if has('nvim')
@@ -579,9 +581,16 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :call CocAction('jumpDefinition', 'tabe')<CR>
+
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gY :call CocAction('jumpTypeDefinition', 'tabe')<CR>
+
 nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gI :call CocAction('jumpImplementation', 'tabe')<CR>
+
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gR :call CocAction('jumpReferences', 'tabe')<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -710,3 +719,6 @@ autocmd FileType typescript,javascript SCSpace
 ca tn tabnew
 ca th tabp
 ca tl tabn
+
+"set colorcolumn=100,120
+"hi ColorColumn ctermbg=lightcyan guibg=black
