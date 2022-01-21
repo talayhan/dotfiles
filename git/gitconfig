@@ -1,6 +1,3 @@
-[user]
-	name = talayhan
-	email = samet.talayhan@gmail.com
 
 [color]
 	ui = auto
@@ -119,3 +116,6 @@
 
 [include]
 	path = ~/.gitconfig_custom
+
+[credential]
+	helper = store
