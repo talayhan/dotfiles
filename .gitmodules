@@ -16,3 +16,6 @@
         url = https://github.com/junegunn/fzf.git
         fetchRecurseSubmodules = true
 
+[submodule "pconfigs"]
+	path = pconfigs
+	url = https://github.com/talayhan/pconfigs
