@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: talayhan/pconfigs
+          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT }}
+          submodules: recursive
+
       # Runs a single command using the runners shell
       - name: Install Ubuntu Configs
         run: ./install -c install_ubuntu.conf.yaml
