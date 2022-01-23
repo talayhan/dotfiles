@@ -712,6 +712,9 @@ else
 endif
 
 nmap glc <Plug>VimwikiToggleListItem<CR>
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+au FileType vimwiki setlocal shiftwidth=4 tabstop=4 noexpandtab
 
 autocmd FileType typescript,javascript set expandtab
 autocmd FileType typescript,javascript SCSpace
