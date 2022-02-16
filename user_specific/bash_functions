@@ -81,10 +81,10 @@ OBJECTS=
 EXECUTABLE=main
 
 all:
-	$(CC) $(SOURCES) $(CFLAGS) -o $(EXECUTABLE)
+	\$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
 
 clean:
-	$(RM) $(EXECUTABLE)
+	\$(RM) \$(EXECUTABLE)
 "
 	# ADD here README template
 	# ADD here wiki template
