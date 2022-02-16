@@ -334,8 +334,8 @@ let g:gruvbox_italicize_strings=1
 let g:gruvbox_filetype_hi_groups = 1
 let g:gruvbox_plugin_hi_groups = 1
 
-"let g:gruvbox_contrast_dark = 'soft'
-let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_contrast_dark = 'soft'
+"let g:gruvbox_contrast_light = 'hard'
 colorscheme gruvbox
 
 "highlight current line number with a different color
@@ -705,6 +705,7 @@ let g:ctrlp_map = ''
 if has('nvim-0.6')
     nnoremap <c-p> :Telescope find_files<cr>
     nnoremap <C-g> :Telescope live_grep<Cr>
+    nnoremap <C-t> :Telescope treesitter<Cr>
     nnoremap <Leader>R :lua require'telescope.builtin'.grep_string{}<CR>
 else
     nnoremap <c-p> :Files<cr>
