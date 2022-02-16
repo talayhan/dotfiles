@@ -175,19 +175,23 @@ bar {
 colors {
     background #0e1e2c
     statusline #E6E4E2
-    # Type             border  background font
-    focused_workspace #dd4814 #dd4814 #ffffff
-    active_workspace #902a07 #902a07 #aea79f
-    inactive_workspace #902a07 #902a07 #aea79f
-    urgent_workspace #77216f #77216f #ffffff
+    # Type              border      background  font
+    focused_workspace   #dd4814     #dd4814     #ffffff
+    active_workspace    #902a07     #902a07     #aea79f
+    inactive_workspace  #902a07     #902a07     #aea79f
+    urgent_workspace    #77216f     #77216f     #ffffff
   }
 }
+
+#02f426 //green
+# class                 border  backgr. text    indicator child_border
+client.focused          #dd4814 #285577 #ffffff #2e9ef4   #02d0f4
 
 hide_edge_borders both
 #new_window normal 0
 #new_float normal 0
 for_window [class=^.*] border normal 0
-for_window [class=^.*] border pixel 4
+for_window [class=^.*] border pixel 6
 exec xrandr --output $PRIMARY_SCREEN --primary --left-of $SECOND_SCREEN
 
 # set volume control keybindigs
