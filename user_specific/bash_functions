@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 "
 
 MAKE_CODE="
-CC=gcc
+CC=clang
 CFLAGS= -g -Wall
 LDFLAGS=
 SOURCES=main.c
