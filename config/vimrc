@@ -228,6 +228,9 @@ noremap 0 ^
 map <leader>y "+y
 map <leader>p "+p
 
+"close like vimium with space
+nnoremap q<space> :close<cr>
+
 "disable highlight
 nnoremap <leader><space> :noh<cr>
 "remove trailing whitespace
