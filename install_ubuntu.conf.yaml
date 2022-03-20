@@ -35,6 +35,7 @@
     ~/Pictures/w2.jpg: pics/w2.jpg
     ~/.newsboat: config/newsboat
     ~/vimwiki: pconfigs/vimwiki
+    ~/.vifm: config/vifm
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]

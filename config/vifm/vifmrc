@@ -1,0 +1,8 @@
+set vicmd=nvim
+colorscheme gruvbox
+
+command zathura zathura *.{pdf} &
+filetype *.pdf zathura
+
+command feh feh *.{png} &
+filetype *.png feh
