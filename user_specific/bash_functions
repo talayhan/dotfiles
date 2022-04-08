@@ -194,4 +194,10 @@ function time2work() {
 	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
 }
 
+function pdfso() {
+	local input_file="${1}"
+	local output_file="${2}"
+	ps2pdf -dPDFSETTINGS=/ebook "${input_file}" "${output_file}"
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
