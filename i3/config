@@ -9,6 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# modifier = Alt - Mod1, $sup = Wind0ws key - Mod4
 set $mod Mod4
 set_from_resource $PRIMARY_SCREEN echo "${PRIMARY_SCREEN}"
 set_from_resource $SECOND_SCREEN echo "${SECOND_SCREEN}"
