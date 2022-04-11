@@ -200,4 +200,11 @@ function pdfso() {
 	ps2pdf -dPDFSETTINGS=/ebook "${input_file}" "${output_file}"
 }
 
+function sedsub() {
+	FROM="${1}"
+	TO="${2}"
+	FILE_NAME="${3}"
+	sed -i "s/${FROM}/${TO}/g" "${FILE_NAME}"
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
