@@ -12,6 +12,7 @@
 	st = status
 	showp = show --patch-with-stat
 	cpx = cherry-pick -x
+	sw = switch
 
 	# View abbreviated SHA, description, and history graph
 	l = log --pretty=oneline --graph --abbrev-commit
