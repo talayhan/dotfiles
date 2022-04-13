@@ -3,3 +3,4 @@
 curl https://sh.rustup.rs -sSf | sh
 
 cargo install alacritty
+cargo install git-delta

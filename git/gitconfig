@@ -116,6 +116,7 @@
 
 [include]
 	path = ~/.gitconfig_custom
+	path = ~/.gitconfig_delta
 
 [credential]
 	helper = store
