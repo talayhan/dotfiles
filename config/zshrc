@@ -80,6 +80,7 @@ alias f="thunar . &"
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
+[ -f ~/.exports ] && source ~/.exports
 [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.profile
