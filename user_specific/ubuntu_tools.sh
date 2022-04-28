@@ -106,6 +106,7 @@ piptools=(
 'requests'
 'netifaces'
 'python-language-server[all]'
+'yamllint'
 #'pycparser'
 )
 
