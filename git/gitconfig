@@ -1,4 +1,3 @@
-
 [color]
 	ui = auto
 
@@ -107,8 +106,10 @@
 	new = green bold # additions
 	commit = yellow bold
 	whitespace = red reverse
+
 [push]
 	default = matching
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
