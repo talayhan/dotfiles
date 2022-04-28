@@ -7,11 +7,38 @@
 [alias]
 	# shortcuts for simple commands
 	co = checkout
-	br = branch
 	st = status
 	showp = show --patch-with-stat
 	cpx = cherry-pick -x
 	sw = switch
+
+	# branch management
+	b = branch -v
+	ba = branch -a
+	bd = branch -d
+	bdd = branch -D
+	br = branch -r
+	bc = rev-parse --abbrev-ref HEAD
+	bdr = "!f() { git push $1 :$2; }; f"
+
+	# push aliases
+	ps = push
+	psf = push -f
+	psu = push -u
+	pst = push --tags
+
+	pso = push origin
+	psuo = push -u origin
+	psao = push --all origin
+	psfo = push -f origin
+
+	psom = push origin master
+	psfom = push -f origin master
+	psuom = push -u origin master
+
+	psoc = !git push origin $(git bc)
+	psfoc = !git push -f origin $(git bc)
+	psuoc = !git push -u origin $(git bc)
 
 	# View abbreviated SHA, description, and history graph
 	l = log --pretty=oneline --graph --abbrev-commit
@@ -54,7 +81,6 @@
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
-	branches = branch -a
 	remotes = remote -v
 	cleans = clean -df
 	cos = checkout -- .
@@ -90,6 +116,8 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
+	# refs:
+	# https://t.ly/r5xO
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
