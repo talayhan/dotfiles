@@ -42,6 +42,7 @@ apttools=(
 'python3-pip'
 'python3-venv'
 'tmux'
+'tmuxinator'			# A session manager for tmux
 'i3'
 'redshift'
 'unclutter'
