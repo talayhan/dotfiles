@@ -378,6 +378,10 @@ nnoremap <F3> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 nnoremap <F6> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
+" vertical resize
+nnoremap <silent> <Leader>+ :vertical resize +25<<CR>
+nnoremap <silent> <Leader>- :vertical resize -25<<CR>
+
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
