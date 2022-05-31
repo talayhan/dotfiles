@@ -124,11 +124,11 @@ set backspace=indent,eol,start
 ":retab
 
 "tab/space stuff, insert 4 spaces with tab
-set tabstop=8
-set shiftwidth=8
+set tabstop=4
+set shiftwidth=4
 set softtabstop=0
 set smarttab
-"set expandtab
+set expandtab
 
 " tabstop:          Width of tab character
 " " softtabstop:      Fine tunes the amount of white space to be added
