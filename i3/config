@@ -210,6 +210,7 @@ exec feh --bg-scale ~/Pictures/w2.jpg
 exec compton -b
 exec nm-applet
 exec redshift
+exec xset mouse 6 0
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
