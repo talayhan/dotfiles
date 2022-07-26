@@ -214,7 +214,8 @@ exec xset mouse 6 0
 
 # list open windows to switch to
 bindsym $mod+Tab exec rofi -show window -show-icons -drun-icon-theme Flat-Remix-Dark
-bindsym $mod+F2 exec ~/.config/rofi/launchers/ribbon/launcher.sh
+#bindsym $mod+F2 exec ~/.config/rofi/launchers/ribbon/launcher.sh
+bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show run"
 bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show combi -switchers combi -combi-modi drun -show-icons -drun-icon-theme Flat-Remix-Dark"
 
 bindsym $mod+F12 exec flameshot gui
