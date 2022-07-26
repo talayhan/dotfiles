@@ -86,6 +86,8 @@ apttools=(
 'bat'
 'newsboat' 			# text mode rss reader
 'remind' 			# calendar and alarm program
+'thunar'
+'numix-icon-theme-circle'
 )
 
 #sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
@@ -93,6 +95,7 @@ apttools=(
 repos=(
 'ppa:neovim-ppa/unstable'
 'ppa:mc3man/mpv-tests'
+'ppa:numix/ppa'
 )
 
 piptools=(
@@ -232,6 +235,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 nvim +'PlugInstall --sync' +qa
+
+xdg-mime default thunar.desktop inode/directory
+
+#query default file manager
+#xdg-mime query default inode/directory
 
 # add source files to end of rc file
 #[ -f ~/.zshrc ] && echo "$SOURCE_STR" >> ~/.zshrc
