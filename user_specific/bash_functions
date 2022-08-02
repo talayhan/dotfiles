@@ -207,4 +207,8 @@ function sedsub() {
 	sed -i "s/${FROM}/${TO}/g" "${FILE_NAME}"
 }
 
+function fillmem5G() {
+	</dev/zero head -c 5000m | tail
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
