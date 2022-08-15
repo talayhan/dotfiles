@@ -30,6 +30,9 @@ font pango:Ubuntu 10
 #smart_gaps on
 #gaps inner 10
 #gaps outer 10
+bindsym $mod+Shift+s sticky toggle
+
+for_window [instance=Navigator] sticky enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
