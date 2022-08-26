@@ -81,6 +81,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 
 #Show my local ip addresses
 alias mylocalip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+alias mip=mylocalip
 
 #docker
 alias dockerpsf='docker ps --format "table {{.Image}}\t{{.Ports}}\t{{.Names}}"'
