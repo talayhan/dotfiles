@@ -93,6 +93,7 @@ apttools=(
 #sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 
 repos=(
+'ppa:git-core/ppa'
 'ppa:neovim-ppa/unstable'
 'ppa:mc3man/mpv-tests'
 'ppa:numix/ppa'
