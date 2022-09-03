@@ -9,6 +9,13 @@ deps=(
 "coc-snippets"
 "coc-spell-checker"
 "coc-tsserver"
+"coc-pyright"
+"coc-html"
+"coc-css"
+#"coc-jedi"
+#"coc-eslint"
+#"coc-stylelint"
+#"coc-vetur"
 )
 
 for dep in "${deps[@]}"; do
