@@ -88,6 +88,7 @@ apttools=(
 'remind' 			# calendar and alarm program
 'thunar'
 'numix-icon-theme-circle'
+'plantuml'
 )
 
 #sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
