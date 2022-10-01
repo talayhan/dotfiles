@@ -50,6 +50,7 @@ Plug 'ntpeters/vim-better-whitespace'	"\:Stripwhitespace
 Plug 'pangloss/vim-javascript'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'mattn/emmet-vim'
+Plug 'ap/vim-css-color'
 
 " Programming Language Specific
 Plug 'rhysd/vim-clang-format'
