@@ -1,8 +1,6 @@
 #!/bin/bash
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+source ".logs.sh"
 
 ## @TODO add below packages
 # - scan-build-9
@@ -114,15 +112,6 @@ piptools=(
 'yamllint'
 #'pycparser'
 )
-
-# functions
-function debug_log() {
-	echo -e "${GREEN}${1}${NC}"
-}
-
-function error_log() {
-	echo -e "${RED}${1}${NC}"
-}
 
 # https://packages.azlux.fr/
 # * broot
