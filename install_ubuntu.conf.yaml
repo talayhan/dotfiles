@@ -38,6 +38,7 @@
     ~/.newsboat: config/newsboat
     ~/vimwiki: pconfigs/vimwiki
     ~/.vifm: config/vifm
+    ~/.clang-format: config/clang-format/clang-format
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
