@@ -68,7 +68,7 @@
 
 	# Pull in remote changes for the current repository and all its submodules
 	p = !"git pull; git submodule foreach git pull origin master"
-    pr = pull --rebase
+	pr = pull --rebase
 
 	# Clone a repository including all submodules
 	c = clone --recursive
@@ -116,6 +116,9 @@
 
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
+
+	# Extract number of n commits to specified folder
+	extract = "!f() { git format-patch -n$1 -o /tmp/$2; }; f"
 
 	# refs:
 	# https://t.ly/r5xO
