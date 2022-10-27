@@ -12,6 +12,7 @@ deps=(
 "coc-pyright"
 "coc-html"
 "coc-css"
+"coc-tabnine"   #autosuggestions
 #"coc-jedi"
 #"coc-eslint"
 #"coc-stylelint"
