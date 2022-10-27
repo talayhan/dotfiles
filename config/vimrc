@@ -511,7 +511,7 @@ let g:MultipleSearchTextColorSequence = "black,black,white,white,black,black,bla
 
 "neocomplete
 if has('nvim')
-	"let g:deoplete#enable_at_startup = 1
+	;
 else
 	let g:neocomplete#enable_at_startup = 1
 endif
