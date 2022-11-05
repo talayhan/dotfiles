@@ -169,7 +169,7 @@ fi
 
 if [[ ! -e ~/.oh-my-zsh ]]; then
 	debug_log "[+] Installing oh-my-zsh ... "
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	debug_log "[+] Done "
 fi
 
