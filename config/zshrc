@@ -46,6 +46,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(zsh-autosuggestions docker universalarchive extract encode64 tmux tmuxinator taskwarrior gitignore)
+plugins+=(zsh-nvm)
 # User configuration
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
