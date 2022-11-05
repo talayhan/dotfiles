@@ -122,8 +122,8 @@ function add_azlux_repo() {
 	wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 }
 
-function add_node14_repo() {
-	curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+function add_node19_repo() {
+	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
 }
 
 sudo apt update
@@ -137,8 +137,8 @@ for repo in "${repos[@]}" ; do
 	fi
 done
 
-# needed for Node.js 14 installation
-add_node14_repo
+# needed for Node.js 19 installation
+add_node19_repo
 
 sudo apt update
 
