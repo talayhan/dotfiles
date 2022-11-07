@@ -170,6 +170,7 @@ fi
 if [[ ! -e ~/.oh-my-zsh ]]; then
 	debug_log "[+] Installing oh-my-zsh ... "
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 	debug_log "[+] Done "
 fi
 
