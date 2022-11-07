@@ -34,13 +34,13 @@ apttools=(
 'tftpd-hpa'
 'tftp-hpa'
 'rdesktop'
-'jq'				# JSON processor
-'tidy'				# pretty-print HTML files
+'jq'                # JSON processor
+'tidy'              # pretty-print HTML files
 'rofi'
 'python3-pip'
 'python3-venv'
 'tmux'
-'tmuxinator'			# A session manager for tmux
+'tmuxinator'            # A session manager for tmux
 'i3'
 'redshift'
 'unclutter'
@@ -63,11 +63,11 @@ apttools=(
 'openssh-server'
 'patchelf'
 'shellcheck'
-'byzanz'			# Making a GIF screencast
-'rainbowstream'			# twitter cli
+'byzanz'            # Making a GIF screencast
+'rainbowstream'         # twitter cli
 'automake'
-'pcmanfm'			# light file manager
-'wavemon'			# detailed network monitoring tool
+'pcmanfm'           # light file manager
+'wavemon'           # detailed network monitoring tool
 'nodejs'
 'npm'
 'mpg123'
@@ -82,8 +82,8 @@ apttools=(
 'doxygen'
 'sdcv'
 'bat'
-'newsboat' 			# text mode rss reader
-'remind' 			# calendar and alarm program
+'newsboat'          # text mode rss reader
+'remind'            # calendar and alarm program
 'thunar'
 'numix-icon-theme-circle'
 'plantuml'
@@ -118,23 +118,23 @@ piptools=(
 # * bashtop
 # * dog
 function add_azlux_repo() {
-	echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
-	wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+    echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+    wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 }
 
 function add_node19_repo() {
-	curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash -
 }
 
 sudo apt update
 
 for repo in "${repos[@]}" ; do
-	find_string=$(echo ${repo} | cut -d ':' -f 2 | cut -d '/' -f 1)
-	if [[ ! $(ls "/etc/apt/sources.list.d/" | grep ${find_string}) ]]; then
-		debug_log "[+] Add repository ${repo} ... "
-		sudo add-apt-repository "$repo"
-		debug_log "[+] Done "
-	fi
+    find_string=$(echo ${repo} | cut -d ':' -f 2 | cut -d '/' -f 1)
+    if [[ ! $(ls "/etc/apt/sources.list.d/" | grep ${find_string}) ]]; then
+        debug_log "[+] Add repository ${repo} ... "
+        sudo add-apt-repository "$repo"
+        debug_log "[+] Done "
+    fi
 done
 
 # needed for Node.js 19 installation
@@ -143,73 +143,73 @@ add_node19_repo
 sudo apt update
 
 for tool in "${apttools[@]}" ; do
-	if [[ ! $(which "$tool") ]]; then
-		debug_log "[+] Installing ${tool} ... "
-		sudo apt-get install "$tool"
-		debug_log "[+] Done "
-	fi
+    if [[ ! $(which "$tool") ]]; then
+        debug_log "[+] Installing ${tool} ... "
+        sudo apt-get install "$tool"
+        debug_log "[+] Done "
+    fi
 done
 
 for tool in "${piptools[@]}" ; do
-	if [[ ! $(which "$tool") ]]; then
-		debug_log "[+] Installing ${tool} ... "
-		pip3 install --user --upgrade "$tool"
-		debug_log "[+] Done "
-	fi
+    if [[ ! $(which "$tool") ]]; then
+        debug_log "[+] Installing ${tool} ... "
+        pip3 install --user --upgrade "$tool"
+        debug_log "[+] Done "
+    fi
 done
 
 if [[ ! -e ~/.fzf ]]; then
-	debug_log "[+] Installing fzf ... "
-	git clone --depth 1 \
-	https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
-	debug_log "[+] Done "
+    debug_log "[+] Installing fzf ... "
+    git clone --depth 1 \
+    https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    debug_log "[+] Done "
 fi
 
 
 if [[ ! -e ~/.oh-my-zsh ]]; then
-	debug_log "[+] Installing oh-my-zsh ... "
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
-	debug_log "[+] Done "
+    debug_log "[+] Installing oh-my-zsh ... "
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
+    debug_log "[+] Done "
 fi
 
 if [[ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
-	debug_log "[+] Installing zsh-autosuggestions ... "
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	debug_log "[+] Done "
+    debug_log "[+] Installing zsh-autosuggestions ... "
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    debug_log "[+] Done "
 fi
 
 #git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # install vim plugin manager
 if [[ ! -e ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-	debug_log "[+] Installing vim plugin manager ... "
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	debug_log "[+] Done "
+    debug_log "[+] Installing vim plugin manager ... "
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    debug_log "[+] Done "
 else
-	error_log "[-] You need to install Vim first! "
+    error_log "[-] You need to install Vim first! "
 fi
 
 # install custom rofi based launchers
 if [[ ! -e ~/.config/rofi/launchers ]]; then
-	debug_log "[+] Installing custom rofi launchers ... "
-	git clone --depth=1 https://github.com/adi1090x/rofi.git
-	chmod +x rofi/setup.sh
-	./rofi/setup.sh
-	debug_log "[+] Done "
+    debug_log "[+] Installing custom rofi launchers ... "
+    git clone --depth=1 https://github.com/adi1090x/rofi.git
+    chmod +x rofi/setup.sh
+    ./rofi/setup.sh
+    debug_log "[+] Done "
 fi
 
 # clone tpm
 if [[ ! -e ~/.tmux/plugins/tpm ]]; then
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-	# source tmux conf
-	tmux source ~/.tmux.conf
+    # source tmux conf
+    tmux source ~/.tmux.conf
 
-	# install tmux plugins
-	~/.tmux/plugins/tpm/scripts/install_plugins.sh
+    # install tmux plugins
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 SOURCE_STR="
