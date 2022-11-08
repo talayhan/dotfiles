@@ -2,7 +2,11 @@
 
 source ".logs.sh"
 
-curl https://sh.rustup.rs -sSf | sh
+if [[ ! $(command -v "rustup") ]]; then
+    debug_log "[+] Installing  rustup... "
+    curl https://sh.rustup.rs -sSf | sh
+    debug_log "[+] Done "
+fi
 
 pkgs=(
 'alacritty'
@@ -11,7 +15,7 @@ pkgs=(
 )
 
 for package in "${pkgs[@]}" ; do
-    if [[ ! $(which "$package") ]]; then
+    if [[ ! $(cargo install --list | grep "$package") ]]; then
         debug_log "[+] Installing ${package} ... "
         cargo install "$package"
         debug_log "[+] Done "
