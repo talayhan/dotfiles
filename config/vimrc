@@ -16,7 +16,7 @@ Plug 'sindrets/diffview.nvim'
 
 " Cosmetics
 Plug 'sainnhe/gruvbox-material'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 
 " Text Utils
@@ -315,16 +315,37 @@ if has('termguicolors')
     set termguicolors
 endif
 
-set background=dark
 "set background=light
-let g:gruvbox_italics=1
-let g:gruvbox_italicize_strings=1
-let g:gruvbox_filetype_hi_groups = 1
-let g:gruvbox_plugin_hi_groups = 1
+"let g:gruvbox_italics=1
+"let g:gruvbox_italicize_strings=1
+"let g:gruvbox_filetype_hi_groups = 1
+"let g:gruvbox_plugin_hi_groups = 1
 
-let g:gruvbox_contrast_dark = 'soft'
+"let g:gruvbox_contrast_dark = 'soft'
 "let g:gruvbox_contrast_light = 'hard'
-colorscheme gruvbox
+"colorscheme gruvbox
+
+set background=dark
+let g:gruvbox_material_foreground = 'original'
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_ui_contrast='high'
+let g:gruvbox_material_diagnostic_text_highlight=1
+let g:gruvbox_material_diagnostic_line_highlight=1
+let g:gruvbox_material_current_word='underline'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
+
+"lightline colorscheme
+let g:lightline = {
+	\ 'colorscheme': 'gruvbox_material',
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead'
+	\ },
+	\ }
 
 "highlight current line number with a different color
 highlight Highlighted ctermfg=231 ctermbg=24 cterm=NONE
@@ -486,19 +507,6 @@ let g:syntastic_python_checkers = ['pylint']
 let g:instant_markdown_browser = "firefox --new-window"
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-
-"\ 'colorscheme': 'powerline',
-"lightline colorscheme
-let g:lightline = {
-	\ 'colorscheme': 'gruvbox_material',
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-	\ },
-	\ 'component_function': {
-	\   'gitbranch': 'FugitiveHead'
-	\ },
-	\ }
 
 command! PrettyPrintJSON %!python3 -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
