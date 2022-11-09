@@ -227,6 +227,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 nvim +'PlugInstall --sync' +qa
+nvim +'TSInstall c cpp java python rust vim go html css javascript typescript' +qa
+nvim +'TSInstall cmake make bash json toml yaml latex regex markdown proto http dockerfile' +qa
+nvim +'TSUpdate' +qa
 
 xdg-mime default thunar.desktop inode/directory
 
