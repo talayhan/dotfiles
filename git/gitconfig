@@ -139,6 +139,14 @@
 	commit = yellow bold
 	whitespace = red reverse
 
+[mergetool "vimdiff"]
+	path = nvim
+
+[merge]
+	tool = vimdiff
+	renameLimit = 2048
+	conflictstyle = diff3
+
 [push]
 	default = matching
 
