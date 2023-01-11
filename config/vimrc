@@ -54,6 +54,7 @@ Plug 'ap/vim-css-color'
 
 " Programming Language Specific
 Plug 'rhysd/vim-clang-format'
+Plug 'fatih/vim-go'
 
 " Utils
 Plug 'mhinz/vim-grepper'
