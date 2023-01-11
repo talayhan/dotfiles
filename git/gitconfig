@@ -57,6 +57,7 @@
 
 	# Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
 	lo = !"git checkout -- .; git clean -df || clear"
 
 	# extra show stats
@@ -117,7 +118,7 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-	# Extract number of n commits to specified folder
+	# Extract number of n commits to specified name under /tmp folder
 	extract = "!f() { git format-patch -n$1 -o /tmp/$2; }; f"
 
 	# refs:
