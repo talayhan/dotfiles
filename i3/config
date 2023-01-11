@@ -189,7 +189,7 @@ colors {
 
 #02f426 //green
 # class                 border  backgr. text    indicator child_border
-client.focused          #dd4814 #285577 #ffffff #2e9ef4   #02d0f4
+client.focused          #dd4814 #285577 #ffffff #2e9ef4   #285577
 
 hide_edge_borders both
 #new_window normal 0
