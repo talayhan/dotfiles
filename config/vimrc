@@ -226,7 +226,6 @@ nnoremap <leader><space> :noh<cr>
 "use :Stripwhitespace from vim-better-whitespace
 
 nnoremap <leader>r :Grepper -tool git -open -switch -cword -noprompt<cr>
-
 "nnoremap <leader>R :vert scs find 0 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>D :vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
 nnoremap <leader>V :vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>
@@ -702,7 +701,8 @@ if has('nvim-0.6')
     nnoremap <c-p> :Telescope find_files<cr>
     nnoremap <C-g> :Telescope live_grep<Cr>
     nnoremap <C-t> :Telescope treesitter<Cr>
-    nnoremap <Leader>R :lua require'telescope.builtin'.grep_string{}<CR>
+    "nnoremap <Leader>R :lua require'telescope.builtin'.grep_string{}<CR>
+    nnoremap <Leader>R :GrepperRg --no-ignore <C-R>=expand("<cword>")<CR><CR>
 else
     nnoremap <c-p> :Files<cr>
     nnoremap <C-g> :Ag<Cr>
