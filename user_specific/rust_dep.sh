@@ -12,6 +12,7 @@ pkgs=(
 'alacritty'
 'git-delta'
 'cargo-bloat' #find out what takes most of the space in your executable
+'tokei' # count line of code
 )
 
 for package in "${pkgs[@]}" ; do
