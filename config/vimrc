@@ -272,6 +272,7 @@ cnoreabbrev W! w!
 cnoreabbrev w1 w!
 cnoreabbrev W1 w!
 cnoreabbrev Wa! wa!
+cnoreabbrev WA! wa!
 cnoreabbrev wa1 wa!
 cnoreabbrev Wa1 wa!
 cnoreabbrev wA1 wa!
@@ -283,6 +284,7 @@ cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev q1 q!
 cnoreabbrev Wa wa
+cnoreabbrev WA wa
 cnoreabbrev wA! wa!
 cnoreabbrev Wa! wa!
 cnoreabbrev wQ wq
