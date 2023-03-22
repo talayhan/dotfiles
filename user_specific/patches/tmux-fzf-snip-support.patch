@@ -1,19 +1,29 @@
+commit 11fb13c616f44d91f0789d6d311f5a483c758330
+Author: talayhan <samet.talayhan@gmail.com>
+Date:   Thu Mar 23 00:02:43 2023 +0300
+
+    Add custom snip support
+---
+ main.sh          |  2 +-
+ scripts/snips.sh | 17 +++++++++++++++++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
 diff --git a/main.sh b/main.sh
-index f625575..16d870a 100755
+index a64f32a..9a63ff1 100755
 --- a/main.sh
 +++ b/main.sh
 @@ -1,7 +1,7 @@
  #!/usr/bin/env bash
  
  CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
--ITEMS_ORIGIN=$(printf "session\nwindow\npane\ncommand\nkeybinding")
-+ITEMS_ORIGIN=$(printf "session\nwindow\npane\ncommand\nkeybinding\nsnips")
- if [[ "$TMUX_FZF_OPTIONS"x == ""x ]]; then
-     ITEM=$(printf "%s\n[cancel]" "$ITEMS_ORIGIN" | "$CURRENT_DIR/scripts/.fzf-tmux")
- else
+-[[ -z "$TMUX_FZF_ORDER" ]] && TMUX_FZF_ORDER="session|window|pane|command|keybinding|clipboard|process"
++[[ -z "$TMUX_FZF_ORDER" ]] && TMUX_FZF_ORDER="session|window|pane|command|keybinding|clipboard|process|snips"
+ source "$CURRENT_DIR/scripts/.envs"
+ 
+ items_origin="$(echo $TMUX_FZF_ORDER | tr '|' '\n')"
 diff --git a/scripts/snips.sh b/scripts/snips.sh
 new file mode 100755
-index 0000000..6852a21
+index 0000000..cb551af
 --- /dev/null
 +++ b/scripts/snips.sh
 @@ -0,0 +1,17 @@
