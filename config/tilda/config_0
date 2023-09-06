@@ -1,6 +1,6 @@
 tilda_config_version="1.5.2"
-command=""
-font="Monospace 14"
+command="zsh"
+font="Cascadia Code 14"
 key="<Super>i"
 addtab_key="<Shift><Control>t"
 fullscreen_key="F11"
@@ -78,7 +78,7 @@ notaskbar=true
 blinks=true
 scroll_on_key=true
 bell=false
-run_command=false
+run_command=true
 pinned=true
 animation=false
 hidden=false
