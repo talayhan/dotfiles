@@ -88,4 +88,6 @@ alias dockerpsf='docker ps --format "table {{.Image}}\t{{.Ports}}\t{{.Names}}"'
 
 alias tmux-save-pane='tmux capture-pane -pS -'
 
+alias batcatp="batcat --style=plain"
+
 [ -f ~/.bash_custom_aliases ] && source ~/.bash_custom_aliases
