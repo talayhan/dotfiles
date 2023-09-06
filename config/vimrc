@@ -30,6 +30,7 @@ Plug 'tpope/vim-abolish'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'tyru/open-browser.vim'
+Plug 'conornewton/vim-latex-preview'
 
 " General helper
 "Plug 'wesQ3/vim-windowswap'
@@ -68,10 +69,10 @@ Plug 'rhysd/committia.vim'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'vim-scripts/zoomwin'
 
-if has('nvim-0.6')
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+if has('nvim-0.9')
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
@@ -699,8 +700,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "set statusline=%#ErrorMsg#%{pomo#status_bar()}%#StatusLine#
 
 let g:ctrlp_map = ''
-if has('nvim-0.6')
-    nnoremap <c-p> :Telescope find_files<cr>
+if has('nvim-0.9')
+    nnoremap <c-p> :Telescope find_files prompt_prefix=🔍 theme=ivy<cr>
     nnoremap <C-g> :Telescope live_grep<Cr>
     nnoremap <C-t> :Telescope treesitter<Cr>
     "nnoremap <Leader>R :lua require'telescope.builtin'.grep_string{}<CR>
@@ -726,6 +727,8 @@ autocmd FileType markdown,md set tabstop=4 shiftwidth=4 expandtab | %retab!
 ca tn tabnew
 ca th tabp
 ca tl tabn
+
+let g:latex_pdf_viewer="zathura"
 
 "set colorcolumn=100,120
 "hi ColorColumn ctermbg=lightcyan guibg=black
