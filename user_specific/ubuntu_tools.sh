@@ -87,6 +87,8 @@ apttools=(
 'thunar'
 'numix-icon-theme-circle'
 'plantuml'
+'fonts-hack'
+'fonts-cascadia-code'
 )
 
 #sudo apt-get install pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
