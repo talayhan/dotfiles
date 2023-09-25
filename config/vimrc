@@ -312,6 +312,7 @@ endif
 
 "disable new line comments with o
 autocmd FileType * setlocal formatoptions-=o
+autocmd FileType *.c,*.cpp,*.vim call CocAction('toggleExtension', 'coc-spell-checker')
 
 "colorscheme set
 if has('termguicolors')
