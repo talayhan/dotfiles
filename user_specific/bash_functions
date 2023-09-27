@@ -1,65 +1,65 @@
 #!/usr/bin/env bash
 
 function replace-space() {
-	find -name "* *" -type f | rename 's/ /_/g'
+    find -name "* *" -type f | rename 's/ /_/g'
 }
 
 function readelfneed() {
-	readelf -a ${1} | grep NEEDED
+    readelf -a ${1} | grep NEEDED
 }
 
 # $1 = Issue number and explanation
 function create_issue() {
-	FOLDER_NAME="${1}"
-	# ADD here README template
-	# ADD here wiki template
+    FOLDER_NAME="${1}"
+    # ADD here README template
+    # ADD here wiki template
 
-	mkdir "${FOLDER_NAME}" && cd "${FOLDER_NAME}"
-	touch README.md
-	touch wiki.md
+    mkdir "${FOLDER_NAME}" && cd "${FOLDER_NAME}"
+    touch README.md
+    touch wiki.md
 }
 
 diffdiffer() {
-	find ${1} -name "*.c" | xargs git diff --numstat | awk '{split($0, a, " "); if (a[1] != a[2]) print a[3]}'
+    find ${1} -name "*.c" | xargs git diff --numstat | awk '{split($0, a, " "); if (a[1] != a[2]) print a[3]}'
 }
 
 function scrotclip() {
-	scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 }
 
 function rmfilesizeifbigger() {
-	find . -size +${1} -delete
+    find . -size +${1} -delete
 }
 
 function git-hash-differ() {
-	HASH1="${1}"
-	HASH2="${2}"
+    HASH1="${1}"
+    HASH2="${2}"
 
-	echo "[+] Git Hash Differ"
-	echo "[+] HASH-1: ${HASH1}"
-	echo "[+] HASH-2: ${HASH2}"
+    echo "[+] Git Hash Differ"
+    echo "[+] HASH-1: ${HASH1}"
+    echo "[+] HASH-2: ${HASH2}"
 
-	if [ $# -ne 2 ]; then
-		echo "[-] Needs 2 argument. No more no less!"
-		printf "\tUsage: %s <HASH-1> <HASH-2>" "${0}"
-		return
-	fi
-	echo "[+] Creating temp file with HASH-ID ..."
-	git showp "${HASH1}" > /tmp/"${HASH1}"
-	git showp "${HASH2}" > /tmp/"${HASH2}"
+    if [ $# -ne 2 ]; then
+        echo "[-] Needs 2 argument. No more no less!"
+        printf "\tUsage: %s <HASH-1> <HASH-2>" "${0}"
+        return
+    fi
+    echo "[+] Creating temp file with HASH-ID ..."
+    git showp "${HASH1}" > /tmp/"${HASH1}"
+    git showp "${HASH2}" > /tmp/"${HASH2}"
 
-	echo "[+] Diffing with vimdiff, thanks to him :P"
-	vimdiff /tmp/"${HASH1}" /tmp/"${HASH2}"
+    echo "[+] Diffing with vimdiff, thanks to him :P"
+    vimdiff /tmp/"${HASH1}" /tmp/"${HASH2}"
 }
 
 gitgc() {
-	while IFS= read -r -d '' dir; do
-		git --git-dir "$dir" rev-parse 2> /dev/null
-		if [ $? -eq 0 ]; then
-			echo -e "\nRun GC on $dir"
-			git --git-dir "$dir" gc
-		fi
-	done <   <(find -type d -print0)
+    while IFS= read -r -d '' dir; do
+        git --git-dir "$dir" rev-parse 2> /dev/null
+        if [ $? -eq 0 ]; then
+            echo -e "\nRun GC on $dir"
+            git --git-dir "$dir" gc
+        fi
+    done <   <(find -type d -print0)
 }
 
 function generate_c_project() {
@@ -68,7 +68,7 @@ C_CODE="
 
 int main(int argc, char *argv[])
 {
-	return 0;
+    return 0;
 }
 "
 
@@ -81,15 +81,15 @@ OBJECTS=
 EXECUTABLE=main
 
 all:
-	\$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
+    \$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
 
 clean:
-	\$(RM) \$(EXECUTABLE)
+    \$(RM) \$(EXECUTABLE)
 "
-	# ADD here README template
-	# ADD here wiki template
-	echo "${C_CODE}" > main.c
-	echo "${MAKE_CODE}" > Makefile
+    # ADD here README template
+    # ADD here wiki template
+    echo "${C_CODE}" > main.c
+    echo "${MAKE_CODE}" > Makefile
 }
 
 function generate_cc_project() {
@@ -98,11 +98,11 @@ C_CODE="
 
 int main(int argc, char *argv[])
 {
-	int t;
-	scanf(\" %d\", &t);
-	while (t--) {
-	}
-	return 0;
+    int t;
+    scanf(\" %d\", &t);
+    while (t--) {
+    }
+    return 0;
 }
 "
 
@@ -115,102 +115,102 @@ OBJECTS=
 EXECUTABLE=main
 
 all:
-	\$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
+    \$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
 
 clean:
-	\$(RM) \$(EXECUTABLE)
+    \$(RM) \$(EXECUTABLE)
 "
-	# ADD here README template
-	# ADD here wiki template
-	echo "${C_CODE}" > main.c
-	echo "${MAKE_CODE}" > Makefile
+    # ADD here README template
+    # ADD here wiki template
+    echo "${C_CODE}" > main.c
+    echo "${MAKE_CODE}" > Makefile
 }
 
 function generate_cpp_project() {
-	echo "[+] Copying cpp template ..."
+    echo "[+] Copying cpp template ..."
     T_PATH="${HOME}/.templates/cpp/"
     if [ -e "$T_PATH" ]; then
         cp -L $T_PATH/* .
     fi
-	echo "[+] done"
+    echo "[+] done"
 }
 
 function cmakeall() {
-	echo "Should run under the build folder!"
-	cmake ../
-	make
+    echo "Should run under the build folder!"
+    cmake ../
+    make
 }
 
 function gpp17() {
-	g++ "${1}" -std=c++17 -o run
+    g++ "${1}" -std=c++17 -o run
 }
 
 function gpp17run() {
-	g++ "${1}" -std=c++17 -o run && ./run
+    g++ "${1}" -std=c++17 -o run && ./run
 }
 
 function mcd() {
-	mkdir "${1}" && cd "${1}"
+    mkdir "${1}" && cd "${1}"
 }
 
 function clang_tidy_brace_fix() {
-	clang-tidy "${1}" -fix -checks="readability-braces-around-statements"
+    clang-tidy "${1}" -fix -checks="readability-braces-around-statements"
 }
 
 function rgncppcat() {
-	rgn -tcpp "${1}" | batcat
+    rgn -tcpp "${1}" | batcat
 }
 
 function dockerRmiNone1() {
-	docker images | grep none | head -n 1 | tr -s ' ' | cut -d ' ' -f3 | xargs docker rmi -f
+    docker images | grep none | head -n 1 | tr -s ' ' | cut -d ' ' -f3 | xargs docker rmi -f
 }
 
 function time2break() {
-	RED='\033[0;31m'
-	GREEN='\033[0;32m'
-	ORANGE='\033[0;33m'
-	YELLOW='\033[1;33m'
-	NC='\033[0m' # No Color
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    ORANGE='\033[0;33m'
+    YELLOW='\033[1;33m'
+    NC='\033[0m' # No Color
 
-	TIME_DIR="/home/talayhan/Documents/time2series"
-	CURRENT_DATE=$(date +"%d_%m_%Y")
-	FILE_NAME="$TIME_DIR/keep_break_count_$CURRENT_DATE.txt"
+    TIME_DIR="/home/talayhan/Documents/time2series"
+    CURRENT_DATE=$(date +"%d_%m_%Y")
+    FILE_NAME="$TIME_DIR/keep_break_count_$CURRENT_DATE.txt"
 
-	CURRENT_TIME=$(date)
-	echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
-	/home/talayhan/go/bin/countdown 5m && notify-send "TIME TO WORK\!"
-	CURRENT_TIME=$(date)
-	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
+    CURRENT_TIME=$(date)
+    echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
+    /home/talayhan/go/bin/countdown 5m && notify-send "TIME TO WORK\!"
+    CURRENT_TIME=$(date)
+    echo "End time    : $CURRENT_TIME" >> $FILE_NAME
 }
 
 function time2work() {
-	TIME_DIR="/home/talayhan/Documents/time2series"
-	CURRENT_DATE=$(date +"%d_%m_%Y")
-	FILE_NAME="$TIME_DIR/keep_study_count_$CURRENT_DATE.txt"
-	TITLE="${1}"
+    TIME_DIR="/home/talayhan/Documents/time2series"
+    CURRENT_DATE=$(date +"%d_%m_%Y")
+    FILE_NAME="$TIME_DIR/keep_study_count_$CURRENT_DATE.txt"
+    TITLE="${1}"
 
-	CURRENT_TIME=$(date)
-	echo "Start time  : $CURRENT_TIME for $TITLE" >> $FILE_NAME
-	/home/talayhan/go/bin/countdown 25m && notify-send "TIME TO BREAK\!"
-	CURRENT_TIME=$(date)
-	echo "End time    : $CURRENT_TIME" >> $FILE_NAME
+    CURRENT_TIME=$(date)
+    echo "Start time  : $CURRENT_TIME for $TITLE" >> $FILE_NAME
+    /home/talayhan/go/bin/countdown 25m && notify-send "TIME TO BREAK\!"
+    CURRENT_TIME=$(date)
+    echo "End time    : $CURRENT_TIME" >> $FILE_NAME
 }
 
 function pdfso() {
-	local input_file="${1}"
-	local output_file="${2}"
-	ps2pdf -dPDFSETTINGS=/ebook "${input_file}" "${output_file}"
+    local input_file="${1}"
+    local output_file="${2}"
+    ps2pdf -dPDFSETTINGS=/ebook "${input_file}" "${output_file}"
 }
 
 function sedsub() {
-	FROM="${1}"
-	TO="${2}"
-	FILE_NAME="${3}"
-	sed -i "s/${FROM}/${TO}/g" "${FILE_NAME}"
+    FROM="${1}"
+    TO="${2}"
+    FILE_NAME="${3}"
+    sed -i "s/${FROM}/${TO}/g" "${FILE_NAME}"
 }
 
 function fillmem5G() {
-	</dev/zero head -c 5000m | tail
+    </dev/zero head -c 5000m | tail
 }
 
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
