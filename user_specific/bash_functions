@@ -127,9 +127,11 @@ clean:
 }
 
 function generate_cpp_project() {
-	echo "[+] Should run under the desired folder!"
-	cp -r ~/Projects/playground/sample_cpp/* .
-	mkdir build
+	echo "[+] Copying cpp template ..."
+    T_PATH="${HOME}/.templates/cpp/"
+    if [ -e "$T_PATH" ]; then
+        cp -L $T_PATH/* .
+    fi
 	echo "[+] done"
 }
 
