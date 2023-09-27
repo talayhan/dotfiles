@@ -132,6 +132,7 @@ function generate_cpp_project() {
     if [ -e "$T_PATH" ]; then
         cp -L $T_PATH/* .
     fi
+    mkdir build
     echo "[+] done"
 }
 
