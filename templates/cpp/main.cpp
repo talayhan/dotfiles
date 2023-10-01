@@ -53,21 +53,11 @@ typedef unsigned long long int  uint64;
 /* Main()  function */
 int main()
 {
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+    long n;
+    std::cin >> n;
+    std::cout << n << std::endl;
 
-#if 0
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
-    #endif
-
-    int tc;
-    tc = read(int);
-
-    while(tc--){
-        write(tc);
-    }
-
-#endif
     return 0;
 }
 /* Main() Ends Here */
