@@ -51,7 +51,7 @@ plugins=(zsh-autosuggestions docker universalarchive extract encode64 tmux tmuxi
 plugins+=(gitignore zsh-nvm rsync)
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${HOME}/.scripts:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

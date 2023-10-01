@@ -42,6 +42,7 @@
     ~/vimwiki: pconfigs/vimwiki
     ~/.vifm: config/vifm
     ~/.clang-format: config/clang-format/clang-format
+    ~/.scripts: user_specific/scripts
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
