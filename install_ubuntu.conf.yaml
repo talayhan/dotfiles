@@ -17,6 +17,7 @@
     ~/.gitignore: git/gitignore
     ~/.gitconfig_delta: git/gitconfig_delta
     ~/.gitconfig_delta_themes: git/gitconfig_delta_themes
+    ~/.gdbinit: config/gdbinit
     ~/.pam_environment: config/pam_environment
     ~/.tmux.conf: config/tmux.conf
     ~/.urxvt/ext: config/urxvt/ext
