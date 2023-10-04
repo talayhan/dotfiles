@@ -41,6 +41,7 @@
     ~/Pictures/erciyes_mountain.jpg: pics/erciyes_mountain.jpg
     ~/.newsboat: config/newsboat
     ~/vimwiki: pconfigs/vimwiki
+    ~/.config/tmuxinator: pconfigs/tmuxinator
     ~/.vifm: config/vifm
     ~/.clang-format: config/clang-format/clang-format
     ~/.scripts: user_specific/scripts
