@@ -2,12 +2,7 @@
   "coc.preferences.useQuickfixForLocations": true,
   "suggest.snippetIndicator": "🍦",
   "languageserver": {
-    "clangd": {
-      "command": "clangd",
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-    },
-    "clojure-lsp": {
+      "clojure-lsp": {
       "command": "/usr/local/bin/clojure-lsp",
       "filetypes": ["clojure", ".clj", ".cljs", ".cljc"],
       "rootPatterns": ["project.clj"],
