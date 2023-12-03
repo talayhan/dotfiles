@@ -63,8 +63,7 @@ gitgc() {
 }
 
 function generate_c_project() {
-C_CODE="
-#include <stdio.h>
+C_CODE="#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
@@ -73,7 +72,7 @@ int main(int argc, char *argv[])
 "
 
 MAKE_CODE="
-CC=clang
+CC=gcc
 CFLAGS= -g -Wall
 LDFLAGS=
 SOURCES=main.c
