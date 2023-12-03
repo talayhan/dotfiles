@@ -1,3 +1,7 @@
 https://gitlab.com/magnolia1234/bypass-paywalls-clean-filters/-/raw/main/bpc-paywall-filter.txt
 
+# ft
 javascript:window.location='https://google.com/search?q='+window.location.href;
+
+# md
+http://webcache.googleusercontent.com/search?q=cache:
