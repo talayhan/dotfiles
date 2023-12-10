@@ -172,12 +172,12 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status -c ~/.i3/i3status.conf
-    position bottom
+    position top
     separator_symbol ":|:"
     workspace_buttons yes
     font pango:Ubuntu Mono derivative Powerline 15
 colors {
-    background #0e1e2c
+    background #24180b
     statusline #E6E4E2
     # Type              border      background  font
     focused_workspace   #dd4814     #dd4814     #ffffff
