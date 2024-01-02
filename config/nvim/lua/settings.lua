@@ -97,6 +97,16 @@ vim.o.ofu = "syntaxcomplete#Complete"
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.opt.clipboard = "unnamedplus"
 
+-- custom trigger for snippets
+vim.g['UltiSnipsExpandTrigger'] = "<c-j>"
+vim.g['UltiSnipsJumpForwardTrigger'] = "<c-b>"
+vim.g['UltiSnipsJumpBackwardTrigger'] = "<c-z>"
+
+-- multiplesearch config
+vim.g['MultipleSearchMaxColors'] = 32
+vim.g['MultipleSearchColorSequence'] = "LightBlue,green,DarkMagenta,DarkRed,LightYellow,cyan,gray,brown"
+vim.g['MultipleSearchTextColorSequence'] = "black,black,white,white,black,black,black,white"
+
 -- Set status line
 vim.cmd [[autocmd FileType typescript,javascript set expandtab]]
 vim.cmd [[autocmd FileType markdown,md set tabstop=4 shiftwidth=4 expandtab | %retab!]]
