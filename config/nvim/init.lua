@@ -17,11 +17,22 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     {
-        "ellisonleao/gruvbox.nvim",
+        "luisiacc/gruvbox-baby",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme gruvbox]])
+            -- Example config in Lua
+            vim.g.gruvbox_baby_function_style = "NONE"
+            vim.g.gruvbox_baby_keyword_style = "italic"
+
+            -- Enable telescope theme
+            vim.g.gruvbox_baby_telescope_theme = 1
+
+            -- Enable transparent mode
+            vim.g.gruvbox_baby_transparent_mode = 1
+
+            -- Load the colorscheme
+            vim.cmd[[colorscheme gruvbox-baby]]
         end,
     },
     'tpope/vim-commentary',
