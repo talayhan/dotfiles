@@ -1,176 +1,221 @@
-require("plugins")
-
--- Set options
---
+--mostly copied from \@github/vzaa/vimconf
 vim.g.mapleader = ','
+vim.g.maplocalleader = ','
 
--- vim.o.nocompatible = true
-vim.o.termguicolors = true
-vim.o.t_Co = 256
-vim.o.history = 10000
-vim.o.wildmenu = true
-vim.o.wildmode = "longest:full,full"
-vim.o.mouse = "a"
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.backspace = "indent,eol,start"
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 0
-vim.o.smarttab = true
-vim.o.expandtab = true
-vim.o.list = true
-vim.o.listchars = "tab:>-,trail:-"
-vim.o.hidden = true
-vim.o.incsearch = true
-vim.o.hlsearch = true
-vim.o.gdefault = true
-vim.o.number = true
-vim.o.autoindent = true
-vim.o.title = true
-vim.o.ls = 2
-vim.o.scrolloff = 3
-vim.o.encoding = "utf-8"
-vim.o.fileencoding = "utf-8"
-vim.o.showmatch = true
-vim.o.undofile = true
-vim.o.lazyredraw = true
-vim.o.ttyfast = true
-vim.o.timeout = true
-vim.o.timeoutlen = 1000
-vim.o.ttimeout = true
-vim.o.ttimeoutlen = 10
-vim.o.diffopt = vim.o.diffopt .. ",iwhite"
-vim.o.ofu = "syntaxcomplete#Complete"
-vim.wo.signcolumn = "yes"
-vim.o.shortmess = vim.o.shortmess .. "c"
-vim.opt.clipboard = "unnamedplus"
-
--- Setting colorscheme and background
-vim.cmd('colorscheme gruvbox')
-vim.opt.background = 'dark'
-
--- Set status line
-vim.cmd [[autocmd FileType typescript,javascript set expandtab]]
-vim.cmd [[autocmd FileType markdown,md set tabstop=4 shiftwidth=4 expandtab | %retab!]]
-
--- Center after certain movements
-vim.api.nvim_set_keymap('n', '*', '*zz', {})
-vim.api.nvim_set_keymap('n', '#', '#zz', {})
-vim.api.nvim_set_keymap('n', 'n', 'nzz', {})
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', {})
-vim.api.nvim_set_keymap('n', ']]', ']]zz', {})
-vim.api.nvim_set_keymap('n', '[[', '[[zz', {})
-vim.api.nvim_set_keymap('n', '{{', '{{zz', {})
-vim.api.nvim_set_keymap('n', '}}', '}}zz', {})
-
--- Abbreviations
--- no one is really happy until you have this shortcuts
-vim.cmd([[
-    cnoreabbrev W! w!
-    cnoreabbrev w1 w!
-    cnoreabbrev W1 w!
-    cnoreabbrev Wa! wa!
-    cnoreabbrev WA! wa!
-    cnoreabbrev wa1 wa!
-    cnoreabbrev Wa1 wa!
-    cnoreabbrev wA1 wa!
-    cnoreabbrev Wqa! wqa!
-    cnoreabbrev Q! q!
-    cnoreabbrev Qa! qa!
-    cnoreabbrev qaa! qa!
-    cnoreabbrev Qall! qall!
-    cnoreabbrev Wq wq
-    cnoreabbrev q1 q!
-    cnoreabbrev Wa wa
-    cnoreabbrev WA wa
-    cnoreabbrev wA! wa!
-    cnoreabbrev Wa! wa!
-    cnoreabbrev wQ wq
-    cnoreabbrev wQ! wq!
-    cnoreabbrev WQ wq
-    cnoreabbrev WQ! wq!
-    cnoreabbrev Wqa wqa
-    cnoreabbrev WQa wqa
-    cnoreabbrev WQa! wqa!
-    cnoreabbrev wqA! wqa!
-    cnoreabbrev W w
-    cnoreabbrev Q q
-    cnoreabbrev Qall qall
-]])
-
--- Key mappings (nnoremap)
-vim.api.nvim_set_keymap('n', 'q<space>', ':close<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader><space>', ':noh<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>r', ':Grepper -tool git -open -switch -cword -noprompt<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>D', ':vert scs find 1 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>V', ':vert scs find 3 <C-R>=expand("<cword>")<CR><CR>z<CR> :cope<CR><CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>N', ':GrepperRg -tc <C-R>=expand("<cword>")<CR><CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F1>', '<ESC>', {})
-vim.api.nvim_set_keymap('n', '<space>', '<C-^>', {})
-vim.api.nvim_set_keymap('n', '<c-h>', '<C-w>h', {})
-vim.api.nvim_set_keymap('n', '<c-j>', '<C-w>j', {})
-vim.api.nvim_set_keymap('n', '<c-k>', '<C-w>k', {})
-vim.api.nvim_set_keymap('n', '<c-l>', '<C-w>l', {})
-vim.api.nvim_set_keymap('n', '<leader>P', ':exe "Search " . expand("<cword>")<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<silent> <Leader>ml', ':call AppendModeline()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<silent> <C-w>z', ':ZoomWin<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F3>', ':<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list?<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<F6>', ':NERDTreeToggle<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<silent> <Leader>+', ':vertical resize +25<<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<silent> <Leader>-', ':vertical resize -25<<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<buffer> <Leader>cf', ':<C-u>ClangFormat<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', 'K', ':call ShowDocumentation()<CR>', { noremap = true })
-
---vim.api.nvim_set_keymap('n', '<silent><nowait><expr> <C-f>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', { noremap = true, expr = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait><expr> <C-b>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', { noremap = true, expr = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>a', ':<C-u>CocList diagnostics<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>e', ':<C-u>CocList extensions<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>c', ':<C-u>CocList commands<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>o', ':<C-u>CocList outline<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>s', ':<C-u>CocList -I symbols<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>j', ':<C-u>CocNext<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>k', ':<C-u>CocPrev<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<silent><nowait> <space>p', ':<C-u>CocListResume<CR>', { noremap = true })
-
-vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files prompt_prefix=🔍 theme=ivy<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-g>', ':Telescope live_grep<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-t>', ':Telescope treesitter<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>R', ':GrepperRg --no-ignore <C-R>=expand("<cword>")<CR><CR>', { noremap = true })
-
--- Key mappings (inoremap)
-vim.api.nvim_set_keymap('i', '<F1>', '<ESC>', {})
--- vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {}) -- Commented out due to potential conflict
-vim.api.nvim_set_keymap('i', '<Bar>', '<Bar><Esc>:lua require("myplugin").align()<CR>a', { silent = true })
--- Define your function to align
-local M = {}
-
---vim.api.nvim_set_keymap('i', '<TAB>', 'v:lua.tab_complete()', { expr = true, silent = true })
---function _G.tab_complete()
-    --if vim.fn.pumvisible() == 1 then
-        --return [[\<C-n>]]
-    --elseif vim.fn['vsnip#available'](1) == 1 then
-        --return [[\<Plug>(vsnip-expand-or-jump)]]
-    --elseif check_backspace() then
-        --return [[\<Tab>]]
-    --else
-        --return vim.fn['coc#refresh']()
-    --end
---end
-
-function check_backspace()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system {
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    }
 end
+vim.opt.rtp:prepend(lazypath)
 
---vim.api.nvim_set_keymap('i', '<expr><S-TAB>', 'coc#pum#visible() ? coc#pum#prev(1) : "<C-h>"', { expr = true })
+require('lazy').setup({
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd([[colorscheme gruvbox]])
+        end,
+    },
+    'tpope/vim-commentary',
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
+    'tpope/vim-sleuth',
+    'tpope/vim-surround',
+    'tpope/vim-dispatch',
+    'tpope/vim-abolish',
+    'talayhan/vim-snippets',
+    'ntpeters/vim-better-whitespace',
 
---vim.api.nvim_set_keymap('i', '<silent><expr> <c-space>', 'coc#refresh()', { expr = true })
+    'talayhan/s-vim',
+    -- Life saver
+    'airblade/vim-gitgutter',
+    'tpope/vim-fugitive',
+    {'junegunn/gv.vim', dependencies = { "tpope/vim-fugitive"} },
+    'scrooloose/nerdtree',
+    'scrooloose/nerdcommenter',
+    'majutsushi/tagbar',
 
--- Key mappings (vnoremap)
-vim.api.nvim_set_keymap('v', '<F1>', '<ESC>', {})
---vim.cmd([[
-  --autocmd FileType c,cpp,objc vnoremap <buffer> <Leader>cf :ClangFormat<CR>
-  --vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  --vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
---]])
+    -- Text Utils
+    'easymotion/vim-easymotion',
+    'vim-scripts/MultipleSearch',
+    {'suan/vim-instant-markdown', ft = { "markdown" } },
+    'lervag/vimtex',
+    'vimwiki/vimwiki',
+
+    'weirongxu/plantuml-previewer.vim',
+    'aklt/plantuml-syntax',
+    'tyru/open-browser.vim',
+    'conornewton/vim-latex-preview',
+
+    -- General helper
+    -- use 'wesQ3/vim-windowswap'  -- Commented due to not supported plugin format
+    'will133/vim-dirdiff',
+
+    -- Syntax checking
+    'sheerun/vim-polyglot',
+    'vim-syntastic/syntastic',
+    'SirVer/ultisnips',
+
+    -- Web
+    'pangloss/vim-javascript',
+    'maksimr/vim-jsbeautify',
+    'mattn/emmet-vim',
+    'ap/vim-css-color',
+
+    -- Programming Language Specific
+    'rhysd/vim-clang-format',
+    'fatih/vim-go',
+
+    -- Utils
+    'mhinz/vim-grepper',
+    -- Use release branch (recommend)
+    'rhysd/committia.vim',
+    'chrisbra/vim-diff-enhanced',
+    'vim-scripts/zoomwin',
+
+    'nvim-lua/plenary.nvim',
+    -- LRU
+    'xolox/vim-misc',
+
+    -- On test stage
+    -- use 'vim-utils/vim-man'
+    -- use 'tricktux/pomodoro.vim'
+
+    'mbbill/undotree',
+    'rust-lang/rust.vim',
+    'leafo/moonscript-vim',
+    'maxbrunsfeld/vim-yankstack',
+    'vim-scripts/a.vim',
+    { "sindrets/diffview.nvim",   dependencies = { "nvim-lua/plenary.nvim" } },
+    { 'windwp/nvim-autopairs',    opts = {} },
+    { 'kyazdani42/nvim-tree.lua', opts = {} },
+    { 'lewis6991/gitsigns.nvim',  opts = {} },
+    { "rcarriga/nvim-dap-ui",     dependencies = { "mfussenegger/nvim-dap" } },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+    },
+
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+        },
+    },
+
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-path',
+            'andersevenrud/cmp-tmux'
+        },
+        opts = {
+            sources = {
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+                { name = 'path' },
+                { name = 'buffer' },
+                {
+                    name = 'tmux',
+                    option = {
+                        all_panes = true,
+                    }
+                }
+            },
+        }
+    },
+
+    {
+        'nvim-lualine/lualine.nvim',
+        opts = {
+            options = {
+                icons_enabled = false,
+                theme = 'gruvbox',
+                component_separators = '|',
+                section_separators = '',
+            },
+        },
+    },
+
+    {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' }
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = function()
+            return vim.fn.executable 'make' == 1
+        end,
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        config = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+    },
+    -- { import = 'custom.plugins' },
+}, {})
+
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')
+
+-- Setup mason so it can manage external tooling
+require('mason').setup()
+
+require('settings')
+require('lsp')
+require('comp')
+require('treesitter')
+require('keymaps')
+
+local dap = require('dap')
+
+dap.adapters.codelldb = {
+    type = 'server',
+    port = '13000',
+    executable = {
+        command = 'codelldb',
+        args = { '--port', '13000' },
+    },
+}
+
+dap.configurations.c = {
+    {
+        type = "codelldb",
+        request = "launch",
+        cwd = '${workspaceFolder}',
+        terminal = 'integrated',
+        console = 'integratedTerminal',
+        stopOnEntry = false,
+        program = function()
+            -- want it in cmdline, without callback. so fn.input better than ui.input
+            return vim.fn.input('executable: ', vim.loop.cwd() .. '/', 'file')
+        end
+    }
+}
+dap.configurations.cpp = dap.configurations.c
+dap.configurations.rust = dap.configurations.cpp
+dap.configurations.zig = dap.configurations.cpp
+
+require("dapui").setup()
