@@ -24,7 +24,8 @@
     ~/.Xinitrc: config/Xinitrc
     ~/.Xresources: config/Xresources
     ~/.vimrc: config/vimrc
-    ~/.config/nvim/init.vim: config/vimrc
+    ~/.config/nvim/init.lua: config/nvim/init.lua
+    ~/.config/nvim/lua: config/nvim/lua
     ~/.config/nvim/coc-settings.json: config/coc/coc-settings.json
     ~/.zshrc: config/zshrc
     ~/.config/redshift.conf: config/redshift.conf
