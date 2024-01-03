@@ -35,6 +35,8 @@ vim.cmd [[set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp]]
 vim.cmd [[set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp]]
 vim.cmd [[set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp]]
 
+vim.cmd [[set ma]]
+
 -- do not wrap searches at the end of the files
 vim.o.wrapscan = false
 -- start scrolling at 3rd row
@@ -65,7 +67,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim.o.nocompatible = true
-vim.o.t_Co = 256
+--vim.o.t_Co = 256
 vim.o.history = 10000
 vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"

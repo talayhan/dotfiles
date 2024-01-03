@@ -35,6 +35,18 @@ require('lazy').setup({
             vim.cmd[[colorscheme gruvbox-baby]]
         end,
     },
+    {
+        "jackMort/ChatGPT.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("chatgpt").setup()
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    },
     'tpope/vim-commentary',
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
@@ -43,7 +55,7 @@ require('lazy').setup({
     'tpope/vim-dispatch',
     'tpope/vim-abolish',
     'talayhan/vim-snippets',
-    'ntpeters/vim-better-whitespace',
+    --'ntpeters/vim-better-whitespace',
 
     'talayhan/s-vim',
     -- Life saver
@@ -57,7 +69,7 @@ require('lazy').setup({
     -- Text Utils
     'easymotion/vim-easymotion',
     'vim-scripts/MultipleSearch',
-    {'suan/vim-instant-markdown', ft = { "markdown" } },
+    --{'suan/vim-instant-markdown', ft = { "markdown" } },
     'lervag/vimtex',
     'vimwiki/vimwiki',
 
@@ -71,7 +83,7 @@ require('lazy').setup({
     'will133/vim-dirdiff',
 
     -- Syntax checking
-    'sheerun/vim-polyglot',
+    --'sheerun/vim-polyglot',
     'vim-syntastic/syntastic',
     'SirVer/ultisnips',
 
@@ -79,7 +91,7 @@ require('lazy').setup({
     'pangloss/vim-javascript',
     'maksimr/vim-jsbeautify',
     'mattn/emmet-vim',
-    'ap/vim-css-color',
+    --'ap/vim-css-color',
 
     -- Programming Language Specific
     'rhysd/vim-clang-format',
