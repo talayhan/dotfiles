@@ -6,7 +6,6 @@ vim.o.hlsearch = true
 
 --Make line numbers default
 vim.wo.number = true
-vim.wo.relativenumber = true
 
 --Do not save when switching buffers
 vim.o.hidden = true
@@ -104,14 +103,15 @@ vim.g['UltiSnipsExpandTrigger'] = "<c-j>"
 vim.g['UltiSnipsJumpForwardTrigger'] = "<c-b>"
 vim.g['UltiSnipsJumpBackwardTrigger'] = "<c-z>"
 
+vim.cmd([[
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+]])
+
 -- multiplesearch config
 vim.g['MultipleSearchMaxColors'] = 32
 vim.g['MultipleSearchColorSequence'] = "LightBlue,green,DarkMagenta,DarkRed,LightYellow,cyan,gray,brown"
 vim.g['MultipleSearchTextColorSequence'] = "black,black,white,white,black,black,black,white"
-
--- Set status line
-vim.cmd [[autocmd FileType typescript,javascript set expandtab]]
-vim.cmd [[autocmd FileType markdown,md set tabstop=4 shiftwidth=4 expandtab | %retab!]]
 
 -- Abbreviations
 -- no one is really happy until you have this shortcuts

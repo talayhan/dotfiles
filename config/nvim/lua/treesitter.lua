@@ -1,4 +1,5 @@
 require('nvim-treesitter.configs').setup {
+    update_strategy = "manual",
     auto_install = false,
     ensure_installed = { 'c', 'cpp', 'python', 'rust', 'zig', 'markdown', 'lua' },
     highlight = { enable = true, disable = { "lua" } },

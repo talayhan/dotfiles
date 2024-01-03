@@ -72,7 +72,6 @@ require('lazy').setup({
     --{'suan/vim-instant-markdown', ft = { "markdown" } },
     'lervag/vimtex',
     'vimwiki/vimwiki',
-
     'weirongxu/plantuml-previewer.vim',
     'aklt/plantuml-syntax',
     'tyru/open-browser.vim',
