@@ -65,7 +65,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- vim.o.nocompatible = true
+vim.opt.compatible = false
+vim.cmd [[ filetype plugin on ]]
+vim.cmd [[ syntax on ]]
 --vim.o.t_Co = 256
 vim.o.history = 10000
 vim.o.wildmenu = true
