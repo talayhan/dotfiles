@@ -73,17 +73,15 @@ int main(int argc, char *argv[])
 
 MAKE_CODE="
 CC=gcc
-CFLAGS= -g -Wall
-LDFLAGS=
+CFLAGS=-g -Wall
 SOURCES=main.c
-OBJECTS=
 EXECUTABLE=main
 
 all:
-    \$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
+\t\$(CC) \$(SOURCES) \$(CFLAGS) -o \$(EXECUTABLE)
 
 clean:
-    \$(RM) \$(EXECUTABLE)
+\t\$(RM) \$(EXECUTABLE)
 "
     # ADD here README template
     # ADD here wiki template
