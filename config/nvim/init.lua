@@ -44,6 +44,7 @@ require('lazy').setup({
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
+            "folke/trouble.nvim",
             "nvim-telescope/telescope.nvim"
         }
     },
@@ -84,7 +85,7 @@ require('lazy').setup({
     -- Syntax checking
     --'sheerun/vim-polyglot',
     'vim-syntastic/syntastic',
-    'SirVer/ultisnips',
+    --'SirVer/ultisnips',
 
     -- Web
     'pangloss/vim-javascript',
