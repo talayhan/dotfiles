@@ -36,6 +36,8 @@ vim.cmd [[set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp]]
 
 vim.cmd [[set ma]]
 
+vim.cmd [[highlight ColorColumn ctermbg=lightgrey guibg=lightgrey]]
+
 -- do not wrap searches at the end of the files
 vim.o.wrapscan = false
 -- start scrolling at 3rd row
@@ -66,8 +68,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.opt.compatible = false
+vim.cmd [[ set nocompatible ]]
 vim.cmd [[ filetype plugin on ]]
 vim.cmd [[ syntax on ]]
+
 --vim.o.t_Co = 256
 vim.o.history = 10000
 vim.o.wildmenu = true
@@ -105,15 +109,10 @@ vim.g['UltiSnipsExpandTrigger'] = "<c-j>"
 vim.g['UltiSnipsJumpForwardTrigger'] = "<c-b>"
 vim.g['UltiSnipsJumpBackwardTrigger'] = "<c-z>"
 
-vim.cmd([[
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-]])
-
 -- multiplesearch config
 vim.g['MultipleSearchMaxColors'] = 32
-vim.g['MultipleSearchColorSequence'] = "LightBlue,green,DarkMagenta,DarkRed,LightYellow,cyan,gray,brown"
-vim.g['MultipleSearchTextColorSequence'] = "black,black,white,white,black,black,black,white"
+vim.g['MultipleSearchColorSequence'] = "DarkMagenta,DarkRed,LightYellow,cyan,gray,brown,LightBlue,green"
+vim.g['MultipleSearchTextColorSequence'] = "black,black,black,black,black,black,black,black"
 
 -- Abbreviations
 -- no one is really happy until you have this shortcuts
