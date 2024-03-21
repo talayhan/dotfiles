@@ -26,6 +26,7 @@
     ~/.vimrc: config/vimrc
     ~/.config/nvim/init.lua: config/nvim/init.lua
     ~/.config/nvim/lua: config/nvim/lua
+    ~/.config/nvim/ftdetect: config/nvim/ftdetect
     ~/.config/nvim/coc-settings.json: config/coc/coc-settings.json
     ~/.zshrc: config/zshrc
     ~/.config/redshift.conf: config/redshift.conf
