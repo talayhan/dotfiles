@@ -55,7 +55,6 @@ require('lazy').setup({
     'tpope/vim-surround',
     'tpope/vim-dispatch',
     'tpope/vim-abolish',
-    'talayhan/vim-snippets',
     --'ntpeters/vim-better-whitespace',
 
     'talayhan/s-vim',
@@ -145,7 +144,8 @@ require('lazy').setup({
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-path',
-            'andersevenrud/cmp-tmux'
+            'andersevenrud/cmp-tmux',
+            'talayhan/vim-snippets'
         },
         opts = {
             sources = {

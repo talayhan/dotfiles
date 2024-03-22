@@ -63,6 +63,10 @@ kmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', kopt)
 kmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', kopt)
 kmap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', kopt)
 
+kmap('n', '<leader>fk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], kopt)
+
+kmap('n', 'glc', '<cmd>VimwikiToggleListItem<cr>', kopt)
+
 kmap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
 kmap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 

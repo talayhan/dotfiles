@@ -149,3 +149,8 @@ vim.cmd([[
     cnoreabbrev Qall qall
 ]])
 
+vim.cmd([[
+au FileType vimwiki setlocal shiftwidth=4 tabstop=4 noexpandtab
+au FileType markdown setlocal shiftwidth=4 tabstop=4 noexpandtab
+au BufNewFile $VIMWIKI_DIARY_PATH/*.md :silent 0r !~/vimwiki/generate-vimwiki-diary-template.py '%'
+]])
