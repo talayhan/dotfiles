@@ -257,6 +257,8 @@ snippet tde
 # printf
 snippet pr
 	printf("${1:%s}\n"${2});
+snippet prr
+	printf("\033[0;32m[%s-%d]${1:%s}\n\033[0m", __func__, __LINE__, ${2});
 snippet dbf
 	debugf("${1:%s}"${2});
 snippet dbfe
