@@ -112,6 +112,7 @@ piptools=(
 'netifaces'
 'python-language-server[all]'
 'yamllint'
+'gpt-command-line' #check config under ~/.config/gpt-cli
 #'pycparser'
 )
 
