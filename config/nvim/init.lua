@@ -150,7 +150,14 @@ require('lazy').setup({
         opts = {
             sources = {
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                {
+                    name = 'luasnip',
+                    option = {
+                        history = true,
+                        region_check_events = "InsertEnter",
+                        delete_check_events = "TextChanged,InsertLeave",
+                    }
+                },
                 { name = 'path' },
                 { name = 'buffer' },
                 {
@@ -197,6 +204,24 @@ require('lazy').setup({
             pcall(require('nvim-treesitter.install').update { with_sync = true })
         end,
     },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            signs = true,
+            search = {
+                command = "rg",
+                args = {
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                }
+            }
+        }
+    },
+
     -- { import = 'custom.plugins' },
 }, {})
 
