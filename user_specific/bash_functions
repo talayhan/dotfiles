@@ -211,4 +211,10 @@ function fillmem5G() {
     </dev/zero head -c 5000m | tail
 }
 
+function valgrindRunFull() {
+    #@TODO arg check
+    local bin=${1}
+    valgrind --leak-check=full --track-fds=yes --trace-children=yes --show-leak-kinds=all --track-origins=yes --verbose "${bin}"
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
