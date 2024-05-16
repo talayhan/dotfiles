@@ -55,7 +55,7 @@ require('lazy').setup({
     'tpope/vim-surround',
     'tpope/vim-dispatch',
     'tpope/vim-abolish',
-    --'ntpeters/vim-better-whitespace',
+    'ntpeters/vim-better-whitespace',
 
     'talayhan/s-vim',
     -- Life saver
