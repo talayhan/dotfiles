@@ -1,0 +1,18 @@
+default_assistant: dev
+markdown: True
+assistants:
+  dev:
+    model: gpt-3.5-turbo
+    temperature: 1.0
+    messages:
+      - { role: system, content: "You are a software developer." }
+  senior:
+    model: gpt-4o
+    temperature: 1.0
+    messages:
+      - { role: system, content: "I want you to act as a senior network enginner. I will provide some specific information about technical design, and your job to come up with implementation without explanation and architecture details." }
+  staff:
+    model: gpt-4
+    temperature: 1.0
+    messages:
+      - { role: system, content: "I want you to act as a staff software enginner especially expert on algorithm, data structure and system design. I will provide some specific information about the task. Your job to come up with an explanation with correct solution. You have to be specific and your answer should be short." }
