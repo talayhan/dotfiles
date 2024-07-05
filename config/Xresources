@@ -24,8 +24,10 @@ URxvt.foreground:white
 URxvt.transparent: true
 URxvt.shading: 25
 
-URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
+!URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
+!URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
+URxvt.font:     xft:GitLab Mono:size=16
+URxvt.boldFont: xft:GitLab Mono:bold:size=16
 
 ! URxvt*color0:  #000000 // black
 ! URxvt*color1:  #B40000 // red
