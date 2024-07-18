@@ -126,7 +126,9 @@ require('lazy').setup({
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
     },
-
+    {
+        'williamboman/mason.nvim',
+    },
     {
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -134,7 +136,6 @@ require('lazy').setup({
             'williamboman/mason-lspconfig.nvim',
         },
     },
-
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
