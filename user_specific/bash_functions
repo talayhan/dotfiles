@@ -217,4 +217,14 @@ function valgrindRunFull() {
     valgrind --leak-check=full --track-fds=yes --trace-children=yes --show-leak-kinds=all --track-origins=yes --verbose "${bin}"
 }
 
+rocky9-docker () {
+    SOURCE_CODE="${1}"
+    docker run \
+        --rm \
+        --interactive \
+        --tty \
+        --workdir /build \
+        --volume ${SOURCE_CODE}:/build rockylinux:9.3
+}
+
 [ -f ~/.bash_custom_functions ] && source ~/.bash_custom_functions
