@@ -48,6 +48,19 @@ require('lazy').setup({
             "nvim-telescope/telescope.nvim"
         }
     },
+    { "nvim-neotest/nvim-nio" },
+    {
+      "supermaven-inc/supermaven-nvim",
+      config = function()
+        require("supermaven-nvim").setup({
+            keymaps = {
+               accept_suggestion = "<C-Tab>",
+               clear_suggestion = "<C-]>",
+               accept_word = "<C-k>",
+            },
+        })
+      end,
+    },
     'tpope/vim-commentary',
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
