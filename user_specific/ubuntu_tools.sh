@@ -141,7 +141,7 @@ for repo in "${repos[@]}" ; do
 done
 
 # needed for Node.js 19 installation
-add_node19_repo
+#add_node19_repo
 
 sudo apt update
 
