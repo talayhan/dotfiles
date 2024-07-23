@@ -51,6 +51,7 @@ require('lazy').setup({
     { "nvim-neotest/nvim-nio" },
     {
       "supermaven-inc/supermaven-nvim",
+      enabled = false,
       config = function()
         require("supermaven-nvim").setup({
             keymaps = {
