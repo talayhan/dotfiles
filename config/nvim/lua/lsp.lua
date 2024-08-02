@@ -64,6 +64,17 @@ require('lspconfig')['clangd'].setup {
   settings = {}
 }
 
+
+require('lspconfig')['tsserver'].setup {
+  filetypes = {
+    "javascript",
+    "typescript"
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {}
+}
+
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
 	local config = vim.diagnostic.config
 	local vt = config().virtual_text
