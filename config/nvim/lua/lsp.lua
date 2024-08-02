@@ -64,6 +64,15 @@ require('lspconfig')['clangd'].setup {
   settings = {}
 }
 
+require('lspconfig')['rust_analyzer'].setup {
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}
 
 require('lspconfig')['tsserver'].setup {
   filetypes = {
@@ -76,11 +85,11 @@ require('lspconfig')['tsserver'].setup {
 }
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
-	local config = vim.diagnostic.config
-	local vt = config().virtual_text
-	config {
-		virtual_text = not vt,
-		underline = not vt,
-		signs = not vt,
-	}
+    local config = vim.diagnostic.config
+    local vt = config().virtual_text
+    config {
+        virtual_text = not vt,
+        underline = not vt,
+        signs = not vt,
+    }
 end, { desc = "toggle diagnostic" })

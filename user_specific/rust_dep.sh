@@ -23,3 +23,13 @@ for package in "${pkgs[@]}" ; do
     fi
 done
 
+rustup component add rust-src
+rustup component add rust-analyzer
+
+# check installed source
+echo "[+] Print installed targets ..."
+rustup target list | grep installed
+echo "[+] done"
+echo "[+] Print rust-analyzer version ..."
+rust-analyzer --version
+echo "[+] done"
