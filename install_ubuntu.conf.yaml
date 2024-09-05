@@ -40,7 +40,7 @@
     ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
     ~/.config/tilda/config_0: config/tilda/config_0
     ~/.config/gpt-cli/gpt.yml: config/gpt-cli/gpt.yml
-    ~/.i3: i3
+    ~/.config/sway: sway
     ~/Pictures/erciyes_mountain.jpg: pics/erciyes_mountain.jpg
     ~/.newsboat: config/newsboat
     ~/vimwiki: pconfigs/vimwiki
