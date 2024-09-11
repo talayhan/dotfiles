@@ -111,8 +111,8 @@ vim.g['UltiSnipsJumpBackwardTrigger'] = "<c-z>"
 
 -- multiplesearch config
 vim.g['MultipleSearchMaxColors'] = 32
-vim.g['MultipleSearchColorSequence'] = "DarkMagenta,DarkRed,LightYellow,cyan,gray,brown,LightBlue,green"
-vim.g['MultipleSearchTextColorSequence'] = "black,black,black,black,black,black,black,black"
+vim.g['MultipleSearchColorSequence'] = "LightYellow,yellow,blue,brown,LightGreen,LightBlue,green,cyan,gray,DarkMagenta,DarkRed"
+vim.g['MultipleSearchTextColorSequence'] = "black,black,white,white,black,black,black,black,black,white,white"
 
 -- Abbreviations
 -- no one is really happy until you have this shortcuts
