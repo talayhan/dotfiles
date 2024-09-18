@@ -8,9 +8,9 @@ luasnip.config.setup {}
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 cmp.setup {
-    sources = {
-        { name = "supermaven" }
-    },
+    --sources = {
+        --{ name = "supermaven" }
+    --},
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)

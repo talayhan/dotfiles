@@ -49,6 +49,9 @@ kmap('n', '<F8>', ':TagbarToggle<cr>', kopt)
 
 kmap('n', '<space>', '<C-^>', kopt)
 
+--nnoremap <Leader>R :GrepperRg --no-ignore <C-R>=expand("<cword>")<CR><CR>
+--kmap('n', '<Leader>R', '<cmd>GrepperRg --no-ignore <c-w><cr>', kopt)
+
 -- telescope
 kmap('n', '<c-p>', '<cmd>Telescope find_files<cr>', kopt)
 kmap('n', '<leader>g', '<cmd>Telescope live_grep<cr>', kopt)

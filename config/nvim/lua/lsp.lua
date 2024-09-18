@@ -67,6 +67,9 @@ require('lspconfig')['clangd'].setup {
 require('lspconfig')['rust_analyzer'].setup {
   settings = {
     ['rust-analyzer'] = {
+      checkOnSave = {
+        command = "clippy";
+      },
       diagnostics = {
         enable = false;
       }
