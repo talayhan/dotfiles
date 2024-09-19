@@ -30,6 +30,7 @@ apttools=(
 'silversearcher-ag'
 'rxvt-unicode-256color'
 'exuberant-ctags'
+'universal-ctags'   # for rust-tagbar compatibility
 'minicom'
 'tftpd-hpa'
 'tftp-hpa'

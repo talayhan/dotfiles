@@ -154,3 +154,5 @@ au FileType vimwiki setlocal shiftwidth=4 tabstop=4 noexpandtab
 au FileType markdown setlocal shiftwidth=4 tabstop=4 noexpandtab
 au BufNewFile $VIMWIKI_DIARY_PATH/*.md :silent 0r !~/vimwiki/generate-vimwiki-diary-template.py '%'
 ]])
+
+vim.g.tagbar_ctags_bin = 'ctags-universal'
