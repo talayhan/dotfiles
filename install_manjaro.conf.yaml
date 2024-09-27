@@ -14,23 +14,28 @@
     ~/.exports: user_specific/exports
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
+    ~/.gitconfig_delta: git/gitconfig_delta
+    ~/.gitconfig_delta_themes: git/gitconfig_delta_themes
+    ~/.gdbinit: config/gdbinit
     ~/.pam_environment: config/pam_environment
     ~/.tmux.conf: config/tmux.conf
+    ~/.Xinitrc: config/Xinitrc
     ~/.urxvt/ext: config/urxvt/ext
-    ~/.vimrc: config/vimrc
-    ~/.config/nvim/init.vim: config/vimrc
+    ~/.config/redshift.conf: manjaro-config/redshift.conf
     ~/.zshrc: config/zshrc
     ~/.taskrc: config/taskrc
     ~/.fonts: fonts
-    ~/.Xinitrc: config/Xinitrc
-    ~/.Xresources: config/Xresources
-    ~/.gtkrc-2.0: config/gtkrc-2.0
-    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
-    ~/.config/redshift.conf: config/redshift.conf
+    ~/.icons: icons
+    ~/.templates: templates
     ~/.config/zathura/zathurarc: config/zathura/zathurarc
-    ~/Pictures/w2.png: pics/w2.png
-    ~/Pictures/w4.png: pics/w4.png
+    ~/.config/nvim/init.lua: manjaro-config/nvim/init.lua
+    ~/.config/nvim/lua: manjaro-config/nvim/lua
+    ~/.config/nvim/ftdetect: manjaro-config/nvim/ftdetect
+    ~/vimwiki: pconfigs/vimwiki
+    ~/.vifm: config/vifm
+    ~/.clang-format: config/clang-format/clang-format
+    ~/.scripts: user_specific/scripts
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
-    - [make -C music, Installing pomodoro notification mp3]
+    - [bash ./user_specific/manjaro/install_tools.sh, Installing tools]
