@@ -47,8 +47,10 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions docker universalarchive extract encode64 tmux tmuxinator taskwarrior)
-plugins+=(gitignore zsh-nvm rsync)
+plugins=(docker universalarchive extract encode64 tmux tmuxinator taskwarrior)
+plugins+=(gitignore rsync)
+#plugins+=(zsh-nvm)
+plugins+=(zsh-autosuggestions)
 # User configuration
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${HOME}/.scripts:$PATH"
