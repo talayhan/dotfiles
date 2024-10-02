@@ -20,21 +20,24 @@
     ~/.pam_environment: config/pam_environment
     ~/.tmux.conf: config/tmux.conf
     ~/.Xinitrc: config/Xinitrc
+    ~/.Xresources: config/Xresources
     ~/.urxvt/ext: config/urxvt/ext
     ~/.config/redshift.conf: manjaro-config/redshift.conf
+    ~/.config/nvim/init.lua: config/nvim/init.lua
+    ~/.config/nvim/lua: config/nvim/lua
+    ~/.config/nvim/ftdetect: config/nvim/ftdetect
+    ~/.config/nvim/init.lua: config/nvim/init.lua
     ~/.zshrc: config/zshrc
     ~/.taskrc: config/taskrc
     ~/.fonts: fonts
     ~/.icons: icons
     ~/.templates: templates
     ~/.config/zathura/zathurarc: config/zathura/zathurarc
-    ~/.config/nvim/init.lua: manjaro-config/nvim/init.lua
-    ~/.config/nvim/lua: manjaro-config/nvim/lua
-    ~/.config/nvim/ftdetect: manjaro-config/nvim/ftdetect
-    ~/vimwiki: pconfigs/vimwiki
     ~/.vifm: config/vifm
     ~/.clang-format: config/clang-format/clang-format
     ~/.scripts: user_specific/scripts
+    ~/vimwiki: pconfigs/vimwiki
+    ~/.config/alacritty/alacritty.yml: config/alacritty.yml
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
