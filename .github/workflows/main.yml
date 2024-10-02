@@ -44,6 +44,15 @@ jobs:
     container:
       image: manjarolinux/base:latest
     steps:
+      - name: Update system
+        run: pacman -Syu --noconfirm
+
+      - name: Install git
+        run: pacman -S git --noconfirm
+
+      - name: Configure git for submodules
+        run: git config --global --add safe.directory '*'
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
