@@ -36,5 +36,19 @@ jobs:
       # TODO user_specific things
       - name: TODO
         run: |
-          echo User_specific tools are missing,
-          echo should be installed later!
+          echo "User_specific tools are missing"
+          bash ./user_specific/ubuntu_tools.sh
+
+  manjaro_build:
+    runs-on: ubuntu-latest
+    container:
+      image: manjarolinux/base:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT }}
+          submodules: recursive
+
+      - name: Install Manjaro Configs
+        run: ./install -c install_manjaro.conf.yaml
