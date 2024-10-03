@@ -49,7 +49,7 @@ for tool in "${tools[@]}"; do
     stripped=$(echo "${b:0:$((length-1))}")
     if [[ ! $(which "$stripped") ]]; then
         debug_log "[+] Installing ${stripped} ..."
-        sudo pacman -S "$stripped"
+        sudo pacman -S "$stripped" --noconfirm
         debug_log "[+] done "
     else
         debug_log "[+] ${stripped} is already available!"
