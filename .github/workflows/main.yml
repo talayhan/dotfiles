@@ -48,7 +48,7 @@ jobs:
         run: pacman -Syu --noconfirm
 
       - name: Install git
-        run: pacman -S git --noconfirm
+        run: pacman -S git make --noconfirm
 
       - name: Configure git for submodules
         run: git config --global --add safe.directory '*'
