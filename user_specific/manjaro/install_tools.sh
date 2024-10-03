@@ -1,6 +1,17 @@
 #!/bin/bash
 
-source ".logs.sh"
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# functions
+function debug_log() {
+	echo -e "${GREEN}${1}${NC}"
+}
+
+function error_log() {
+	echo -e "${RED}${1}${NC}"
+}
 
 tools=(
     '(pulseaudio, pulseaudio)'
@@ -15,7 +26,6 @@ tools=(
     '(git-delta, delta)'
 );
 
-
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
     debug_log "[+] Oh-my-zsh installing ..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -26,7 +36,10 @@ fi
 
 if [[ ! $(which rustc) ]]; then
     debug_log "[+] Installing rustup"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init
+    chmod +x rustup-init
+    ./rustup-init -y
+    rm rustup-init
     debug_log "[+] done"
 fi
 
