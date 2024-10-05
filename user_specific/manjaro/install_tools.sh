@@ -68,3 +68,7 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-nvm" ]; then
     git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 fi
+
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-fzf-history-search" ]; then
+    git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+fi

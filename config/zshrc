@@ -51,6 +51,7 @@ plugins=(docker universalarchive extract encode64 tmux tmuxinator taskwarrior)
 plugins+=(gitignore rsync)
 #plugins+=(zsh-nvm)
 plugins+=(zsh-autosuggestions)
+plugins+=(zsh-fzf-history-search)
 # User configuration
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:${HOME}/.scripts:$PATH"
