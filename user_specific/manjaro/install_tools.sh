@@ -72,3 +72,8 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-fzf-history-search" ]; then
     git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
 fi
+
+if [ ! -d "$HOME/.fzf" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
