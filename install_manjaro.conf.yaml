@@ -38,6 +38,7 @@
     ~/.scripts: user_specific/scripts
     ~/vimwiki: pconfigs/vimwiki
     ~/.config/alacritty/alacritty.yml: config/alacritty.yml
+    ~/.i3/config: manjaro-config/i3/config
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
