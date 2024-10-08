@@ -89,6 +89,18 @@ require('lspconfig')['ts_ls'].setup {
   settings = {}
 }
 
+require('lspconfig')['gopls'].setup {
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+}
+
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
     local config = vim.diagnostic.config
     local vt = config().virtual_text
