@@ -24,6 +24,8 @@ tools=(
     '(nvm, nvm)'
     '(ripgrep-all, rg)'
     '(git-delta, delta)'
+    '(golang, go)'
+    '(golsp, gopls)'
 );
 
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
