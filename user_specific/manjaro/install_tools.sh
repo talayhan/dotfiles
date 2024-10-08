@@ -26,6 +26,7 @@ tools=(
     '(git-delta, delta)'
     '(golang, go)'
     '(golsp, gopls)'
+    '(ts_ls, typescript-language-server)'
 );
 
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
