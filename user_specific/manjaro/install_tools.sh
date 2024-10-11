@@ -27,7 +27,15 @@ tools=(
     '(golang, go)'
     '(golsp, gopls)'
     '(ts_ls, typescript-language-server)'
+    '(npm, npm)'
+    '(vifm, vifm)'
 );
+
+npm_packages=(
+    '(cdk, aws-cdk)'
+);
+
+# TODO: Add AWS CDK/SDK
 
 if [ ! -d "$HOME/.oh-my-zsh/" ]; then
     debug_log "[+] Oh-my-zsh installing ..."
