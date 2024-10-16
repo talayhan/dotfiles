@@ -29,6 +29,7 @@ tools=(
     '(ts_ls, typescript-language-server)'
     '(npm, npm)'
     '(vifm, vifm)'
+    '(clang, clang)'
 );
 
 npm_packages=(
