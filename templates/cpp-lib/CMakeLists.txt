@@ -27,7 +27,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Other common choices are STATIC, SHARED, and MODULE
 # Including header files here helps IDEs but is not required.
 # Output libname matches target name, with the usual extensions on your system
-#add_library(dummy dummy.cpp dummy.hpp)
+add_library(dummy dummy.cpp dummy.hpp)
 
 # Link each target with other targets or add options, etc.
 
@@ -36,7 +36,7 @@ add_executable(main main.cpp)
 
 # Make sure you link your targets with this command. It can also link libraries and
 # even flags, so linking a target that does not exist will not give a configure-time error.
-#target_link_libraries(main PRIVATE dummy)
+target_link_libraries(main PRIVATE dummy)
 
 ## [main]
 
