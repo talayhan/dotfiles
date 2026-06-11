@@ -27,8 +27,10 @@ URxvt.shading: 25
 
 !URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
 !URxvt.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
-URxvt.font:     xft:GitLab Mono:size=16
-URxvt.boldFont: xft:GitLab Mono:bold:size=16
+URxvt.font:           xft:JetBrains Mono Nerd Font:size=16, xft:Noto Color Emoji:size=16
+URxvt.boldFont:       xft:JetBrains Mono Nerd Font:bold:size=16, xft:Noto Color Emoji:size=16
+URxvt.italicFont:     xft:JetBrains Mono Nerd Font:italic:size=16, xft:Noto Color Emoji:size=16
+URxvt.boldItalicFont: xft:JetBrains Mono Nerd Font:bold:italic:size=16, xft:Noto Color Emoji:size=16
 
 ! URxvt*color0:  #000000 // black
 ! URxvt*color1:  #B40000 // red
