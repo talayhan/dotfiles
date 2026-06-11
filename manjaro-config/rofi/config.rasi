@@ -1,0 +1,8 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    terminal: "terminal";
+    display-drun: "Apps";
+}
+
+@theme "light-paper"

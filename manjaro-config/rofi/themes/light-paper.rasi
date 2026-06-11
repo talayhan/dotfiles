@@ -1,0 +1,102 @@
+* {
+    font: "URWGothic-Book 15";
+    background: #FFFFFF00;
+    background-color: #FFFFFF00;
+    foreground: #2F343D;
+    border-color: #A7B8C7;
+
+    selected-normal-background: #16A085;
+    selected-normal-foreground: #FFFFFF;
+    alternate-normal-background: #F3F6F8;
+    urgent-normal-background: #D9534F;
+    urgent-normal-foreground: #FFFFFF;
+}
+
+window {
+    width: 780px;
+    height: 570px;
+    border: 0px;
+    border-radius: 0px;
+    cursor: default;
+    background-color: transparent;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 10px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+inputbar {
+    children: [prompt, entry];
+    spacing: 10px;
+    background-color: #FFFFFFEE;
+    border: 1px;
+    border-color: #D7E0E7;
+    border-radius: 14px;
+    padding: 14px;
+}
+
+prompt {
+    enabled: true;
+    background-color: #16A085;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 9px 14px;
+    vertical-align: 0.5;
+}
+
+entry {
+    enabled: true;
+    placeholder: "Search apps…";
+    placeholder-color: #6B7785;
+    vertical-align: 0.5;
+}
+
+listview {
+    enabled: true;
+    lines: 9;
+    columns: 1;
+    fixed-height: true;
+    spacing: 6px;
+    background-color: #FFFFFFEE;
+    border: 1px;
+    border-color: #D7E0E7;
+    border-radius: 14px;
+    padding: 10px;
+}
+
+element {
+    padding: 10px 14px;
+    spacing: 14px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+element alternate {
+    background-color: #F3F6F8;
+}
+
+element selected {
+    background-color: #16A085;
+}
+
+element selected element-text {
+    color: #FFFFFF;
+}
+
+element selected element-icon {
+    background-color: transparent;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+element-icon {
+    size: 42px;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}

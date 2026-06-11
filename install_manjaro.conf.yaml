@@ -39,6 +39,7 @@
     ~/vimwiki: pconfigs/vimwiki
     ~/.config/alacritty/alacritty.yml: config/alacritty.yml
     ~/.i3/config: manjaro-config/i3/config
+    ~/.config/rofi: manjaro-config/rofi
 
 - shell:
     - [make -C stardict, Installing sdcv dictionaries]
