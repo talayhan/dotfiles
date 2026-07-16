@@ -95,7 +95,7 @@ require('lazy').setup({
     'tpope/vim-abolish',
     'ntpeters/vim-better-whitespace',
 
-    'talayhan/s-vim',
+    -- 'talayhan/s-vim', -- disabled: errors at startup outside an autocmd context
     -- Life saver
     'airblade/vim-gitgutter',
     'tpope/vim-fugitive',
@@ -108,6 +108,15 @@ require('lazy').setup({
     'easymotion/vim-easymotion',
     'vim-scripts/MultipleSearch',
     --{'suan/vim-instant-markdown', ft = { "markdown" } },
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && sh install.sh",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    },
     'lervag/vimtex',
     'vimwiki/vimwiki',
     'weirongxu/plantuml-previewer.vim',
@@ -171,7 +180,7 @@ require('lazy').setup({
         'neovim/nvim-lspconfig',
         dependencies = {
             'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            -- 'williamboman/mason-lspconfig.nvim', -- disabled: incompatible setup_handlers API
         },
     },
     {
@@ -239,9 +248,6 @@ require('lazy').setup({
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
-        --config = function()
-            --pcall(require('nvim-treesitter.install').update { with_sync = true })
-        --end,
     },
     {
         "folke/todo-comments.nvim",
