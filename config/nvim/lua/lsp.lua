@@ -1,5 +1,4 @@
 -- LSP settings
-local nvim_lsp = require 'lspconfig'
 local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
@@ -44,29 +43,17 @@ local servers = {
   },
 }
 
-local mason_lspconfig = require 'mason-lspconfig'
+-- mason-lspconfig.nvim is disabled because its `setup_handlers` API was removed.
+-- Configure each server explicitly below using the vim.lsp.config/enable API
+-- (require('lspconfig')[x].setup{} is deprecated, removed in nvim-lspconfig v3.0.0).
 
-mason_lspconfig.setup {
-  -- ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
-}
-
-require('lspconfig')['clangd'].setup {
+vim.lsp.config('clangd', {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {}
-}
+})
 
-require('lspconfig')['rust_analyzer'].setup {
+vim.lsp.config('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
       checkOnSave = {
@@ -77,9 +64,9 @@ require('lspconfig')['rust_analyzer'].setup {
       }
     }
   }
-}
+})
 
-require('lspconfig')['ts_ls'].setup {
+vim.lsp.config('ts_ls', {
   filetypes = {
     "javascript",
     "typescript"
@@ -87,9 +74,9 @@ require('lspconfig')['ts_ls'].setup {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {}
-}
+})
 
-require('lspconfig')['gopls'].setup {
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       analyses = {
@@ -99,7 +86,9 @@ require('lspconfig')['gopls'].setup {
       gofumpt = true,
     },
   },
-}
+})
+
+vim.lsp.enable({ 'clangd', 'rust_analyzer', 'ts_ls', 'gopls' })
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
     local config = vim.diagnostic.config
