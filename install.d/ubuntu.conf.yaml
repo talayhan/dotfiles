@@ -1,0 +1,7 @@
+# Ubuntu / Debian specific entries.
+- link:
+    ~/.compton.conf: config/compton.conf
+    ~/.config/redshift.conf: config/redshift.conf
+    ~/.config/tilda/config_0: config/tilda/config_0
+    ~/.i3: i3
+    ~/Pictures/erciyes_mountain.jpg: pics/erciyes_mountain.jpg

@@ -1,0 +1,9 @@
+# macOS specific entries.
+#
+# Terminal-first setup: nvim, tmux, zsh and the CLI tooling. Window management
+# is left to the OS, so there is no i3/rofi/compton equivalent here.
+#
+# Fonts live in ~/Library/Fonts rather than ~/.fonts, and there is no X11 or
+# freedesktop layer, so linux.conf.yaml is not composed in on this platform.
+- link:
+    ~/Library/Fonts: fonts

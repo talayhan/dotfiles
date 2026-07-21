@@ -1,2 +1,5 @@
+MUSIC_DIR ?= $(HOME)/Music
+
 all:
-	cp *.mp3 ~/Music
+	mkdir -p $(MUSIC_DIR)
+	cp *.mp3 $(MUSIC_DIR)

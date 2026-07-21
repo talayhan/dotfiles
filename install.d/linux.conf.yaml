@@ -1,0 +1,12 @@
+# X11 / freedesktop entries. Shared by every Linux platform, omitted on macOS.
+- link:
+    ~/.pam_environment: config/pam_environment
+    ~/.Xinitrc: config/Xinitrc
+    ~/.Xresources: config/Xresources
+    ~/.urxvt/ext: config/urxvt/ext
+    ~/.gtkrc-2.0: config/gtkrc-2.0
+    ~/.config/gtk-3.0/settings.ini: config/gtk-3.0/settings.ini
+    ~/.config/zathura/zathurarc: config/zathura/zathurarc
+    ~/.fonts: fonts
+    ~/.icons: icons
+    ~/.templates: templates

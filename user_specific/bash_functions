@@ -24,7 +24,9 @@ diffdiffer() {
 }
 
 function scrotclip() {
-    scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    # screenshot_to_clipboard() is defined in ~/.os.sh and picks scrot or
+    # screencapture depending on the platform.
+    screenshot_to_clipboard
 }
 
 function rmfilesizeifbigger() {
@@ -170,26 +172,28 @@ function time2break() {
     YELLOW='\033[1;33m'
     NC='\033[0m' # No Color
 
-    TIME_DIR="/home/talayhan/Documents/time2series"
+    TIME_DIR="${HOME}/Documents/time2series"
+    mkdir -p "$TIME_DIR"
     CURRENT_DATE=$(date +"%d_%m_%Y")
     FILE_NAME="$TIME_DIR/keep_break_count_$CURRENT_DATE.txt"
 
     CURRENT_TIME=$(date)
     echo "Start time  : $CURRENT_TIME" >> $FILE_NAME
-    /home/talayhan/go/bin/countdown 5m && notify-send "TIME TO WORK\!"
+    "${GOPATH:-$HOME/go}/bin/countdown" 5m && notify "TIME TO WORK!"
     CURRENT_TIME=$(date)
     echo "End time    : $CURRENT_TIME" >> $FILE_NAME
 }
 
 function time2work() {
-    TIME_DIR="/home/talayhan/Documents/time2series"
+    TIME_DIR="${HOME}/Documents/time2series"
+    mkdir -p "$TIME_DIR"
     CURRENT_DATE=$(date +"%d_%m_%Y")
     FILE_NAME="$TIME_DIR/keep_study_count_$CURRENT_DATE.txt"
     TITLE="${1}"
 
     CURRENT_TIME=$(date)
     echo "Start time  : $CURRENT_TIME for $TITLE" >> $FILE_NAME
-    /home/talayhan/go/bin/countdown 25m && notify-send "TIME TO BREAK\!"
+    "${GOPATH:-$HOME/go}/bin/countdown" 25m && notify "TIME TO BREAK!"
     CURRENT_TIME=$(date)
     echo "End time    : $CURRENT_TIME" >> $FILE_NAME
 }

@@ -1,0 +1,5 @@
+# Manjaro / Arch specific entries.
+- link:
+    ~/.config/redshift.conf: manjaro-config/redshift.conf
+    ~/.i3/config: manjaro-config/i3/config
+    ~/.config/rofi: manjaro-config/rofi

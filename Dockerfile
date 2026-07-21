@@ -55,7 +55,7 @@ RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$us
 
 # Override the .zshrc that oh-my-zsh gives us in favor of our own
 RUN rm .zshrc
-RUN ./dotfiles/install -c install_ubuntu.conf.yaml
+RUN ./dotfiles/install -p ubuntu
 
 # Change the shell to zsh
 USER root

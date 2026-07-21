@@ -1,0 +1,8 @@
+# Post-link steps, composed last on every platform.
+#
+# Package installation deliberately does NOT happen here -- it lives in
+# user_specific/<platform>_tools.sh and is run as a separate, explicit step so
+# that ./install stays fast, non-interactive and safe to re-run.
+- shell:
+    - [make -C stardict, Installing sdcv dictionaries]
+    - [make -C music, Installing pomodoro notification mp3]

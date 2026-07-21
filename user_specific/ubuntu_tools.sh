@@ -1,17 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#
+# Ubuntu / Debian tooling setup.
+#
+#   ./user_specific/ubuntu_tools.sh
+#
+# Safe to re-run.
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
-
-# logs
-debug_log() {
-	echo -e "${GREEN}${1}${NC}"
-}
-
-error_log() {
-	echo -e "${RED}${1}${NC}"
-}
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=user_specific/common_tools.sh
+. "${SCRIPT_DIR}/common_tools.sh"
 
 ## @TODO add below packages
 # - scan-build-9
@@ -173,39 +170,9 @@ for tool in "${piptools[@]}" ; do
     fi
 done
 
-if [[ ! -e ~/.fzf ]]; then
-    debug_log "[+] Installing fzf ... "
-    git clone --depth 1 \
-    https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-    debug_log "[+] Done "
-fi
-
-
-if [[ ! -e ~/.oh-my-zsh ]]; then
-    debug_log "[+] Installing oh-my-zsh ... "
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
-    debug_log "[+] Done "
-fi
-
-if [[ ! -e ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
-    debug_log "[+] Installing zsh-autosuggestions ... "
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    debug_log "[+] Done "
-fi
-
-#git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-# install vim plugin manager
-if [[ ! -e ~/.local/share/nvim/site/autoload/plug.vim ]]; then
-    debug_log "[+] Installing vim plugin manager ... "
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    debug_log "[+] Done "
-else
-    error_log "[-] You need to install Vim first! "
-fi
+# oh-my-zsh, zsh plugins, tpm, fzf, rustup, vim-plug and the nvim bootstrap are
+# shared with the other platforms.
+run_common_bootstrap
 
 # install custom rofi based launchers
 if [[ ! -e ~/.config/rofi/launchers ]]; then
@@ -216,41 +183,19 @@ if [[ ! -e ~/.config/rofi/launchers ]]; then
     debug_log "[+] Done "
 fi
 
-# clone tpm
-if [[ ! -e ~/.tmux/plugins/tpm ]]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-    # source tmux conf
-    tmux source ~/.tmux.conf
-
-    # install tmux plugins
-    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-fi
-
-SOURCE_STR="
-[ -f ~/.bash_aliases ] && source ~/.bash_aliases
-[ -f ~/.bash_functions ] && source ~/.bash_functions
-"
-
 #make alacritty default terminal
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which alacritty) 50
+if command -v alacritty >/dev/null 2>&1; then
+    sudo update-alternatives --install /usr/bin/x-terminal-emulator \
+        x-terminal-emulator "$(which alacritty)" 50
+fi
 
 #set python3 as default
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-nvim +'PlugInstall --sync' +qa
-nvim +'TSInstall c cpp java python rust vim go html css javascript typescript' +qa
-nvim +'TSInstall cmake make bash json toml yaml latex regex markdown proto http dockerfile' +qa
-nvim +'TSUpdate' +qa
 
 xdg-mime default thunar.desktop inode/directory
 
 #query default file manager
 #xdg-mime query default inode/directory
 
-# add source files to end of rc file
-#[ -f ~/.zshrc ] && echo "$SOURCE_STR" >> ~/.zshrc
+debug_log "[+] Ubuntu setup complete. Run './install' to link the configs."
 

@@ -1,63 +1,181 @@
-# This is a basic workflow to help you get started with Actions
+name: install
 
-name: CI
-
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [master]
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  # Link every platform's manifest on a runner of that family, verify the
+  # symlinks landed, then run it again to prove the install is idempotent.
+  install:
+    name: ${{ matrix.platform }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: ubuntu
+          - os: ubuntu-latest
+            platform: centos7
+          - os: macos-latest
+            platform: macos
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT }}
+          # pconfigs is private; the PAT is absent on forks, and the install is
+          # expected to degrade gracefully when it cannot be cloned.
+          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT || github.token }}
           submodules: recursive
 
-      # Runs a single command using the runners shell
-      - name: Install Ubuntu Configs
-        run: ./install -c install_ubuntu.conf.yaml
+      - name: Install
+        run: ./install -p ${{ matrix.platform }}
 
-      # TODO user_specific things
-      - name: TODO
+      - name: Verify links
+        run: ./tests/verify_install.sh ${{ matrix.platform }}
+
+      - name: Install again (idempotency)
+        run: ./install -p ${{ matrix.platform }}
+
+      - name: Verify links again
+        run: ./tests/verify_install.sh ${{ matrix.platform }}
+
+      - name: Check the shell helpers load
+        shell: bash
         run: |
-          echo "User_specific tools are missing"
-          bash ./user_specific/ubuntu_tools.sh
+          set -euo pipefail
+          # os.sh is sourced by every interactive shell, so a syntax error here
+          # breaks the terminal on every platform.
+          bash -n "$HOME/.os.sh"
+          # shellcheck disable=SC1090
+          . "$HOME/.os.sh"
+          echo "DOTFILES_OS=$DOTFILES_OS"
+          echo "DOTFILES_FAMILY=$DOTFILES_FAMILY"
+          echo "DOTFILES_ARCH=$DOTFILES_ARCH"
+          test "$DOTFILES_OS" != "unknown"
+          echo "clipboard: $(clipboard_copy_cmd)"
+          notify "CI smoke test" "dotfiles"
 
-  manjaro_build:
+      - name: Check zsh parses the rc file
+        run: |
+          if command -v zsh >/dev/null 2>&1; then
+            zsh -n "$HOME/.zshrc"
+          else
+            echo "zsh not present on this runner, skipping"
+          fi
+
+      - name: Check tmux parses its config
+        run: |
+          if command -v tmux >/dev/null 2>&1; then
+            tmux -f "$HOME/.tmux.conf" start-server \; kill-server
+          else
+            echo "tmux not present on this runner, skipping"
+          fi
+
+  # Manjaro has no hosted runner, so exercise it in a container instead.
+  install-manjaro:
+    name: manjaro in container
     runs-on: ubuntu-latest
     container:
       image: manjarolinux/base:latest
+
     steps:
-      - name: Update system
-        run: pacman -Syu --noconfirm
+      - name: Install prerequisites
+        run: pacman -Sy --noconfirm git make tar zsh tmux python
 
-      - name: Install git
-        run: pacman -S git make --noconfirm
-
-      - name: Configure git for submodules
+      - name: Trust the workspace
         run: git config --global --add safe.directory '*'
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT }}
+          token: ${{ secrets.MY_VERY_SECRET_REPO_PAT || github.token }}
           submodules: recursive
 
-      - name: Install Manjaro Configs
-        run: ./install -c install_manjaro.conf.yaml
+      - name: Install
+        run: ./install -p manjaro
+
+      - name: Verify links
+        run: ./tests/verify_install.sh manjaro
+
+      - name: Install again (idempotency)
+        run: ./install -p manjaro
+
+      - name: Verify links again
+        run: ./tests/verify_install.sh manjaro
+
+      - name: Check zsh parses the rc file
+        run: zsh -n "$HOME/.zshrc"
+
+  # Detection decides which manifest every other job composes, so it gets its
+  # own checks rather than being tested only implicitly.
+  detect:
+    name: platform detection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detects the host correctly
+        run: |
+          set -euo pipefail
+          . ./user_specific/os.sh
+          echo "detected: $DOTFILES_OS / $DOTFILES_FAMILY / $DOTFILES_ARCH"
+          test "$DOTFILES_OS" = "ubuntu"
+          test "$DOTFILES_FAMILY" = "linux"
+
+      - name: Rejects an unknown platform
+        run: |
+          if ./install -n -p freebsd 2>/dev/null; then
+            echo "FAIL: unknown platform was accepted"
+            exit 1
+          fi
+          echo "ok: unknown platform rejected"
+
+      - name: Composes a manifest for every supported platform
+        run: |
+          set -euo pipefail
+          for platform in ubuntu manjaro centos7 macos; do
+            echo "--- $platform ---"
+            ./install -n -p "$platform" > "/tmp/$platform.yaml"
+            python3 -c "
+          import sys, yaml
+          doc = yaml.safe_load(open('/tmp/$platform.yaml'))
+          assert isinstance(doc, list), 'manifest is not a list'
+          directives = [k for entry in doc for k in entry]
+          assert 'defaults' in directives, 'no defaults directive'
+          assert 'link' in directives, 'no link directive'
+          links = {}
+          for entry in doc:
+              if 'link' in entry:
+                  for dest, src in entry['link'].items():
+                      assert dest not in links, f'duplicate destination: {dest}'
+                      links[dest] = src
+          print(f'  {len(links)} unique link destinations, {len(directives)} directives')
+          "
+          done
+
+      - name: macOS manifest excludes the X11 layer
+        run: |
+          set -euo pipefail
+          # Comments mention these by name, so compare against directives only.
+          ./install -n -p macos | grep -v '^\s*#' > /tmp/macos.yaml
+          for forbidden in Xresources Xinitrc urxvt gtkrc pam_environment compton i3 rofi; do
+            if grep -q "$forbidden" /tmp/macos.yaml; then
+              echo "FAIL: macOS manifest contains '$forbidden'"
+              exit 1
+            fi
+          done
+          grep -q 'Library/Fonts' /tmp/macos.yaml
+          echo "ok: macOS manifest is X11-free"
+
+      - name: Legacy config paths still resolve
+        run: |
+          set -euo pipefail
+          ./install -n -c install_ubuntu.conf.yaml > /tmp/legacy.yaml
+          diff <(./install -n -p ubuntu | tail -n +2) <(tail -n +2 /tmp/legacy.yaml)
+          echo "ok: legacy path composes the same manifest"

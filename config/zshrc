@@ -82,14 +82,23 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias f="thunar . &"
+# Platform detection: provides $DOTFILES_OS, $DOTFILES_FAMILY, brew_prefix(),
+# notify() and clipboard_copy_cmd(). Must be sourced before the aliases below.
+[ -f ~/.os.sh ] && source ~/.os.sh
+
+# open the current directory in the platform's file manager
+if [ "$DOTFILES_FAMILY" = "darwin" ]; then
+    alias f="open ."
+else
+    alias f="thunar . &"
+fi
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
 [ -f ~/.exports ] && source ~/.exports
 [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.profile
+[ -f ~/.profile ] && source ~/.profile
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -104,14 +113,17 @@ export NVM_DIR="$HOME/.nvm"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-# bun completions
-[ -s "/home/talayhan/.bun/_bun" ] && source "/home/talayhan/.bun/_bun"
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 # opencode
-export PATH=/home/talayhan/.opencode/bin:$PATH
+[ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# homebrew -- /opt/homebrew on Apple Silicon, /usr/local on Intel macs,
+# /home/linuxbrew/.linuxbrew on Linux. brew_prefix() comes from ~/.os.sh.
+if (( $+functions[brew_prefix] )); then
+    _brew_prefix="$(brew_prefix)" && eval "$("${_brew_prefix}/bin/brew" shellenv)"
+    unset _brew_prefix
+fi

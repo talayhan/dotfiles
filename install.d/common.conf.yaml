@@ -1,0 +1,57 @@
+# Links that apply to every platform.
+# Composed by ./install as:  common + [linux] + <platform> + post
+- clean: ['~']
+
+- shell:
+    # pconfigs is a private repo, so this is allowed to fail for anyone who does
+    # not have access to it. The links that depend on it are guarded below.
+    - - git submodule update --init --depth 1 || echo "[i] some submodules unavailable"
+      - Installing submodules
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- link:
+    # shell
+    ~/.bash_aliases: user_specific/bash_aliases
+    ~/.bash_functions: user_specific/bash_functions
+    ~/.exports: user_specific/exports
+    ~/.os.sh: user_specific/os.sh
+    ~/.local/bin/bashmarks: user_specific/bashmarks.sh
+    ~/.zshrc: config/zshrc
+    ~/.scripts: user_specific/scripts
+
+    # git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+    ~/.gitconfig_delta: git/gitconfig_delta
+    ~/.gitconfig_delta_themes: git/gitconfig_delta_themes
+
+    # editors
+    ~/.vimrc: config/vimrc
+    ~/.config/nvim/init.lua: config/nvim/init.lua
+    ~/.config/nvim/lua: config/nvim/lua
+    ~/.config/nvim/ftdetect: config/nvim/ftdetect
+
+    # terminal / multiplexer
+    ~/.tmux.conf: config/tmux.conf
+    ~/.config/alacritty/alacritty.yml: config/alacritty.yml
+
+    # tooling
+    ~/.gdbinit: config/gdbinit
+    ~/.clang-format: config/clang-format/clang-format
+    ~/.vifm: config/vifm
+    ~/.taskrc: config/taskrc
+    ~/.newsboat: config/newsboat
+    ~/.config/gpt-cli/gpt.yml: config/gpt-cli/gpt.yml
+
+    # private configs (pconfigs submodule -- skipped when it is not checked out,
+    # so the install still works for anyone without access to that repo)
+    ~/vimwiki:
+      path: pconfigs/vimwiki
+      if: '[ -d pconfigs/vimwiki ]'
+    ~/.config/tmuxinator:
+      path: pconfigs/tmuxinator
+      if: '[ -d pconfigs/tmuxinator ]'

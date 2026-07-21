@@ -1,0 +1,16 @@
+# CentOS 7 specific entries.
+#
+# LEGACY: this platform is kept working but is no longer actively developed.
+# It inherits whatever lands in common.conf.yaml and linux.conf.yaml; nothing
+# new is added here. Note that it now picks up the Lua nvim config from common,
+# which needs nvim >= 0.5 to be useful.
+#
+# Dropped when this file was split out, because the sources no longer exist in
+# the repo and the old manifest had been failing on them:
+#   ~/.conkyrc        config/conkyrc
+#   ~/.i3/config      i3/config_centos7
+#   ~/Pictures/w2.png pics/w2.png
+#   ~/Pictures/w4.png pics/w4.png
+- link:
+    ~/.config/redshift.conf: config/redshift.conf
+    ~/.i3: i3

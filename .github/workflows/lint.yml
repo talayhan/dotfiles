@@ -1,0 +1,87 @@
+name: lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Lint the installer and helpers
+        run: |
+          shellcheck --severity=warning \
+            install \
+            user_specific/os.sh \
+            user_specific/common_tools.sh \
+            user_specific/macos_tools.sh \
+            user_specific/manjaro_tools.sh \
+            tests/verify_install.sh
+
+      - name: Syntax-check every shell file
+        run: |
+          set -euo pipefail
+          status=0
+          while IFS= read -r f; do
+            if ! bash -n "$f"; then
+              echo "syntax error in $f"
+              status=1
+            fi
+          done < <(git ls-files '*.sh' 'user_specific/bash_*' install)
+          exit $status
+
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Lint the install manifests
+        run: yamllint -c .yamllint install.d/ .github/workflows/
+
+  zsh-syntax:
+    name: zsh syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install zsh
+        run: sudo apt-get update && sudo apt-get install -y zsh
+
+      - name: Parse zshrc
+        run: zsh -n config/zshrc
+
+  no-hardcoded-paths:
+    name: no hardcoded home paths
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject absolute paths into a specific user's home
+        run: |
+          # Configs are shared across three platforms and two home layouts, so a
+          # literal /home/<user> or /Users/<user> is always a bug.
+          #
+          # vifm-help.txt is vendored upstream documentation and vifminfo is
+          # generated session state, so neither is ours to fix here.
+          if git ls-files config user_specific git install.d install \
+             | grep -v -E 'vifm/(vifm-help\.txt|vifminfo)' \
+             | xargs grep -n -E '/home/[a-z]+/|/Users/[a-z]+/' \
+             | grep -v '/home/linuxbrew'; then
+            echo
+            echo "FAIL: use \$HOME instead of an absolute home directory path."
+            exit 1
+          fi
+          echo "ok: no hardcoded home paths"

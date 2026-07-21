@@ -1,0 +1,14 @@
+extends: default
+
+rules:
+  line-length:
+    max: 120
+    level: warning
+  document-start: disable
+  comments:
+    min-spaces-from-content: 1
+  truthy:
+    # GitHub Actions uses `on:` as a key.
+    check-keys: false
+  braces:
+    max-spaces-inside: 1
