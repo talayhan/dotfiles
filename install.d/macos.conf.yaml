@@ -5,5 +5,12 @@
 #
 # Fonts live in ~/Library/Fonts rather than ~/.fonts, and there is no X11 or
 # freedesktop layer, so linux.conf.yaml is not composed in on this platform.
+#
+# ~/Library/Fonts already exists on every macOS install and may hold fonts that
+# did not come from here, so link the files into it rather than replacing the
+# directory with a symlink.
 - link:
-    ~/Library/Fonts: fonts
+    ~/Library/Fonts/:
+      path: fonts/*
+      glob: true
+      create: true

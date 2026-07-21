@@ -64,6 +64,25 @@ for entry in "${entries[@]}"; do
     expanded_dest="${dest/#\~/${HOME}}"
     expected_src="${REPO}/${src}"
 
+    # Glob entries link many sources into one directory, so check the directory
+    # holds a symlink back into the repo rather than being a symlink itself.
+    if [ "${src}" != "${src%\*}" ]; then
+        checked=$((checked + 1))
+        found=""
+        for candidate in "${expanded_dest}"/*; do
+            [ -L "${candidate}" ] || continue
+            case "$(readlink "${candidate}")" in
+                "${REPO}"/*) found="${candidate}"; break ;;
+            esac
+        done
+        if [ -n "${found}" ]; then
+            pass "${dest} <- ${src} (globbed)"
+        else
+            fail "${dest} contains no links back into the repo for '${src}'"
+        fi
+        continue
+    fi
+
     # Entries guarded by an `if:` in the manifest (currently the private
     # pconfigs submodule) are legitimately absent when the source is not there.
     if [ ! -e "${expected_src}" ]; then
@@ -108,8 +127,11 @@ if [ "${PLATFORM}" = "macos" ]; then
             fail "X11 entry ${x11} was linked on macOS"
         fi
     done
-    if [ ! -L "${HOME}/Library/Fonts" ]; then
-        fail '$HOME/Library/Fonts was not linked on macOS'
+    # The directory is the OS's; only its contents should be ours.
+    if [ -L "${HOME}/Library/Fonts" ]; then
+        fail '$HOME/Library/Fonts was replaced by a symlink'
+    elif [ ! -d "${HOME}/Library/Fonts" ]; then
+        fail '$HOME/Library/Fonts does not exist'
     fi
 fi
 

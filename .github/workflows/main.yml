@@ -89,7 +89,9 @@ jobs:
         run: pacman -Sy --noconfirm git make tar zsh tmux python
 
       - name: Trust the workspace
-        run: git config --global --add safe.directory '*'
+        # --system, not --global: the install links ~/.gitconfig to the repo's
+        # own gitconfig, which would drop a --global exception halfway through.
+        run: git config --system --add safe.directory '*'
 
       - name: Checkout
         uses: actions/checkout@v4
