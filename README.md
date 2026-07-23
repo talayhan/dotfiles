@@ -1,8 +1,17 @@
-# dotfiles [![](https://github.com/talayhan/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/talayhan/dotfiles/actions) ![](https://img.shields.io/github/license/talayhan/dotfiles) ![](https://img.shields.io/github/stars/talayhan/dotfiles) ![](https://img.shields.io/github/issues/talayhan/dotfiles)
+<p align="center">
+  <img src=".github/assets/logo.svg" alt="dotfiles" width="480">
+</p>
+
+<p align="center">
+  <a href="https://github.com/talayhan/dotfiles/actions/workflows/main.yml"><img alt="install" src="https://github.com/talayhan/dotfiles/actions/workflows/main.yml/badge.svg"></a>
+  <a href="https://github.com/talayhan/dotfiles/actions/workflows/lint.yml"><img alt="lint" src="https://github.com/talayhan/dotfiles/actions/workflows/lint.yml/badge.svg"></a>
+  <img alt="license" src="https://img.shields.io/github/license/talayhan/dotfiles">
+  <img alt="last commit" src="https://img.shields.io/github/last-commit/talayhan/dotfiles">
+  <img alt="stars" src="https://img.shields.io/github/stars/talayhan/dotfiles">
+  <img alt="issues" src="https://img.shields.io/github/issues/talayhan/dotfiles">
+</p>
 
 A collection of scripts and configurations that I use every day.
-
-![screenshot](pics/nvim-tmux-ss.png)
 
 Supported platforms
 -------
@@ -39,7 +48,15 @@ Useful flags:
 ./install -p macos       # force a platform instead of detecting it
 ./install -n             # print the composed manifest without linking anything
 ./install -n -p ubuntu   # see exactly what a given platform would link
+./install -w             # walk through an interactive wizard first (needs cargo)
 ```
+
+`-w`/`--wizard` builds a small Rust TUI on first use and lets you pick the
+platform and, per component (shell, git, editors, terminal, tooling, private
+configs, X11, ...), individually check or uncheck every symlink before
+anything is linked. It's entirely opt-in — plain `./install` behaves exactly
+as before, and falls back to the non-interactive flow if `cargo` isn't
+installed.
 
 How the manifests are organised
 -------
