@@ -1,0 +1,19 @@
+[package]
+name = "dfwizard"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "dfwizard"
+path = "src/main.rs"
+
+[dependencies]
+ratatui = "0.28"
+crossterm = "0.28"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 1

@@ -6,6 +6,7 @@
 #   ./install -p macos             force a platform
 #   ./install -n                   print the composed manifest and exit
 #   ./install -c custom.conf.yaml  bypass composition, run one manifest verbatim
+#   ./install -w                   walk through an interactive wizard first
 #
 # Any remaining arguments are forwarded to dotbot (e.g. --verbose, --only link).
 
@@ -19,10 +20,11 @@ CONFIG_DIR="${BASEDIR}/install.d"
 PLATFORM=""
 EXPLICIT_CONFIG=""
 DRY_RUN=0
+WIZARD=0
 DOTBOT_ARGS=()
 
 usage() {
-    sed -n '2,11p' "${BASH_SOURCE[0]}" | sed 's/^#\s\?//'
+    sed -n '2,12p' "${BASH_SOURCE[0]}" | sed 's/^#\s\?//'
 }
 
 while [ $# -gt 0 ]; do
@@ -39,6 +41,10 @@ while [ $# -gt 0 ]; do
             DRY_RUN=1
             shift
             ;;
+        -w|--wizard)
+            WIZARD=1
+            shift
+            ;;
         -h|--help)
             usage
             exit 0
@@ -49,6 +55,12 @@ while [ $# -gt 0 ]; do
             ;;
     esac
 done
+
+if [ -n "${PLATFORM}" ]; then
+    EXPLICIT_P=1
+else
+    EXPLICIT_P=0
+fi
 
 # Legacy entry point: ./install -c install_ubuntu.conf.yaml still works, and is
 # translated into the equivalent composed run.
@@ -76,7 +88,56 @@ if [ -z "${PLATFORM}" ] && [ -z "${EXPLICIT_CONFIG}" ]; then
     echo "[+] Detected platform: ${PLATFORM}"
 fi
 
-if [ -n "${EXPLICIT_CONFIG}" ]; then
+# Interactive wizard: banner, platform pick (skipped if -p was explicit), and
+# a preview of what the composed manifest will link, before anything runs.
+# Bypassed entirely for the legacy -c path, which has no per-platform preview
+# to show. Degrades gracefully -- same pattern as the private pconfigs
+# submodule -- when cargo isn't available.
+if [ "${WIZARD}" -eq 1 ] && [ -z "${EXPLICIT_CONFIG}" ]; then
+    if ! command -v cargo >/dev/null 2>&1; then
+        echo "[i] --wizard requires cargo; continuing without it" >&2
+    else
+        WIZARD_BIN="${BASEDIR}/wizard/target/release/dfwizard"
+        if ! cargo build --release --manifest-path "${BASEDIR}/wizard/Cargo.toml" --quiet; then
+            echo "[-] failed to build the install wizard" >&2
+            exit 1
+        fi
+
+        WIZARD_PLATFORM_ARGS=()
+        if [ "${EXPLICIT_P}" -eq 1 ]; then
+            WIZARD_PLATFORM_ARGS=(--platform "${PLATFORM}")
+        fi
+
+        set +e
+        WIZARD_OUT="$("${WIZARD_BIN}" --repo "${BASEDIR}" --default-platform "${PLATFORM}" "${WIZARD_PLATFORM_ARGS[@]}")"
+        WIZARD_STATUS=$?
+        set -e
+
+        case "${WIZARD_STATUS}" in
+            0)
+                SELECTED="$(printf '%s\n' "${WIZARD_OUT}" | sed -n 's/^SELECTED_PLATFORM=//p')"
+                [ -n "${SELECTED}" ] && PLATFORM="${SELECTED}"
+                WIZARD_MANIFEST="$(printf '%s\n' "${WIZARD_OUT}" | sed -n 's/^MANIFEST_FILE=//p')"
+                ;;
+            2)
+                echo "Cancelled." >&2
+                exit 0
+                ;;
+            *)
+                echo "[-] install wizard failed" >&2
+                exit 1
+                ;;
+        esac
+    fi
+fi
+
+if [ -n "${WIZARD_MANIFEST:-}" ]; then
+    # The wizard already composed (and possibly trimmed, per the component
+    # checklist) a manifest identical in shape to what the block below would
+    # produce -- reuse it instead of re-composing from PARTS.
+    COMPOSED="${WIZARD_MANIFEST}"
+    CLEANUP="${COMPOSED}"
+elif [ -n "${EXPLICIT_CONFIG}" ]; then
     COMPOSED="${EXPLICIT_CONFIG}"
     CLEANUP=""
 else
