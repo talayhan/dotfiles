@@ -2,8 +2,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-#set $mod Mod4
-set $mod Mod1
+set $mod Mod4
+#set $mod Mod1
 
 # Set default terminal
 set $terminal alacritty
@@ -282,7 +282,8 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id picom -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -290,7 +291,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id redshift
 exec --no-startup-id /home/talayhan/.screenlayout/4k.sh
-exec --no-startup-id tilda --config-file ~/.config/tilda/config_0
+exec --no-startup-id sh -c 'sleep 1; exec tilda --config-file ~/.config/tilda/config_0'
 exec --no-startup-id firefox
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
@@ -429,3 +430,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Floating ssh Hermes terminal (see alacritty-float-ssh.sh)
+for_window [class="^Alacritty-float-ssh$"] floating enable, resize set 80 ppt 80 ppt, move position center
