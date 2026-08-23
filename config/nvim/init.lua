@@ -245,9 +245,13 @@ require('lazy').setup({
 
     {
         'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
+        branch = 'main',
+        lazy = false,
+        build = ':TSUpdate',
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
     },
     {
         "folke/todo-comments.nvim",
