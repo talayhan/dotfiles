@@ -45,6 +45,7 @@ pacman_packages=(
     'task'
     'shellcheck'
     'alacritty'
+    'tree-sitter-cli'
 )
 
 npm_packages=(
