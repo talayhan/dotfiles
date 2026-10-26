@@ -23,6 +23,7 @@ These are common instructions for Talayhan's agents across all scenarios.
 ## HTML Generation & UI Spec
 
 - **Aesthetic**: Apple minimalist (Linear/Vercel/Notion). Maximize whitespace/alignment; avoid decorative effects.
+  - Always use light theme, NOT DARK.
 - **Fonts**: `-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif`. Weight/size defines hierarchy.
 - **Palette**: Accent `#147EFF` (Apple Blue). Text: `#1D1D1F` (Primary), `#6E6E73` (Secondary). BG: `#FFFFFF`, `#F5F5F7`, `#FAFAFA`.
 - **Status Cues**: Success `#34C759`, Error `#FF3B30`. **CRITICAL**: Never use purple. No rainbow/saturated palettes.
